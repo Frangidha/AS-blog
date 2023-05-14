@@ -58,3 +58,69 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
 
 # Table of Contents
 
+- [User Experience Design (UX)](#user-experience-design-ux)
+  - [The Strategy Plane](#the-strategy-plane)
+    - [Site Goals](#site-goals)
+    - [Agile Planning](#agile-planning)
+  - [The Scope Plane](#the-scope-plane)
+    - [Features](#features)
+    - [Future Features](#future-features)
+  - [The Structure Plane](#the-structure-plane)
+  - [The Skeleton Plane](#the-skeleton-plane)
+    - [Wireframes](#wireframes)
+    - [Database Design](#database-design)
+    - [Security](#security)
+  - [The Surface Plane](#the-surface-plane)
+    - [Design](#design)
+    - [Colour Scheme](#colour-scheme)
+    - [Typography](#typography)
+    - [Imagery](#imagery)
+- [Technologies](#technologies)
+- [Testing](#testing)
+- [Deployment](#deployment)
+  - [Version Control](#version-control)
+  - [Heroku Deployment](#heroku-deployment)
+  - [Run Locally](#run-locally)
+  - [Fork Project](#fork-project)
+- [Credits](#credits)
+- [Content](#content)
+- [Acknowledgements](#acknowledgements)
+
+# User Experience Design (UX)
+
+## The Strategy Plane
+### Site Goals
+### Agile Planning
+
+## The Scope Plane
+### Features
+### Future Features
+
+## The Structure Plane
+
+## The Skeleton Plane
+### Wireframes
+### Database Design
+### Security
+
+## The Surface Plane
+### Design
+### Colour Scheme
+### Typography
+### Imagery
+
+# Technologies
+
+# Testing
+
+# Deployment
+## Version Control
+## Heroku Deployment
+## Run Locally
+## Fork Project
+
+# Credits
+
+# Content
+
+# Acknowledgements
