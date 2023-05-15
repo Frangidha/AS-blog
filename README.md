@@ -24,25 +24,6 @@ In this blog, we will explore a myriad of analytical techniques, shedding light 
 
 - **Rheology:** Dive into the world of rheology, the study of how materials flow and deform under applied forces or stresses. Uncover the fascinating properties of liquids and soft solids through techniques such as viscosity measurements, shear rate analysis, and viscoelasticity studies. Learn how rheological analysis contributes to fields such as polymer science, food technology, and pharmaceutical formulation, enabling the optimization of material properties and performance.
 
-## Stay Updated with Analytical Science
-
-We invite you to join us on this captivating
-
-# Analytical Science Blog: Exploring the Latest Discoveries
-
-## Introduction
-
-Welcome to the Analytical Science Blog, a platform dedicated to showcasing the latest news, breakthroughs, and research highlights from the world of analytical chemistry. Join us on this captivating journey through the realm of analytical science as we delve into the fascinating world of techniques and their applications. Our goal is to foster a deeper understanding of the field and its impact on diverse scientific disciplines.
-
-## What to Expect
-
-Stay tuned as we bring you:
-
-- **Articles:** Engaging and informative articles that cover a wide range of topics in analytical chemistry, including innovative methodologies, emerging trends, and significant scientific advancements.
-
-- **Case Studies:** In-depth analyses of real-world applications of analytical techniques. Explore how these techniques are employed to solve complex problems and contribute to various industries and research fields.
-
-- **Expert Interviews:** Gain valuable insights from leading experts in the field of analytical chemistry. Learn about their groundbreaking research, perspectives on current challenges, and visions for the future.
 
 ## Join Our Community
 
@@ -58,6 +39,13 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
 
 # Table of Contents
 
+- [Analytical Science Blog: Exploring the Latest Discoveries](#analytical-science-blog-exploring-the-latest-discoveries)
+  - [Introduction](#introduction)
+  - [Exploring the Techniques](#exploring-the-techniques)
+  - [Join Our Community](#join-our-community)
+  - [Get Involved](#get-involved)
+  - [Stay Updated](#stay-updated)
+- [Table of Contents](#table-of-contents)
 - [User Experience Design (UX)](#user-experience-design-ux)
   - [The Strategy Plane](#the-strategy-plane)
     - [Site Goals](#site-goals)
