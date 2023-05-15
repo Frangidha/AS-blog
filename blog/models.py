@@ -3,10 +3,12 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from ckeditor.fields import RichTextField
 from django.contrib import admin
-from .tag import Tag
+from taggit.managers import TaggableManager
 
 STATUS = ((0, "Draft"), (1, "Published"))
-#indivual post
+# indivual post
+
+
 class Post(models.Model):
     CATEGORIES = (
         ('microscopy', 'Microscopy'),
@@ -33,7 +35,8 @@ class Post(models.Model):
 
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="blog_posts")
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="blog_posts")
     featured_image = CloudinaryField('image', default='placeholder')
     additional_image = models.ImageField(upload_to='post_images/', blank=True)
     excerpt = models.TextField(blank=True)
@@ -41,8 +44,9 @@ class Post(models.Model):
     content = RichTextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    likes = models.ManyToManyField(User, related_name='blogpost_like', blank=True)
-    tags = models.ManyToManyField(Tag, related_name='posts')
+    likes = models.ManyToManyField(
+        User, related_name='blogpost_like', blank=True)
+    tags = TaggableManager()
     category = models.CharField(max_length=20, choices=CATEGORIES)
 
     class Meta:
@@ -59,7 +63,9 @@ class Post(models.Model):
             self.featured_image = self.CATEGORY_IMAGES[self.category]
         super().save(*args, **kwargs)
 
-#user comments
+# user comments
+
+
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,
                              related_name="comments")
@@ -76,7 +82,7 @@ class Comment(models.Model):
         return f"Comment {self.body} by {self.name}"
 
 
-#data analytics
+# data analytics
 class AnalyticsData(models.Model):
     date = models.DateField()
     page_views = models.IntegerField()
@@ -84,5 +90,3 @@ class AnalyticsData(models.Model):
 
     def __str__(self):
         return f"Analytics Data for {self.date}"
-
-admin.site.register(AnalyticsData)

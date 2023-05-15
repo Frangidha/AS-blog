@@ -14,11 +14,12 @@ from pathlib import Path
 import os
 import dj_database_url
 if os.path.isfile('env.py'):
-     import env
+    import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -30,7 +31,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["8000-frangidha-as-blog-zufzq9sk6f.us2.codeanyapp.com", "as-blog.herokuapp.com"]
+ALLOWED_HOSTS = [
+    "8000-frangidha-as-blog-zufzq9sk6f.us2.codeanyapp.com", "as-blog.herokuapp.com"]
 
 
 # Application definition
@@ -44,6 +46,8 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'ckeditor',
+    'taggit',
     'blog',
 ]
 
@@ -134,3 +138,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# This configuration sets up a custom toolbar with some common options.
+# You can modify it according to your requirements.
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList'],
+            ['Link', 'Unlink', 'Image', 'Table'],
+            ['RemoveFormat', 'Source', 'CodeSnippet']
+        ]
+    }
+}
