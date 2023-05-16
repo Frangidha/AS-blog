@@ -6,7 +6,9 @@ from django.contrib import admin
 from taggit.managers import TaggableManager
 
 STATUS = ((0, "Draft"), (1, "Published"))
+
 # indivual post
+
 
 class Post(models.Model):
     CATEGORIES = (
@@ -20,6 +22,7 @@ class Post(models.Model):
         ('hplc', 'High-Performance Liquid Chromatography'),
 
     )
+
 
     CATEGORY_IMAGES = {
         'microscopy': 'microscopy_default_image.jpg',
@@ -54,8 +57,10 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+
     def number_of_likes(self):
         return self.likes.count()
+
 
     def save(self, *args, **kwargs):
         if self.category in self.CATEGORY_IMAGES:
@@ -80,6 +85,7 @@ class Comment(models.Model):
         return f"Comment {self.body} by {self.name}"
 
 # data analytics
+
 class AnalyticsData(models.Model):
     date = models.DateField()
     page_views = models.IntegerField()
@@ -87,4 +93,3 @@ class AnalyticsData(models.Model):
 
     def __str__(self):
         return f"Analytics Data for {self.date}"
-
