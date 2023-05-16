@@ -162,3 +162,5 @@ CKEDITOR_CONFIGS = {
         ]
     }
 }
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
