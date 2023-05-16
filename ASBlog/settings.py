@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "8000-frangidha-as-blog-zufzq9sk6f.us2.codeanyapp.com", "as-blog.herokuapp.com"]
+    "8000-frangidha-as-blog-79j56tpr0l.us2.codeanyapp.com", "as-blog.herokuapp.com"]
 
 
 # Application definition
