@@ -1,13 +1,14 @@
+import os
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from ckeditor.fields import RichTextField
 from django.contrib import admin
 from taggit.managers import TaggableManager
+from django.conf import settings
 
 STATUS = ((0, "Draft"), (1, "Published"))
-
-# indivual post
+DEFAULT_IMAGE_PATH = 'default_images/'
 
 
 class Post(models.Model):
@@ -20,9 +21,7 @@ class Post(models.Model):
         ('elemental', 'Elemental analysis'),
         ('gc', 'Gas Chromatography'),
         ('hplc', 'High-Performance Liquid Chromatography'),
-
     )
-
 
     CATEGORY_IMAGES = {
         'microscopy': 'microscopy_default_image.jpg',
@@ -33,6 +32,10 @@ class Post(models.Model):
         'elemental': 'elemental_default_image.jpg',
         'gc': 'gc_default_image.jpg',
         'lc': 'lc_default_image.jpg',
+    }
+
+    CATEGORY_IMAGES = {
+        category: os.path.join(DEFAULT_IMAGE_PATH, filename) for category, filename in CATEGORY_IMAGES.items()
     }
 
     title = models.CharField(max_length=200, unique=True)
@@ -57,17 +60,23 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-
     def number_of_likes(self):
         return self.likes.count()
 
-
     def save(self, *args, **kwargs):
-        if self.category in self.CATEGORY_IMAGES:
+        if not self.featured_image and self.category in self.CATEGORY_IMAGES:
+            default_image_filename = self.CATEGORY_IMAGES[self.category]
+            default_image_path = os.path.join(
+                settings.MEDIA_ROOT, default_image_filename)
+            if os.path.exists(default_image_path):
+                self.featured_image = default_image_filename
+        elif self.category in self.CATEGORY_IMAGES:
             self.featured_image = self.CATEGORY_IMAGES[self.category]
         super().save(*args, **kwargs)
 
+
 # user comments
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,
@@ -85,6 +94,7 @@ class Comment(models.Model):
         return f"Comment {self.body} by {self.name}"
 
 # data analytics
+
 
 class AnalyticsData(models.Model):
     date = models.DateField()
