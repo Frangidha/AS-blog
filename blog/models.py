@@ -1,49 +1,55 @@
 import os
 from django.db import models
+from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.auth.models import User
-from cloudinary.models import CloudinaryField
+from django.urls import reverse
 from ckeditor.fields import RichTextField
-from django.contrib import admin
 from taggit.managers import TaggableManager
-from django.conf import settings
+from cloudinary.models import CloudinaryField
+from hitcount.models import HitCountMixin, HitCount
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django_resized import ResizedImageField
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 
-STATUS = ((0, "Draft"), (1, "Published"))
-DEFAULT_IMAGE_PATH = 'default_images/'
+
+STATUS = (
+    (0, 'Draft'),
+    (1, 'Published'),
+    (2, 'Archived'),
+)
+
+
+class Category(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField()
+    featured_image_default = CloudinaryField('image', blank=True)
+
+    class Meta:
+        ordering = ('title',)
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('category-detail', args=[self.slug])
 
 
 class Post(models.Model):
-    CATEGORIES = (
-        ('microscopy', 'Microscopy'),
-        ('vibrational', 'Vibrational'),
-        ('nmr', 'NMR'),
-        ('thermal', 'Thermal analysis'),
-        ('rheology', 'Rheology'),
-        ('elemental', 'Elemental analysis'),
-        ('gc', 'Gas Chromatography'),
-        ('hplc', 'High-Performance Liquid Chromatography'),
-    )
 
-    CATEGORY_IMAGES = {
-        'microscopy': 'microscopy_default_image.jpg',
-        'vibrational': 'vibrational_default_image.jpg',
-        'nmr': 'nmr_default_image.jpg',
-        'thermal': 'thermal_default_image.jpg',
-        'rheology': 'rheology_default_image.jpg',
-        'elemental': 'elemental_default_image.jpg',
-        'gc': 'gc_default_image.jpg',
-        'lc': 'lc_default_image.jpg',
-    }
-
-    CATEGORY_IMAGES = {
-        category: os.path.join(DEFAULT_IMAGE_PATH, filename) for category, filename in CATEGORY_IMAGES.items()
-    }
-
+    category = models.ForeignKey(
+        Category, related_name='posts', on_delete=models.CASCADE)
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts")
-    featured_image = CloudinaryField('image', default='placeholder')
-    additional_image = models.ImageField(upload_to='post_images/', blank=True)
+    featured_image = CloudinaryField(
+        'image',
+        default=''
+    )
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
     content = RichTextField()
@@ -52,54 +58,68 @@ class Post(models.Model):
     likes = models.ManyToManyField(
         User, related_name='blogpost_like', blank=True)
     tags = TaggableManager()
-    category = models.CharField(max_length=20, choices=CATEGORIES)
+
+    hit_count_generic = GenericRelation(
+        HitCount, object_id_field='object_pk',
+        related_query_name='hit_count_generic_relation'
+    )
 
     class Meta:
-        ordering = ["-created_on"]
+        ordering = ('-created_on',)
+
+    def current_hit_count(self):
+        return self.hit_count.hits
 
     def __str__(self):
         return self.title
 
-    def number_of_likes(self):
-        return self.likes.count()
+    def get_absolute_url(self):
+        return reverse('post-detail', args=[self.category.slug, self.slug])
 
     def save(self, *args, **kwargs):
-        if not self.featured_image and self.category in self.CATEGORY_IMAGES:
-            default_image_filename = self.CATEGORY_IMAGES[self.category]
-            default_image_path = os.path.join(
-                settings.MEDIA_ROOT, default_image_filename)
-            if os.path.exists(default_image_path):
-                self.featured_image = default_image_filename
-        elif self.category in self.CATEGORY_IMAGES:
-            self.featured_image = self.CATEGORY_IMAGES[self.category]
+        if not self.featured_image:
+            default_image = self.category.featured_image_default
+            if default_image:
+                self.featured_image = default_image.url
         super().save(*args, **kwargs)
 
 
-# user comments
-
-
-class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE,
-                             related_name="comments")
-    name = models.CharField(max_length=80)
+class Review(models.Model):
+    post = models.ForeignKey(
+        Post, related_name='comments', on_delete=models.CASCADE)
+    author = models.CharField(max_length=255)
     email = models.EmailField()
     body = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    research_objective_and_importance = models.IntegerField(null=True)
+    methodology_and_experimental_design = models.IntegerField(null=True)
+    results_and_data_analysis = models.IntegerField(null=True)
+    discussion_and_interpretation = models.IntegerField(null=True)
+    contribution_and_originality = models.IntegerField(null=True)
     approved = models.BooleanField(default=False)
 
-    class Meta:
-        ordering = ["created_on"]
+    def __str__(self):
+        return self.author
+
+
+class Profile(models.Model):
+    user = models.ForeignKey(
+        User, related_name="profile", on_delete=models.CASCADE)
+    image = ProcessedImageField(
+        upload_to="profiles/",
+        processors=[ResizeToFill(500, 500)],
+        format="JPEG",
+        options={'quality': 75},
+        blank=False
+    )
+    bio = RichTextField(max_length=2500, null=True, blank=True)
 
     def __str__(self):
-        return f"Comment {self.body} by {self.name}"
-
-# data analytics
+        return str(self.user.username)
 
 
-class AnalyticsData(models.Model):
-    date = models.DateField()
-    page_views = models.IntegerField()
-    unique_visitors = models.IntegerField()
-
-    def __str__(self):
-        return f"Analytics Data for {self.date}"
+@receiver(post_save, sender=User)
+def create_user_profile(instance, created, **kwargs):
+    """Create or update the user profile"""
+    if created:
+        Profile.objects.create(user=instance)

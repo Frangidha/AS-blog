@@ -140,3 +140,11 @@ body {
     background: transparent;
     border: none;
 }
+
+.post {
+    display: block;
+}
+
+.post.hide {
+    display: none;
+}

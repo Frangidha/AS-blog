@@ -11,6 +11,19 @@ class PostList(generic.ListView):
     template_name = "index.html"
     paginate_by = 6
 
+    def get_queryset(self):
+        # Retrieve the category from URL parameters
+        category = self.kwargs.get('category')
+        queryset = Post.objects.filter(status=1).order_by("-created_on")
+        if category:
+            queryset = queryset.filter(category=category)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["category_list"] = Post.CATEGORIES
+        return context
+
 
 class PostDetail(View):
 
@@ -19,6 +32,7 @@ class PostDetail(View):
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("-created_on")
         liked = False
+        count_hit = True
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
 
@@ -33,7 +47,7 @@ class PostDetail(View):
                 "comment_form": CommentForm()
             },
         )
-    
+
     def post(self, request, slug, *args, **kwargs):
 
         queryset = Post.objects.filter(status=1)
@@ -65,8 +79,9 @@ class PostDetail(View):
             },
         )
 
+
 class PostLike(View):
-    
+
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():

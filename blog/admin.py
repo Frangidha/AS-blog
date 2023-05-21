@@ -1,5 +1,11 @@
 from django.contrib import admin
-from .models import Post, Comment, AnalyticsData
+from .models import Post, Review, Profile, Category
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -24,7 +30,7 @@ class PostAdmin(admin.ModelAdmin):
             'fields': ('status',)
         }),
         ('Images', {
-            'fields': ('featured_image', 'additional_image')
+            'fields': ('featured_image',)
         }),
         ('Likes', {
             'fields': ('likes',)
@@ -35,15 +41,19 @@ class PostAdmin(admin.ModelAdmin):
 admin.site.register(Post, PostAdmin)
 
 
-@admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'body', 'post', 'created_on', 'approved')
-    list_filter = ('approved', 'created_on')
-    search_fields = ('name', 'email', 'body')
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('author', 'body', 'post', 'created_at', 'approved')
+    list_filter = ('approved', 'created_at')
+    search_fields = ('author', 'email', 'body')
     actions = ['approve_comments']
 
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
 
 
-admin.site.register(AnalyticsData)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ("pk", "user", "bio", "image")
+
+
+admin.site.register(Profile, ProfileAdmin)
