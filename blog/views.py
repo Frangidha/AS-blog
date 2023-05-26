@@ -1,28 +1,24 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post
-from .forms import CommentForm
+from .models import Post, Category
+from .forms import ReviewForm
+from hitcount.views import HitCountMixin
 
 
-class PostList(generic.ListView):
+class CategoryList:
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category_list'] = Category.objects.order_by('title')
+        return context
+
+
+class PostList(CategoryList, generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
     template_name = "index.html"
     paginate_by = 6
-
-    def get_queryset(self):
-        # Retrieve the category from URL parameters
-        category = self.kwargs.get('category')
-        queryset = Post.objects.filter(status=1).order_by("-created_on")
-        if category:
-            queryset = queryset.filter(category=category)
-        return queryset
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["category_list"] = Post.CATEGORIES
-        return context
+    category_list = Category.objects.order_by('title')
 
 
 class PostDetail(View):
@@ -31,8 +27,8 @@ class PostDetail(View):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("-created_on")
-        liked = False
-        count_hit = True
+        self.hit_count(request, post)
+
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
 
@@ -90,3 +86,15 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+class CategoryDetail(CategoryList, generic.DetailView):
+    model = Category
+    template_name = 'category_detail.html'
+    context_object_name = 'category'
+
+    def category(request, slug):
+        category = get_object_or_404(Category, slug=slug)
+        posts = category.posts.filter(status=Post.ACTIVE)
+
+        return render(request, 'blog/category.html', {'category': category, 'posts': posts})

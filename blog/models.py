@@ -25,7 +25,12 @@ STATUS = (
 class Category(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField()
-    featured_image_default = CloudinaryField('image', blank=True)
+    featured_image_default = CloudinaryField('image',
+                                             transformation=[
+                                                 # Set the desired width and height
+                                                 {'width': 400, 'height': 200,
+                                                     'crop': 'fill'}
+                                             ], blank=True)
 
     class Meta:
         ordering = ('title',)
@@ -48,7 +53,11 @@ class Post(models.Model):
         User, on_delete=models.CASCADE, related_name="blog_posts")
     featured_image = CloudinaryField(
         'image',
-        default=''
+        transformation=[
+            # Set the desired width and height
+            {'width': 400, 'height': 200, 'crop': 'fill'}
+        ],
+        default='', blank=True
     )
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)

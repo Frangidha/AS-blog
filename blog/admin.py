@@ -8,6 +8,7 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
+@admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     # Add desired fields for display
     list_display = ('title', 'author', 'created_on', 'status')
@@ -17,6 +18,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('title', 'name', 'email', 'body', 'tags__name')
     # Automatically populate the slug field based on the title
     prepopulated_fields = {'slug': ('title',)}
+
     # action to approve comments on post
 
     fieldsets = (
@@ -37,8 +39,19 @@ class PostAdmin(admin.ModelAdmin):
         }),
     )
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "category":
+            kwargs["queryset"] = Category.objects.all()
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
-admin.site.register(Post, PostAdmin)
+    def get_prepopulated_fields(self, request, obj=None):
+        prepopulated_fields = super().get_prepopulated_fields(request, obj)
+        if obj and 'category' in prepopulated_fields.get('tags', ()):
+            category_title = obj.category.title
+            prepopulated_fields['tags'] = ('category__title',)
+            prepopulated_fields['tags_overrides'] = {
+                'category__title': category_title}
+        return prepopulated_fields
 
 
 @admin.register(Review)
@@ -52,8 +65,6 @@ class ReviewAdmin(admin.ModelAdmin):
         queryset.update(approved=True)
 
 
+@admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ("pk", "user", "bio", "image")
-
-
-admin.site.register(Profile, ProfileAdmin)
