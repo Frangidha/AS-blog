@@ -1,0 +1,9 @@
+<h1>Posts tagged with {{ tags }}</h1>
+
+<ul>
+    {% for post in posts %}
+    <li>{{ post.title }}</li>
+    {% empty %}
+    <li>No posts found.</li>
+    {% endfor %}
+</ul>

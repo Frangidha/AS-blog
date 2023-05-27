@@ -3,7 +3,9 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, Category
 from .forms import ReviewForm
+from taggit.models import Tag
 from hitcount.views import HitCountMixin
+from django.db.models import Q
 
 
 class CategoryList:
@@ -11,6 +13,7 @@ class CategoryList:
         context = super().get_context_data(**kwargs)
         context['category_list'] = Category.objects.order_by('title')
         return context
+# https://www.codesnail.com/building-a-search-functionality-django-blog-9/
 
 
 class PostList(CategoryList, generic.ListView):
@@ -19,6 +22,17 @@ class PostList(CategoryList, generic.ListView):
     template_name = "index.html"
     paginate_by = 6
     category_list = Category.objects.order_by('title')
+    # search
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query_search = self.request.GET.get("q")
+        if query_search:
+            queryset = queryset.filter(
+                Q(title__icontains=query_search) |
+                Q(tags__name__icontains=query_search)
+            ).distinct()
+        return queryset
 
 
 class PostDetail(View):
@@ -98,3 +112,15 @@ class CategoryDetail(CategoryList, generic.DetailView):
         posts = category.posts.filter(status=Post.ACTIVE)
 
         return render(request, 'blog/category.html', {'category': category, 'posts': posts})
+
+
+class TagFilterView(generic.ListView):
+    model = Post
+    template_name = 'tags.html'
+    context_object_name = 'posts'
+
+    def get_tags(self):
+        tag_slug = self.kwargs['tag_slug']
+        tags = Tag.objects.filter(slug=tag_slug)
+        queryset = Post.objects.filter(tags__in=tags).order_by("-tags")
+        return queryset
