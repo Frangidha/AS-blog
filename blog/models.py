@@ -95,7 +95,7 @@ class Post(models.Model):
 
 class Review(models.Model):
     post = models.ForeignKey(
-        Post, related_name='comments', on_delete=models.CASCADE)
+        Post, related_name='reviews', on_delete=models.CASCADE)
     author = models.CharField(max_length=255)
     email = models.EmailField()
     body = models.TextField()

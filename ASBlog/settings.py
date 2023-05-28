@@ -54,9 +54,9 @@ INSTALLED_APPS = [
     'cloudinary',
     'ckeditor',
     'django_resized',
-    'hitcount',
     'taggit',
     'blog',
+    'hitcount',
 ]
 
 SITE_ID = 1

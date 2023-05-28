@@ -4,8 +4,9 @@ from django.http import HttpResponseRedirect
 from .models import Post, Category
 from .forms import ReviewForm
 from taggit.models import Tag
-from hitcount.views import HitCountMixin
+from hitcount.views import HitCountDetailView
 from django.db.models import Q
+from django.views.generic import DetailView
 
 
 class CategoryList:
@@ -24,7 +25,7 @@ class PostList(CategoryList, generic.ListView):
     category_list = Category.objects.order_by('title')
     # search
 
-    def get_queryset(self):
+    def Search(self):
         queryset = super().get_queryset()
         query_search = self.request.GET.get("q")
         if query_search:
@@ -35,14 +36,15 @@ class PostList(CategoryList, generic.ListView):
         return queryset
 
 
-class PostDetail(View):
+class PostDetail(HitCountDetailView):
+    model = Post
+    count_hit = True
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
-        comments = post.comments.filter(approved=True).order_by("-created_on")
-        self.hit_count(request, post)
-
+        reviews = post.reviews.filter(approved=True).order_by("-created_at")
+        liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
 
@@ -51,10 +53,10 @@ class PostDetail(View):
             "post_detail.html",
             {
                 "post": post,
-                "comments": comments,
-                "commented": False,
+                "reviews": reviews,
+                "reviewed": False,
                 "liked": liked,
-                "comment_form": CommentForm()
+                "review_form": ReviewForm()
             },
         )
 
@@ -62,12 +64,12 @@ class PostDetail(View):
 
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
-        comments = post.comments.filter(approved=True).order_by("-created_on")
+        reviews = post.reviews.filter(approved=True).order_by("-created_at")
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
 
-        comment_form = CommentForm(data=request.POST)
+        review_form = reviewForm(data=request.POST)
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
             comment_form.instance.name = request.user.username
