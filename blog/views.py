@@ -25,7 +25,7 @@ class PostList(CategoryList, generic.ListView):
     category_list = Category.objects.order_by('title')
     # search
 
-    def Search(self):
+    def get_queryset(self):
         queryset = super().get_queryset()
         query_search = self.request.GET.get("q")
         if query_search:
@@ -39,8 +39,11 @@ class PostList(CategoryList, generic.ListView):
 class PostDetail(HitCountDetailView):
     model = Post
     count_hit = True
+    template_name = "post_detail.html"
 
     def get(self, request, slug, *args, **kwargs):
+        self.object = self.get_object()
+        context = self.get_context_data(object=self.object)
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         reviews = post.reviews.filter(approved=True).order_by("-created_at")

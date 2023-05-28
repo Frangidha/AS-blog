@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'ckeditor',
     'django_resized',
+
     'taggit',
     'blog',
     'hitcount',
