@@ -72,24 +72,24 @@ class PostDetail(HitCountDetailView):
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
 
-        review_form = reviewForm(data=request.POST)
-        if comment_form.is_valid():
-            comment_form.instance.email = request.user.email
-            comment_form.instance.name = request.user.username
-            comment = comment_form.save(commit=False)
-            comment.post = post
-            comment.save()
+        review_form = ReviewForm(data=request.POST)
+        if review_form.is_valid():
+            review_form.instance.email = request.user.email
+            review_form.instance.author = request.user.username
+            review = review_form.save(commit=False)
+            review.post = post
+            review.save()
         else:
-            comment_form = CommentForm()
+            review_form = ReviewForm()
 
         return render(
             request,
             "post_detail.html",
             {
                 "post": post,
-                "comments": comments,
-                "commented": True,
-                "comment_form": comment_form,
+                "review": review,
+                "reviewed": True,
+                "review_form": review_form,
                 "liked": liked
             },
         )
@@ -119,13 +119,12 @@ class CategoryDetail(CategoryList, generic.DetailView):
         return render(request, 'blog/category.html', {'category': category, 'posts': posts})
 
 
-class TagFilterView(generic.ListView):
+class TagFilterView(CategoryList, generic.ListView):
     model = Post
     template_name = 'tags.html'
     context_object_name = 'posts'
 
-    def get_tags(self):
+    def get_queryset(self):
         tag_slug = self.kwargs['tag_slug']
-        tags = Tag.objects.filter(slug=tag_slug)
-        queryset = Post.objects.filter(tags__in=tags).order_by("-tags")
+        queryset = Post.objects.filter(tags__slug=tag_slug)
         return queryset

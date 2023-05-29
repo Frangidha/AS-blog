@@ -90,6 +90,13 @@
                             {{ review.created_at }}
                         </span> wrote:
                     </p>
+                    <p>
+                        Research Objective and Importance: {{ review.research_objective_and_importance }}<br>
+                        Methodology and Experimental Design: {{ review.methodology_and_experimental_design }}<br>
+                        Results and Data Analysis: {{ review.results_and_data_analysis }}<br>
+                        Discussion and Interpretation: {{ review.discussion_and_interpretation }}<br>
+                        Contribution and Originality: {{ review.contribution_and_originality }}
+                    </p>
                     <!-- The body of the review goes before the | -->
                     {{ review.body | linebreaks }}
                 </div>
@@ -97,19 +104,9 @@
                 {% endfor %}
             </div>
         </div>
-        Make sure to update all occurrences of comment to review in this section of the template. This will ensure that
-        the
-        template correctly iterates through the reviews queryset and displays the reviewer's name, creation date, and
-        review
-        content.
-
-        After making these changes, run the code again and check if the error is resolved, and the reviews are displayed
-        correctly on the page.
-
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
-                <!-- For later -->
-                {% if commented %}
+                {% if reviewed %}
                 <div class="alert alert-success" role="alert">
                     Your comment is awaiting approval
                 </div>
@@ -119,7 +116,7 @@
                 <h3>Leave a comment:</h3>
                 <p>Posting as: {{ user.username }}</p>
                 <form method="post" style="margin-top: 1.3em;">
-                    {{ comment_form | crispy }}
+                    {{ review_form | crispy }}
                     {% csrf_token %}
                     <button type="submit" class="btn btn-signup btn-lg">Submit</button>
                 </form>
