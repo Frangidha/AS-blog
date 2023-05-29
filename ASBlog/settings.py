@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'cloudinary',
     'ckeditor',
     'django_resized',
-
     'taggit',
     'blog',
     'hitcount',
@@ -178,3 +177,11 @@ CKEDITOR_CONFIGS = {
 }
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+
+# HITCOUNT settings
+HITCOUNT_KEEP_HIT_ACTIVE = {'days': 2}
+
+HITCOUNT_HITS_PER_IP_LIMIT = 5
+
+HITCOUNT_KEEP_HIT_IN_DATABASE = {'days': 90}

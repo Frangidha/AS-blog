@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Post, Review, Profile, Category
+from hitcount.models import Hit
 
 
 @admin.register(Category)
@@ -11,15 +12,14 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     # Add desired fields for display
-    list_display = ('title', 'author', 'created_on', 'status')
+    list_display = ('title', 'author', 'created_on',
+                    'status')
     # Add desired fields for filtering
     list_filter = ('created_on', 'status', 'category')
     # Add fields for search functionality
     search_fields = ('title', 'name', 'email', 'body', 'tags__name')
     # Automatically populate the slug field based on the title
     prepopulated_fields = {'slug': ('title',)}
-
-    # action to approve comments on post
 
     fieldsets = (
         ('Post Details', {
@@ -37,6 +37,7 @@ class PostAdmin(admin.ModelAdmin):
         ('Likes', {
             'fields': ('likes',)
         }),
+
     )
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
@@ -59,9 +60,9 @@ class ReviewAdmin(admin.ModelAdmin):
     list_display = ('author', 'body', 'post', 'created_at', 'approved')
     list_filter = ('approved', 'created_at')
     search_fields = ('author', 'email', 'body')
-    actions = ['approve_comments']
+    actions = ['approve_reviews']
 
-    def approve_comments(self, request, queryset):
+    def approve_reviewss(self, request, queryset):
         queryset.update(approved=True)
 
 
