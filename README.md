@@ -50,6 +50,7 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
   - [The Strategy Plane](#the-strategy-plane)
     - [Site Goals](#site-goals)
     - [Agile Planning](#agile-planning)
+    - [Epic](#epic)
   - [The Scope Plane](#the-scope-plane)
     - [Features](#features)
     - [Future Features](#future-features)
@@ -77,9 +78,18 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
 # User Experience Design (UX)
 
 ## The Strategy Plane
-### Site Goals
-### Agile Planning
 
+### Site Goals
+Our aim at the Analytical Science Blog is to serve as a comprehensive platform dedicated to the field of analytical chemistry. We are committed to showcasing the latest discoveries, advancements, and applications of analytical techniques. Our goal is to provide valuable insights into cutting-edge research and technological breakthroughs, enabling our readers to stay informed and engaged with the ever-evolving world of analytical science.
+
+Through our blog, we strive to bridge the gap between scientific research and the broader community, making complex concepts accessible and engaging to a wide range of audiences. Whether you are a student, researcher, industry professional, or simply someone with a passion for science, we invite you to join us on this exciting journey of exploration and discovery.
+### Agile Planning
+This project was developed using agile methodologies, following the principles of delivering small features in incremental sprints. In total, there were x sprints, evenly spaced out over xxx weeks, to ensure a steady pace of development.
+
+All project tasks were organized into epics and categorized based on their priority under the labels of "Must have," "Should have," and "Could have." During the sprint planning, the epics were assigned to specific sprints and story pointed according to their complexity. This approach allowed the team to focus on completing the critical and high-priority stories first, followed by the medium-priority stories, and finally the low-priority or "nice to have" features. By prioritizing in this manner, the core requirements of the project were ensured to be completed, while additional features were added if there was available capacity.
+
+To track the progress and manage the project tasks, a Kanban board was created using GitHub Projects. You can find the Kanban board [here](https://github.com/users/Frangidha/projects/4), where you can access more detailed information about the project cards. Each story, except for the documentation tasks, includes a comprehensive set of acceptance criteria that define the functionality needed to mark the story as complete. This ensures clear guidelines and criteria for evaluating the successful implementation of each feature.
+### Epic
 ## The Scope Plane
 ### Features
 ### Future Features
