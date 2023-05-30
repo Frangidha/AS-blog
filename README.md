@@ -51,6 +51,11 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
     - [Site Goals](#site-goals)
     - [Agile Planning](#agile-planning)
     - [Epic](#epic)
+    - [Project Epics](#project-epics)
+      - [Epic 1: User Management](#epic-1-user-management)
+      - [Epic 2: Blog Management](#epic-2-blog-management)
+      - [Epic 3: Documentation Improvements](#epic-3-documentation-improvements)
+      - [Epic 4: Blog Enhancements](#epic-4-blog-enhancements)
   - [The Scope Plane](#the-scope-plane)
     - [Features](#features)
     - [Future Features](#future-features)
@@ -90,6 +95,38 @@ All project tasks were organized into epics and categorized based on their prior
 
 To track the progress and manage the project tasks, a Kanban board was created using GitHub Projects. You can find the Kanban board [here](https://github.com/users/Frangidha/projects/4), where you can access more detailed information about the project cards. Each story, except for the documentation tasks, includes a comprehensive set of acceptance criteria that define the functionality needed to mark the story as complete. This ensures clear guidelines and criteria for evaluating the successful implementation of each feature.
 ### Epic
+
+#### Epic 1: User Management
+
+- User Story #1: User Registration and Login 
+- User Story #9: Create and Edit Blog Posts User 
+- User Story #10: Choose Different Templates for Blog Posts 
+- User Story #20: Account Verification Email
+
+#### Epic 2: Blog Management
+
+- User Story #2: Create and Edit Blog Posts admin 
+- User Story #18: Consistency and Formatting documentation
+- User Story #19: Search engine 
+- User Story #21: Review Blog Post
+
+#### Epic 3: Documentation Improvements
+
+- User Story #3: Add Media to Blog Posts 
+- User Story #12: Missing Table of Contents documentation
+- User Story #13: Section Descriptions documentation
+- User Story #14: Missing Testing Section documentation
+- User Story #15: Lack of Detailed Instructions documentation
+- User Story #16: Incomplete Credits and Acknowledgements documentation
+- User Story #17: Content and Examples documentation
+
+#### Epic 4: Blog Enhancements
+
+- User Story #4: Categorize Blog Posts 
+- User Story #5: Comment Moderation 
+- User Story #6: Tag Blog Posts 
+- User Story #7: View Blog Analytics 
+- User Story #8: Display Latest Articles in News Ticker Format 
 ## The Scope Plane
 ### Features
 ### Future Features
