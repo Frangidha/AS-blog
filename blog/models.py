@@ -9,10 +9,7 @@ from cloudinary.models import CloudinaryField
 from hitcount.models import HitCountMixin, HitCount
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django_resized import ResizedImageField
-from imagekit.models import ProcessedImageField
-from imagekit.processors import ResizeToFill
 
 
 STATUS = (
@@ -109,26 +106,3 @@ class Review(models.Model):
 
     def __str__(self):
         return self.author
-
-
-class Profile(models.Model):
-    user = models.ForeignKey(
-        User, related_name="profile", on_delete=models.CASCADE)
-    image = ProcessedImageField(
-        upload_to="profiles/",
-        processors=[ResizeToFill(500, 500)],
-        format="JPEG",
-        options={'quality': 75},
-        blank=False
-    )
-    bio = RichTextField(max_length=2500, null=True, blank=True)
-
-    def __str__(self):
-        return str(self.user.username)
-
-
-@receiver(post_save, sender=User)
-def create_user_profile(instance, created, **kwargs):
-    """Create or update the user profile"""
-    if created:
-        Profile.objects.create(user=instance)

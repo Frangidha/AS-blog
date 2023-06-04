@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django_resized',
     'taggit',
     'blog',
+    'profiles',
     'hitcount',
 
 ]

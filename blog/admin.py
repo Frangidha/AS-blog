@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Review, Profile, Category
+from .models import Post, Review, Category
 from hitcount.models import Hit
 
 
@@ -64,8 +64,3 @@ class ReviewAdmin(admin.ModelAdmin):
 
     def approve_reviewss(self, request, queryset):
         queryset.update(approved=True)
-
-
-@admin.register(Profile)
-class ProfileAdmin(admin.ModelAdmin):
-    list_display = ("pk", "user", "bio", "image")
