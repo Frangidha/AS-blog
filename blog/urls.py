@@ -1,5 +1,5 @@
 from . import views
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
     path('', views.PostList.as_view(), name='home'),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('category/<slug:slug>/',
          views.CategoryDetail.as_view(), name='category_detail'),
     path('tag/<slug:tag_slug>/', views.TagFilterView.as_view(), name='tag_filter'),
+    path('profiles/', include('profiles.urls')),
 ]

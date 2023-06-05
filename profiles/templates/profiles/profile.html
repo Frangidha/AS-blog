@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Profile - {{profile.user.username}}{% endblock %}
+
+{% block content %}
+<div class="container p-4">
+    <div class="profile">
+        <div class="info">
+            <div class="profile-img text-center">
+                {% if profile.image.url is not none %}
+                <img src="{{ profile.profile_image.url }}" alt="{{ profile.user.username }}'s profile image">
+                {% else %}
+                <img src="{% static '/icons/no-photography-icon.svg' %}" alt="Image not found icon">
+                {% endif %}
+            </div>
+            <h1>{{ profile.user.username }}</h1>
+            <p><strong>Joined: </strong>{{ profile.user.date_joined|date:'d M Y' }}</p>
+
+            <p><strong>Post count: </strong>{{ profile.user.blog_posts.count }}</p>
+
+            {% if profile.bio_user is not none %}
+            {{ profile.bio_user|safe }}
+            {% endif %}
+
+            {% if request.user == profile.user %}
+
+            <div>
+                <button id="myBtn" class="btn btn-primary w-25 mb-4">Edit</button>
+            </div>
+            {% endif %}
+            <div class="profile-author">
+                <h2 class="text-center pb-4">Latest Post</h2>
+                {% for blog_posts in profile.user.blog_posts.all %}
+                <a href="{% url 'post_detail' blog_posts.slug  %}">
+                    <h3>{{ blog_posts.title }}</h3>
+                </a>
+                {{ blog_posts.created_on|date:'d M Y' }}
+                <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal mt-5">
+        <!-- Modal content -->
+        <div class="modal-content container">
+            <span class="close fs-1 pe-2">&times;</span>
+            <form method="POST" action="{% url 'edit_profile' request.user.id %}" class="mb-2 p-2"
+                enctype="multipart/form-data">
+                <h2 class="text-center fs-4">Edit Profile</h2>
+                {% csrf_token %}
+                {{ form|crispy }}
+                {{ form.media }}
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary w-25">Edit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script>
+    // Get the modal
+    const modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    const btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    const span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "block";
+    };
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+{% endblock %}
