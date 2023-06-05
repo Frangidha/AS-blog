@@ -1,12 +1,14 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post, Category
-from .forms import ReviewForm
+from .models import Post, Category, Review
+from .forms import ReviewForm, PostForm
 from taggit.models import Tag
 from hitcount.views import HitCountDetailView
 from django.db.models import Q
 from django.views.generic import DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
 
 class CategoryList:
@@ -128,3 +130,28 @@ class TagFilterView(CategoryList, generic.ListView):
         tag_slug = self.kwargs['tag_slug']
         queryset = Post.objects.filter(tags__slug=tag_slug)
         return queryset
+
+
+class AddPost(View):
+    form_class = PostForm
+    template_name = 'add_post.html'
+
+    def get(self, request):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.slug = post.title
+            post.status = '0'
+            post.save()
+            form.save_m2m()
+
+            messages.success(request, 'Post submitted for approval')
+            return HttpResponseRedirect(reverse('home'))
+        else:
+            messages.error(request, 'This title is already in use!')
+        return render(request, self.template_name, {'form': form})
