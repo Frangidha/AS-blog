@@ -6,8 +6,8 @@ from .forms import ReviewForm, PostForm
 from taggit.models import Tag
 from hitcount.views import HitCountDetailView
 from django.db.models import Q
-from django.views.generic import DetailView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import DetailView, UpdateView, DeleteView
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib import messages
 
 
@@ -109,14 +109,14 @@ class PostLike(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-class CategoryDetail(CategoryList, generic.DetailView):
+class CategoryDetail(CategoryList, generic.ListView):
     model = Category
     template_name = 'category_detail.html'
     context_object_name = 'category'
 
     def category(request, slug):
         category = get_object_or_404(Category, slug=slug)
-        posts = category.posts.filter(status=Post.ACTIVE)
+        posts = category.posts.filter(status=1)
 
         return render(request, 'blog/category.html', {'category': category, 'posts': posts})
 
@@ -155,3 +155,33 @@ class AddPost(View):
         else:
             messages.error(request, 'This title is already in use!')
         return render(request, self.template_name, {'form': form})
+
+
+class EditReview(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """Edit a review"""
+
+    form_class = ReviewForm
+    model = Review
+
+    def form_valid(self, form):
+        self.success_url = f'/post_detail/user/{self.kwargs["pk"]}/'
+        return super().form_valid(form)
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
+
+class DeleteReview(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """Delete a recipe"""
+    model = Review
+    success_url = '/post_detail/'
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
+
+class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """Delete a recipe"""
+    model = Review
+    success_url = '/recipes/'
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
