@@ -51,7 +51,6 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
     - [Site Goals](#site-goals)
     - [Agile Planning](#agile-planning)
     - [Epic](#epic)
-    - [Project Epics](#project-epics)
       - [Epic 1: User Management](#epic-1-user-management)
       - [Epic 2: Blog Management](#epic-2-blog-management)
       - [Epic 3: Documentation Improvements](#epic-3-documentation-improvements)
@@ -70,6 +69,9 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
     - [Typography](#typography)
     - [Imagery](#imagery)
 - [Technologies](#technologies)
+  - [Technology](#technology)
+    - [DJANGO](#django)
+    - [Other technologies](#other-technologies)
 - [Testing](#testing)
 - [Deployment](#deployment)
   - [Version Control](#version-control)
@@ -146,6 +148,53 @@ To track the progress and manage the project tasks, a Kanban board was created u
 
 # Technologies
 
+## Technology
+
+### DJANGO
+The project incorporates several technologies and libraries to enhance its functionality. Here is an expanded list of key technologies and their respective versions used in the project:
+
+- asgiref==3.6.0
+- cloudinary==1.33.0 (used for image storage and management)
+- dj-database-url==0.5.0
+- dj3-cloudinary-storage==0.0.6
+- Django==3.2.19
+- django-allauth==0.54.0 (provides user authentication and login features)
+- django-appconf==1.0.5
+- django-braces==1.15.0
+- django-ckeditor==6.5.1 (enables a rich text editor for modifying templates)
+- django-cloudinary-storage==0.3.0 (integrates Cloudinary with Django for image storage)
+- django-crispy-forms==1.14.0
+- django-etc==1.4.0
+- django-hitcount==1.3.5 (used for blog analytics, such as post views)
+- django-imagekit==4.1.0
+- django-js-asset==2.0.0
+- django-model-utils==4.3.1
+- django-resized==1.0.2
+- django-star-ratings==0.9.2
+- django-summernote==0.8.20.0
+- django-taggit==4.0.0 (provides tagging functionality for blog posts)
+- djangorestframework==3.14.0
+- gunicorn==20.1.0
+- oauthlib==3.2.2
+- pilkit==2.0
+- Pillow==9.5.0
+- psycopg2==2.9.6
+- PyJWT==2.7.0
+- python3-openid==3.2.0
+- pytz==2023.3
+- requests-oauthlib==1.3.1
+- sqlparse==0.4.4
+- swapper==1.3.0
+- urllib3==1.26.15
+- whitenoise==6.4.0
+
+### Other technologies
+
+- HTML: Markup language used to structure the content of web pages.
+- CSS: Style sheet language used for the presentation and styling of web pages.
+- Bootstrap: A popular CSS framework for building responsive and mobile-first websites.
+- Favicon: A small icon that represents your website in the browser's tab or bookmark bar.
+  
 # Testing
 
 # Deployment
