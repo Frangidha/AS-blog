@@ -9,6 +9,7 @@ from django.db.models import Q
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib import messages
+from django.urls import reverse_lazy
 
 
 class CategoryList:
@@ -160,17 +161,29 @@ class AddPost(View):
 class DeleteReview(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """Delete a review"""
     model = Review
-    template_name = 'review_confirm_delete.html'
-    success_url = ''
+    success_url = '/'
 
     def test_func(self):
         return self.request.user.username == self.get_object().author
 
+    def get_success_url(self):
+        post = self.get_object().post
+        return reverse('post_detail', kwargs={'slug': post.slug})
 
-class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    """Delete a Post"""
+
+class ArchivePost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """Archive a Post"""
     model = Post
-    success_url = 'templates'
+    # no field because only 1 button
+    fields = []  
+    success_url = reverse_lazy('home')
 
     def test_func(self):
-        return self.request.user.username == self.get_object().author
+        return self.request.user == self.get_object().author
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        # Change the status to 2 (archived)
+        self.object.status = 2  
+        self.object.save()
+        return super().form_valid(form)

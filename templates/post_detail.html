@@ -13,6 +13,11 @@
                 <!-- Post author goes before the | the post's created date goes after -->
                 <p class="post-subtitle"><a href="{{ post.author.profile.get_absolute_url }}">{{ post.author }}</a> |
                     {{ post.created_on|date:'d M Y' }}</p>
+
+                <form class="d-inline" action="{% url 'archive_post' post.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Archive</button>
+                </form>
                 {% load hitcount_tags %}
 
                 <p>Total Hits: {% get_hit_count for post %}</p>
@@ -91,8 +96,7 @@
                             {{ review.created_at }}
                             {% if user.is_authenticated %}
                             {% if review.author == user.username %}
-                            <a href="{% url 'edit_review' review.pk %}" class="btn btn-primary">Edit</a>
-                            <form class="d-inline" action="{% url 'delete_review' review.id %}" method="POST">
+                            <form class="d-inline" action="{% url 'delete_review' review.pk %}" method="POST">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
