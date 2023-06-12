@@ -13,6 +13,7 @@ from django.urls import reverse_lazy
 
 
 class CategoryList:
+    # add the entire category list to the html
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['category_list'] = Category.objects.order_by('title')
@@ -140,6 +141,7 @@ class AddPost(View):
     def get(self, request):
         form = self.form_class()
         return render(request, self.template_name, {'form': form})
+    # post add prameters
 
     def post(self, request):
         form = self.form_class(request.POST)
@@ -165,6 +167,7 @@ class DeleteReview(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user.username == self.get_object().author
+    # get the succes url of the respective post
 
     def get_success_url(self):
         post = self.get_object().post
@@ -174,16 +177,16 @@ class DeleteReview(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class ArchivePost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Archive a Post"""
     model = Post
-    # no field because only 1 button
-    fields = []  
+    # no field because only 1 button/submit
+    fields = []
     success_url = reverse_lazy('home')
 
     def test_func(self):
         return self.request.user == self.get_object().author
 
-    def form_valid(self, form):
+    def Archiving(self, form):
         self.object = form.save(commit=False)
-        # Change the status to 2 (archived)
-        self.object.status = 2  
+        # Change the status to 2
+        self.object.status = 2
         self.object.save()
         return super().form_valid(form)

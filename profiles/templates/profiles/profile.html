@@ -33,11 +33,13 @@
             <div class="profile-author">
                 <h2 class="text-center pb-4">Latest Post</h2>
                 {% for blog_posts in profile.user.blog_posts.all %}
+                {% if blog_posts.status == 1 %}
                 <a href="{% url 'post_detail' blog_posts.slug  %}">
                     <h3>{{ blog_posts.title }}</h3>
                 </a>
                 {{ blog_posts.created_on|date:'d M Y' }}
                 <hr>
+                {% endif %}
                 {% endfor %}
             </div>
         </div>

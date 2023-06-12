@@ -25,10 +25,12 @@ class Profile(models.Model):
     occupation = models.CharField(max_length=500, default="N/A")
 
     def __str__(self):
+        print(self.user.username)
         return str(self.user.username)
 
     def get_absolute_url(self):
-        return reverse('profile_detail', args=[str(self.user.id)])
+        return rev
+        erse('profile_detail', args=[str(self.user.id)])
 
 
 @receiver(post_save, sender=User)
