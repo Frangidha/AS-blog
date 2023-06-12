@@ -157,31 +157,20 @@ class AddPost(View):
         return render(request, self.template_name, {'form': form})
 
 
-class EditReview(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    """Edit a review"""
-
-    form_class = ReviewForm
-    model = Review
-
-    def form_valid(self, form):
-        self.success_url = f'/post_detail/user/{self.kwargs["pk"]}/'
-        return super().form_valid(form)
-
-    def test_func(self):
-        return self.request.user == self.get_object().user
-
 class DeleteReview(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    """Delete a recipe"""
+    """Delete a review"""
     model = Review
-    success_url = '/post_detail/'
+    template_name = 'review_confirm_delete.html'
+    success_url = ''
 
     def test_func(self):
-        return self.request.user == self.get_object().user
+        return self.request.user.username == self.get_object().author
+
 
 class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    """Delete a recipe"""
-    model = Review
-    success_url = '/recipes/'
+    """Delete a Post"""
+    model = Post
+    success_url = 'templates'
 
     def test_func(self):
-        return self.request.user == self.get_object().user
+        return self.request.user.username == self.get_object().author

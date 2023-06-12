@@ -11,6 +11,8 @@ urlpatterns = [
     path('tag/<slug:tag_slug>/', views.TagFilterView.as_view(), name='tag_filter'),
     path('profiles/', include('profiles.urls')),
     path('edit_review/<int:pk>/',  views.EditReview.as_view(), name='edit_review'),
+    path('review/<int:pk>/delete/',
+         views.DeleteReview.as_view(), name='delete_review'),
+    path('post/<slug:slug>/delete/',
+         views.DeletePost.as_view(), name='delete_post'),
 ]
-
-

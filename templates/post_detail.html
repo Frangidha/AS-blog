@@ -11,7 +11,8 @@
                 <!-- Post title goes in these h1 tags -->
                 <h1 class="post-title">{{ post.title }}</h1>
                 <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
+                <p class="post-subtitle"><a href="{{ post.author.profile.get_absolute_url }}">{{ post.author }}</a> |
+                    {{ post.created_on|date:'d M Y' }}</p>
                 {% load hitcount_tags %}
 
                 <p>Total Hits: {% get_hit_count for post %}</p>
@@ -21,7 +22,7 @@
                 {% if "placeholder" in post.featured_image.url %}
                 <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
                 {% else %}
-                <img src=" {{ post.featured_image.url }}" width="100%">
+                <img src="{{ post.featured_image.url }}" width="100%">
                 {% endif %}
             </div>
         </div>
@@ -88,6 +89,15 @@
                         <span class="text-muted font-weight-normal">
                             <!-- The review's created date goes here -->
                             {{ review.created_at }}
+                            {% if user.is_authenticated %}
+                            {% if review.author == user.username %}
+                            <a href="{% url 'edit_review' review.pk %}" class="btn btn-primary">Edit</a>
+                            <form class="d-inline" action="{% url 'delete_review' review.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                            {% endif %}
+                            {% endif %}
                         </span> wrote:
                     </p>
                     <p>
@@ -122,22 +132,6 @@
                 </form>
                 {% endif %}
                 {% endif %}
-                {% if user.is_authenticated %}
-                {% for review in reviews %}
-                <div class="review">
-                    <p>{{ review.body }}</p>
-                    <p>Author: {{ review.author }}</p>
-                    {% if review.author == user.username %}
-                    <a href="{% url 'edit_review' review.pk %}" class="btn btn-primary">Edit</a>
-                    <form class="d-inline" action="{% url 'delete_review' review.pk %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                    {% endif %}
-                </div>
-                {% endfor %}
-                {% endif %}
-
             </div>
         </div>
     </div>

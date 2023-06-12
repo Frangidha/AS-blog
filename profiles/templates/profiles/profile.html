@@ -17,7 +17,7 @@
             </div>
             <h1>{{ profile.user.username }}</h1>
             <p><strong>Joined: </strong>{{ profile.user.date_joined|date:'d M Y' }}</p>
-
+            <p><strong>Occuppation:</strong> {{ profile.occupation }}</p>
             <p><strong>Post count: </strong>{{ profile.user.blog_posts.count }}</p>
 
             {% if profile.bio_user is not none %}

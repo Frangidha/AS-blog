@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from blog.models import Post
-
-from django_resized import ResizedImageField
+from cloudinary.models import CloudinaryField
+from django.urls import reverse
 
 
 class Profile(models.Model):
@@ -13,17 +13,22 @@ class Profile(models.Model):
 
     user = models.ForeignKey(
         User, related_name="profile", on_delete=models.CASCADE)
-    profile_image = ResizedImageField(
-        size=[300, 300],
-        quality=75,
-        upload_to="profiles/",
-        force_format="WEBP",
-        blank=False,
+    profile_image = CloudinaryField(
+        'image',
+        transformation=[
+            # Set the desired width and height
+            {'width': 300, 'height': 300, 'crop': 'fill'}
+        ],
+        default='xxx', blank=True
     )
     bio_user = RichTextField(max_length=2500, null=True, blank=True)
+    occupation = models.CharField(max_length=500, default="N/A")
 
     def __str__(self):
         return str(self.user.username)
+
+    def get_absolute_url(self):
+        return reverse('profile_detail', args=[str(self.user.id)])
 
 
 @receiver(post_save, sender=User)

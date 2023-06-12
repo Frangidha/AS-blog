@@ -91,18 +91,35 @@ class Post(models.Model):
 
 
 class Review(models.Model):
+
+    RATINGS = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    )
+
     post = models.ForeignKey(
         Post, related_name='reviews', on_delete=models.CASCADE)
     author = models.CharField(max_length=255)
     email = models.EmailField()
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    research_objective_and_importance = models.IntegerField(null=True)
-    methodology_and_experimental_design = models.IntegerField(null=True)
-    results_and_data_analysis = models.IntegerField(null=True)
-    discussion_and_interpretation = models.IntegerField(null=True)
-    contribution_and_originality = models.IntegerField(null=True)
+
+    research_objective_and_importance = models.PositiveIntegerField(
+        null=True, choices=RATINGS)
+    methodology_and_experimental_design = models.PositiveIntegerField(
+        null=True, choices=RATINGS)
+    results_and_data_analysis = models.PositiveIntegerField(
+        null=True, choices=RATINGS)
+    discussion_and_interpretation = models.PositiveIntegerField(
+        null=True, choices=RATINGS)
+    contribution_and_originality = models.PositiveIntegerField(
+        null=True, choices=RATINGS)
+
     approved = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.author
+
+def __str__(self):
+    return self.author
