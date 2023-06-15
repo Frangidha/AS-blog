@@ -16,12 +16,18 @@
                     {{ post.created_on|date:'d M Y' }}</p>
                 {% if user.is_authenticated %}
                 {% if post.author.username == user.username %}
+                {% if post.status == 2 %}
+                <form class="d-inline" action="{% url 'archive_post' post.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">UnArchive</button>
 
+                </form>
+                {% else %}
                 <form class="d-inline" action="{% url 'archive_post' post.pk %}" method="POST">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-primary">Archive</button>
-
                 </form>
+                {% endif %}
                 {% endif %}
                 {% endif %}
                 {% load hitcount_tags %}

@@ -3,7 +3,9 @@ from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from .models import Profile
 from .forms import ProfileForm
 
+# https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy&ab_channel=DeeMc
 
+# Profile view
 class Profiles(TemplateView):
     """User Profile View"""
 
@@ -18,7 +20,7 @@ class Profiles(TemplateView):
 
         return context
 
-
+# How to edit a a profile
 class EditProfile(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Edit a profile"""
 

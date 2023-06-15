@@ -38,15 +38,7 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
 
-                    <li>
 
-                        <form class="d-flex" action="/">
-
-
-                            <input class="form-control mr-0" type="search" value="{{request.GET.q}}" name="q"
-                                placeholder="Search" aria-label="Search">
-                        </form>
-                    </li>
                     {% if user.is_authenticated %}
 
                     <li class="nav-item">
@@ -75,6 +67,15 @@
 
 
                     {% endif %}
+                    <li>
+
+                        <form class="d-flex" action="/">
+
+
+                            <input class="form-control mr-0" type="search" value="{{request.GET.q}}" name="q"
+                                placeholder="Search" aria-label="Search">
+                        </form>
+                    </li>
 
                 </ul>
                 <span class="navbar-text text-muted">

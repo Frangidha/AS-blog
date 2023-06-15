@@ -7,6 +7,8 @@ from blog.models import Post
 from cloudinary.models import CloudinaryField
 from django.urls import reverse
 
+class Expertise(models.Model):
+    name = models.CharField(max_length=100)
 
 class Profile(models.Model):
     """Profile model"""
@@ -23,9 +25,9 @@ class Profile(models.Model):
     )
     bio_user = RichTextField(max_length=2500, null=True, blank=True)
     occupation = models.CharField(max_length=500, default="N/A")
-
+    expertises = models.ManyToManyField(Expertise)
+    
     def __str__(self):
-        print(self.user.username)
         return str(self.user.username)
 
     def get_absolute_url(self):

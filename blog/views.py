@@ -11,6 +11,8 @@ from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib import messages
 from django.urls import reverse_lazy
 
+# view to add categories
+
 
 class CategoryList:
     # add the entire category list to the html
@@ -28,6 +30,7 @@ class PostList(CategoryList, generic.ListView):
     paginate_by = 6
     category_list = Category.objects.order_by('title')
     # search
+    # https://www.youtube.com/watch?v=cP4HKyqNQsw&ab_channel=BLearningClub
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -39,6 +42,8 @@ class PostList(CategoryList, generic.ListView):
             ).distinct()
         return queryset
 
+# post Detail html(hitcountview for tracking of views)
+
 
 class PostDetail(HitCountDetailView):
     model = Post
@@ -48,7 +53,7 @@ class PostDetail(HitCountDetailView):
     def get(self, request, slug, *args, **kwargs):
         self.object = self.get_object()
         context = self.get_context_data(object=self.object)
-        queryset = Post.objects.filter(status=1)
+        queryset = Post.objects.filter(status__in=[1, 2])
         post = get_object_or_404(queryset, slug=slug)
         reviews = post.reviews.filter(approved=True).order_by("-created_at")
         liked = False
@@ -98,6 +103,8 @@ class PostDetail(HitCountDetailView):
             },
         )
 
+# quick way to like post
+
 
 class PostLike(View):
 
@@ -109,6 +116,8 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+# Search funcionality categories
 
 
 class CategoryDetail(CategoryList, generic.ListView):
@@ -122,6 +131,8 @@ class CategoryDetail(CategoryList, generic.ListView):
 
         return render(request, 'blog/category.html', {'category': category, 'posts': posts})
 
+# Search funcionality based on tags
+
 
 class TagFilterView(CategoryList, generic.ListView):
     model = Post
@@ -133,6 +144,8 @@ class TagFilterView(CategoryList, generic.ListView):
         queryset = Post.objects.filter(tags__slug=tag_slug)
         return queryset
 
+# this class allows add their on post
+
 
 class AddPost(View):
     form_class = PostForm
@@ -141,7 +154,7 @@ class AddPost(View):
     def get(self, request):
         form = self.form_class()
         return render(request, self.template_name, {'form': form})
-    # post add prameters
+    # post add parameters
 
     def post(self, request):
         form = self.form_class(request.POST)
@@ -149,6 +162,7 @@ class AddPost(View):
             post = form.save(commit=False)
             post.author = request.user
             post.slug = post.title
+            # put at zero so admin can check the post for issues
             post.status = '0'
             post.save()
             form.save_m2m()
@@ -158,6 +172,8 @@ class AddPost(View):
         else:
             messages.error(request, 'This title is already in use!')
         return render(request, self.template_name, {'form': form})
+
+# this class allows the user to delete their own review
 
 
 class DeleteReview(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -173,6 +189,8 @@ class DeleteReview(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         post = self.get_object().post
         return reverse('post_detail', kwargs={'slug': post.slug})
 
+# this class allows the user to archive their own post
+
 
 class ArchivePost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Archive a Post"""
@@ -184,9 +202,9 @@ class ArchivePost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         return self.request.user == self.get_object().author
 
-    def Archiving(self, form):
-        self.object = form.save(commit=False)
-        # Change the status to 2
-        self.object.status = 2
-        self.object.save()
+    def form_valid(self, form):
+        if form.instance.status == 2:
+            form.instance.status = 1
+        else:
+            form.instance.status = 2  # Change the status to 2
         return super().form_valid(form)
