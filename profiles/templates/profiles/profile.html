@@ -42,22 +42,20 @@
                 {% endif %}
                 {% endfor %}
             </div>
-                {% if user.is_authenticated %}
-                {% if blog_post.status == 2 and blog_post.author == user %}
-                <div class="profile-author">
-                <h2 class="text-center pb-4">Archived Post</h2>
-                
-                {% for blog_post in profile.user.blog_posts.all %}
-                
+{% if user.is_authenticated %}
+    <div class="profile-author">
+        <h2 class="text-center pb-4">Archived Post</h2>
+        {% for blog_post in profile.user.blog_posts.all %}
+            {% if blog_post.status == 2 and blog_post.author == user %}
                 <a href="{% url 'post_detail' blog_post.slug %}">
                     <h3>{{ blog_post.title }}</h3>
                 </a>
                 {{ blog_post.created_on|date:'d M Y' }}
                 <hr>
-                
-                {% endfor %}
-                {% endif %}
-                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
             </div>
         </div>
     </div>

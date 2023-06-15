@@ -198,10 +198,59 @@ The project incorporates several technologies and libraries to enhance its funct
 # Testing
 
 # Deployment
+
+Provide a brief introduction and description of the project.
+
 ## Version Control
+
+The project was created using the Visual Studio Code editor and pushed to the remote repository 'Gars-Steakhouse' on GitHub.
+
+The following git commands were used throughout development to push code to the remote repo:
+
+- `git add <file>` - This command was used to add the file(s) to the staging area before they are committed.
+- `git commit -m "commit message"` - This command was used to commit changes to the local repository queue ready for the final step.
+- `git push` - This command was used to push all committed code to the remote repository on GitHub.
+
 ## Heroku Deployment
+
+The site was deployed to Heroku. The steps to deploy are as follows:
+
+1. Navigate to Heroku and create an account.
+2. Click the "New" button in the top right corner.
+3. Select "Create new app" and enter the app name.
+4. Choose the region and click "Create app".
+5. Go to the "Resources" tab and search for Heroku Postgres. Select "Hobby Dev" and continue.
+6. In the "Settings" tab, click "Reveal Config Vars" and add the following config vars:
+   - SECRET_KEY: [Your secret key]
+   - DATABASE_URL: [This should already exist with the add-on of PostgreSQL]
+   - EMAIL_HOST_USER: [Email address]
+   - EMAIL_HOST_PASS: [Email app password]
+   - CLOUDINARY_URL: [Cloudinary API URL]
+7. Click the "Deploy" tab and scroll down to "Connect to GitHub". Sign in/authorize when prompted.
+8. Search for the repository you want to deploy and click "Connect".
+9. Scroll down to "Manual deploy" and choose the main branch.
+10. Click "Deploy".
+11. The app should now be deployed.
+
+The live link can be found here: [Live Site](https://example.com)
+
 ## Run Locally
+
+To run the project locally, follow these steps:
+
+1. Clone the GitHub repository by navigating to the repository link and copying the URL.
+2. Open your IDE of choice and open the terminal.
+3. Type `git clone <copied-git-url>` in the terminal to clone the repository to your local machine.
+
 ## Fork Project
+
+Forking is commonly used to propose changes to someone else's project or to use someone else's project as a starting point for your own idea.
+
+To fork the project:
+
+1. Navigate to the GitHub repository you want to fork.
+2. On the top right of the page, click the "Fork" button.
+3. This will create a duplicate of the full project in your GitHub repository.
 
 # Credits
 
