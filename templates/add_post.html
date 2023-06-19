@@ -10,9 +10,9 @@
 <body>
     <h1>Create Post</h1>
     <form method="POST" enctype="multipart/form-data">
+        {{ form.media }}
+        {{ form| crispy }}
         {% csrf_token %}
-        {{ PostForm | crispy }}
-        {{ form.as_p }}
 
         <button type="submit">Create</button>
     </form>

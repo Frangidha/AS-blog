@@ -7,8 +7,13 @@ from blog.models import Post
 from cloudinary.models import CloudinaryField
 from django.urls import reverse
 
+
 class Expertise(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.name
+
 
 class Profile(models.Model):
     """Profile model"""
@@ -21,12 +26,12 @@ class Profile(models.Model):
             # Set the desired width and height
             {'width': 300, 'height': 300, 'crop': 'fill'}
         ],
-        default='xxx', blank=True
+        default='https://res.cloudinary.com/dxwttijho/image/upload/v1687161088/media/profiles/avatar_pnpyxq.png', blank=True
     )
     bio_user = RichTextField(max_length=2500, null=True, blank=True)
     occupation = models.CharField(max_length=500, default="N/A")
-    expertises = models.ManyToManyField(Expertise)
-    
+    expertises = models.ManyToManyField(Expertise, blank=True)
+
     def __str__(self):
         return str(self.user.username)
 

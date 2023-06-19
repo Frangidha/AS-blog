@@ -17,6 +17,7 @@ STATUS = (
     (1, 'Published'),
     (2, 'Archived'),
 )
+# https://github.com/SteinOveHelset/crashblog
 
 
 class Category(models.Model):

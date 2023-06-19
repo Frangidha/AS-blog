@@ -6,6 +6,8 @@ from .forms import ProfileForm
 # https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy&ab_channel=DeeMc
 
 # Profile view
+
+
 class Profiles(TemplateView):
     """User Profile View"""
 
@@ -21,6 +23,8 @@ class Profiles(TemplateView):
         return context
 
 # How to edit a a profile
+
+
 class EditProfile(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Edit a profile"""
 
@@ -32,4 +36,11 @@ class EditProfile(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return super().form_valid(form)
 
     def test_func(self):
+        profile = self.get_object()
+        print(self.request.user)  # Debug statement
+        print(profile.user)  # Debug statement
         return self.request.user == self.get_object().user
+
+    def get_object(self, queryset=None):
+        pk = self.kwargs['pk']
+        return Profile.objects.get(user_id=pk)

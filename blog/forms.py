@@ -1,6 +1,9 @@
 from .models import Review, Post, Category
 from django import forms
 from django.core.exceptions import ValidationError
+from taggit.forms import TagField, TagWidget
+from ckeditor.widgets import CKEditorWidget
+from cloudinary.forms import CloudinaryFileField
 
 
 class ReviewForm(forms.ModelForm):
@@ -17,16 +20,16 @@ class ReviewForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=Category.objects.all(
     ), widget=forms.Select(attrs={'class': 'form-control'}))
-    featured_image = forms.ImageField(required=False, widget=forms.ClearableFileInput(
-        attrs={'accept': 'image/jpeg, image/png'}))
+    featured_image = CloudinaryFileField(
+        required=False,
+        widget=forms.ClearableFileInput(
+            attrs={'accept': 'image/jpeg, image/png'})
+    )
     title = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form-control'}))
     excerpt = forms.CharField(widget=forms.Textarea(
         attrs={'class': 'form-control', 'rows': 3}))
-    content = forms.CharField(widget=forms.Textarea(
-        attrs={'class': 'form-control', 'rows': 6}))
-    tags = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control'}))
+    tags = TagField(widget=TagWidget(attrs={'class': 'form-control'}))
 
     class Meta:
         model = Post

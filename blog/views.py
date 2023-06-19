@@ -157,14 +157,15 @@ class AddPost(View):
     # post add parameters
 
     def post(self, request):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.slug = post.title
+            post.slug = post.title.replace(" ", "")
             # put at zero so admin can check the post for issues
             post.status = '0'
             post.save()
+            # save for the tags
             form.save_m2m()
 
             messages.success(request, 'Post submitted for approval')

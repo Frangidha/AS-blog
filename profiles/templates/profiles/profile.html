@@ -9,11 +9,7 @@
     <div class="profile">
         <div class="info">
             <div class="profile-img text-center">
-                {% if profile.image.url is not none %}
                 <img src="{{ profile.profile_image.url }}" alt="{{ profile.user.username }}'s profile image">
-                {% else %}
-                <img src="{% static '/icons/no-photography-icon.svg' %}" alt="Image not found icon">
-                {% endif %}
             </div>
             <h1>{{ profile.user.username }}</h1>
             <p><strong>Joined: </strong>{{ profile.user.date_joined|date:'d M Y' }}</p>
@@ -42,40 +38,40 @@
                 {% endif %}
                 {% endfor %}
             </div>
-{% if user.is_authenticated %}
-    <div class="profile-author">
-        <h2 class="text-center pb-4">Archived Post</h2>
-        {% for blog_post in profile.user.blog_posts.all %}
-            {% if blog_post.status == 2 and blog_post.author == user %}
+            {% if user.is_authenticated %}
+            <div class="profile-author">
+                <h2 class="text-center pb-4">Archived Post</h2>
+                {% for blog_post in profile.user.blog_posts.all %}
+                {% if blog_post.status == 2 and blog_post.author == user %}
                 <a href="{% url 'post_detail' blog_post.slug %}">
                     <h3>{{ blog_post.title }}</h3>
                 </a>
                 {{ blog_post.created_on|date:'d M Y' }}
                 <hr>
-            {% endif %}
-        {% endfor %}
-    </div>
-{% endif %}
+                {% endif %}
+                {% endfor %}
             </div>
+            {% endif %}
         </div>
     </div>
-    <!-- The Modal -->
-    <div id="myModal" class="modal mt-5">
-        <!-- Modal content -->
-        <div class="modal-content container">
-            <span class="close fs-1 pe-2">&times;</span>
-            <form method="POST" action="{% url 'edit_profile' request.user.id %}" class="mb-2 p-2"
-                enctype="multipart/form-data">
-                <h2 class="text-center fs-4">Edit Profile</h2>
-                {% csrf_token %}
-                {{ form|crispy }}
-                {{ form.media }}
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary w-25">Edit</button>
-                </div>
-            </form>
-        </div>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal mt-5">
+    <!-- Modal content -->
+    <div class="modal-content container">
+        <span class="close fs-1 pe-2">&times;</span>
+        <form method="POST" action="{% url 'edit_profile' request.user.id %}" class="mb-2 p-2"
+            enctype="multipart/form-data">
+            <h2 class="text-center fs-4">Edit Profile</h2>
+            {% csrf_token %}
+            {{ form|crispy }}
+            {{ form.media }}
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary w-25">Edit</button>
+            </div>
+        </form>
     </div>
+</div>
 </div>
 {% endblock %}
 
