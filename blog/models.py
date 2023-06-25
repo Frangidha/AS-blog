@@ -9,7 +9,6 @@ from cloudinary.models import CloudinaryField
 from hitcount.models import HitCountMixin, HitCount
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
-from django_resized import ResizedImageField
 
 
 STATUS = (

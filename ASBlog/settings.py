@@ -182,11 +182,6 @@ CKEDITOR_CONFIGS = {
             ]},
             {'name': 'editing', 'items': [
                 'Find', 'Replace', '-', 'SelectAll']},
-            {'name': 'forms',
-             'items': [
-                 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea',
-                 'Select', 'Button', 'ImageButton', 'HiddenField'
-             ]},
             '/',
             {'name': 'basicstyles',
              'items': [

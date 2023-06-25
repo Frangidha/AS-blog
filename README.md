@@ -253,7 +253,21 @@ To fork the project:
 3. This will create a duplicate of the full project in your GitHub repository.
 
 # Credits
-
+Special thanks to my mentor, Gareth McGirr ([Gareth-McGirr](https://github.com/Gareth-McGirr)), for his invaluable guidance, bug-finding assistance, and constant motivation throughout the development of this website. Gareth's expertise and encouragement have been instrumental in improving the functionality and inspiring me to continually learn and grow as a developer.
 # Content
 
+This project incorporates insights and knowledge from relevant research articles obtained through [ResearchGate](https://www.researchgate.net/). These scholarly publications, accessed on ResearchGate, have enriched the project's content and supported its objectives. The articles were properly cited within the project's posts, ensuring appropriate attribution and acknowledgment. By leveraging the expertise shared on ResearchGate, the project benefits from authoritative information and insights from experts in the field. The inclusion of research articles enhances the project's credibility, promotes evidence-based information, and adheres to academic integrity standards.
 # Acknowledgements
+This project acknowledges the following resources and individuals who contributed to its development:
+
+- **Code Institute Curriculum:** The Code Institute curriculum was utilized as a valuable learning resource throughout the development of this project. For more information, please visit the [Code Institute Full Stack Software Development Diploma Curriculum](https://codeinstitute.net/global/full-stack-software-development-diploma/?utm_term=code%20institute&utm_campaign=CI+-+ROW+-+Search+-+Brand&utm_source=adwords&utm_medium=ppc&hsa_acc=8983321581&hsa_cam=15207113220&hsa_grp=130324141420&hsa_ad=635849256710&hsa_src=g&hsa_tgt=aud-1971138565381:kwd-319867646331&hsa_kw=code%20institute&hsa_mt=e&hsa_net=adwords&hsa_ver=3&gad=1&gclid=Cj0KCQjwy9-kBhCHARIsAHpBjHhP3FHAGnhwmkB83_44PoOgU4d8e1cn01dQweFpMJnEfjnLAfhNMTgaAmNSEALw_wcB).
+
+- **Search Functionality Documentation:** The search functionality in this project was implemented using the documentation provided in the tutorial [Building a Search Functionality Django Blog](https://www.codesnail.com/building-a-search-functionality-django-blog-9/) by Code Snail.
+
+- **Django Crash Course:** The category model in this project was developed with the guidance from the [Code with Stein Django Crash Course](https://github.com/SteinOveHelset/crashblog) GitHub repository.
+
+- **Profile App Tutorial:** The profile app in this project was inspired by and created with the assistance of the YouTube tutorial [Django Blog (2/4) - Profile App - Authentication | Django Crash Course](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy&ab_channel=DeeMc) by Dee Mc.
+
+- **Matt Rudge from Code Institute:** Grateful acknowledgement goes to Matt Rudge from Code Institute for his valuable contributions. You can find his work and resources in the [Code Institute Django3blog](https://github.com/Code-Institute-Solutions/Django3blog/tree/master/12_final_deployment) GitHub repository.
+  
+- **Portfolio-Project-4-SizzleAndSteak:** Acknowledgements to Gareth McGirr for the inspiration and basis provided for implementing the verification email and password reset functionalities in this project. [GitHub Repository](https://github.com/Gareth-McGirr/Portfolio-Project-4-SizzleAndSteak)

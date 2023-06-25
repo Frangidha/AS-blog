@@ -28,7 +28,7 @@ class PostForm(forms.ModelForm):
     title = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form-control'}))
     excerpt = forms.CharField(widget=forms.Textarea(
-        attrs={'class': 'form-control', 'rows': 3}))
+        attrs={'class': 'form-control', 'rows': 3}), label='Abstract')
     tags = TagField(widget=TagWidget(attrs={'class': 'form-control'}))
 
     class Meta:
