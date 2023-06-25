@@ -171,24 +171,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ['Bold', 'Italic', 'Underline'],
-            ['NumberedList', 'BulletedList'],
-            ['Link', 'Unlink', 'Image', 'Table'],
-            ['RemoveFormat', 'Source', 'CodeSnippet']
-        ]
-    },
-    'portal_config': {
         # 'skin': 'moono',
         # 'skin': 'office2013',
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
         ],
         'toolbar_YourCustomToolbarConfig': [
-            {'name': 'document', 'items': [
-                'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates'
-            ]},
             {'name': 'clipboard', 'items': [
                 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'
             ]},
@@ -288,3 +276,7 @@ HITCOUNT_KEEP_HIT_ACTIVE = {'days': 2}
 HITCOUNT_HITS_PER_IP_LIMIT = 5
 
 HITCOUNT_KEEP_HIT_IN_DATABASE = {'days': 90}
+
+# Tags
+
+TAGGIT_CASE_INSENSITIVE = True

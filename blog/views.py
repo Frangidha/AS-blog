@@ -125,11 +125,16 @@ class CategoryDetail(CategoryList, generic.ListView):
     template_name = 'category_detail.html'
     context_object_name = 'category'
 
-    def category(request, slug):
+    def get_queryset(self):
+        slug = self.kwargs['slug']
         category = get_object_or_404(Category, slug=slug)
-        posts = category.posts.filter(status=1)
+        return category.posts.filter(status=1)
 
-        return render(request, 'blog/category.html', {'category': category, 'posts': posts})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        slug = self.kwargs['slug']
+        context['category'] = get_object_or_404(Category, slug=slug)
+        return context
 
 # Search funcionality based on tags
 
