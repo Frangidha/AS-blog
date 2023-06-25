@@ -14,6 +14,12 @@
             <h1>{{ profile.user.username }}</h1>
             <p><strong>Joined: </strong>{{ profile.user.date_joined|date:'d M Y' }}</p>
             <p><strong>Occuppation:</strong> {{ profile.occupation }}</p>
+            <p><strong>Expertises:</strong></p>
+            <ul>
+                {% for expertise in profile.expertises.all %}
+                <li>{{ expertise }}</li>
+                {% endfor %}
+            </ul>
             <p><strong>Post count: </strong>{{ profile.user.blog_posts.count }}</p>
 
             {% if profile.bio_user is not none %}
@@ -43,6 +49,18 @@
                 <h2 class="text-center pb-4">Archived Post</h2>
                 {% for blog_post in profile.user.blog_posts.all %}
                 {% if blog_post.status == 2 and blog_post.author == user %}
+                <a href="{% url 'post_detail' blog_post.slug %}">
+                    <h3>{{ blog_post.title }}</h3>
+                </a>
+                {{ blog_post.created_on|date:'d M Y' }}
+                <hr>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="profile-author">
+                <h2 class="text-center pb-4">Waiting approval</h2>
+                {% for blog_post in profile.user.blog_posts.all %}
+                {% if blog_post.status == 0 and blog_post.author == user %}
                 <a href="{% url 'post_detail' blog_post.slug %}">
                     <h3>{{ blog_post.title }}</h3>
                 </a>

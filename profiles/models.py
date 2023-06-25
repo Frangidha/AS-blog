@@ -6,13 +6,7 @@ from django.dispatch import receiver
 from blog.models import Post
 from cloudinary.models import CloudinaryField
 from django.urls import reverse
-
-
-class Expertise(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
+from taggit.managers import TaggableManager
 
 
 class Profile(models.Model):
@@ -30,7 +24,7 @@ class Profile(models.Model):
     )
     bio_user = RichTextField(max_length=2500, null=True, blank=True)
     occupation = models.CharField(max_length=500, default="N/A")
-    expertises = models.ManyToManyField(Expertise)
+    expertises = TaggableManager()
 
     def __str__(self):
         return str(self.user.username)
@@ -44,14 +38,3 @@ def create_user_profile(instance, created, **kwargs):
     """Create or update the user profile"""
     if created:
         Profile.objects.create(user=instance)
-
-
-class ProfileExpertise(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    expertise = models.ForeignKey(Expertise, on_delete=models.CASCADE)
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(
-                fields=['profile', 'expertise'], name='unique_profile_expertise')
-        ]

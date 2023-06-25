@@ -53,7 +53,7 @@ class PostDetail(HitCountDetailView):
     def get(self, request, slug, *args, **kwargs):
         self.object = self.get_object()
         context = self.get_context_data(object=self.object)
-        queryset = Post.objects.filter(status__in=[1, 2])
+        queryset = Post.objects.filter(status__in=[0, 1, 2])
         post = get_object_or_404(queryset, slug=slug)
         reviews = post.reviews.filter(approved=True).order_by("-created_at")
         liked = False
