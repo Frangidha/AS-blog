@@ -57,8 +57,13 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
       - [Epic 4: Blog Enhancements](#epic-4-blog-enhancements)
   - [The Scope Plane](#the-scope-plane)
     - [Features](#features)
+      - [User Registration and Authentication](#user-registration-and-authentication)
+      - [Email Verification and Password Reset](#email-verification-and-password-reset)
+      - [User Profile](#user-profile)
+      - [User-Generated Posts, Comments, and Interactions](#user-generated-posts-comments-and-interactions)
+      - [Analytics](#analytics)
     - [Future Features](#future-features)
-  - [The Structure Plane](#the-structure-plane)
+- [The Structure Plane](#the-structure-plane)
   - [The Skeleton Plane](#the-skeleton-plane)
     - [Wireframes](#wireframes)
     - [Database Design](#database-design)
@@ -131,11 +136,54 @@ To track the progress and manage the project tasks, a Kanban board was created u
 - User Story #8: Display Latest Articles in News Ticker Format 
 ## The Scope Plane
 ### Features
+
+#### User Registration and Authentication
+
+The User Registration and Authentication feature enables individuals to create accounts on the website by providing necessary information such as a username, email address, and password. It ensures a secure login process and access to personalized content or features. Key points about this feature include:
+
+- **User Registration:** Users can create accounts by providing required information, such as a username, email address, and password.
+- **Authentication:** Registered users are authenticated through their provided credentials when logging into the website.
+- **Secure Login:** Users can securely log in using their registered credentials to access personalized content or features.
+- **Data Protection:** User authentication helps protect sensitive user data and ensures that only authorized individuals can access restricted areas of the website.
+- **Account Management:** Upon successful authentication, users can view their account details, manage their profile, and engage in personalized interactions.
+- **Personalized Experiences:** User registration and authentication are often essential for websites that offer personalized experiences, user-specific settings, or user-generated content.
+
+Implementing the User Registration and Authentication feature enhances the security of the website, enables personalized user experiences, and allows users to access and manage their accounts and preferences effectively.
+
+#### Email Verification and Password Reset
+
+- The email verification feature ensures that users' email addresses are valid and verified before activating their accounts.
+- It adds an extra layer of security and helps prevent unauthorized access to user accounts.
+- The password reset feature allows users to securely reset their passwords if they forget them or need to change them.
+- Users can request a password reset link, which will be sent to their registered email address, allowing them to create a new password.
+
+
+#### User Profile
+- The user profile feature provides users with a dedicated space within the website to manage their personal information and interactions.
+- Users can update their profile details, such as their name, profile picture, occupation, expertises, and contact information.
+- Additionally, users can customize their profile with optional details like a bio.
+- The user profile allows users to have an overview of their posts, including those awaiting approval, archived posts, and published posts.
+- Including the user profile feature enhances the user experience by allowing users to personalize their account settings, maintain their information, and tailor their interactions according to their preferences.
+  
+#### User-Generated Posts, Comments, and Interactions
+
+- Users can create their own posts, sharing their thoughts, ideas, or experiences with the community.
+- The created posts are sent for approval before they are published to ensure content quality and adherence to guidelines.
+- Users have the ability to archive their posts, keeping them for reference while removing them from the main published feed.(unarchiving is also possible)
+- Users can leave comments on published posts and also have the option to delete their own comments if desired.
+- Additionally, users can like or upvote posts, showing their appreciation or agreement.
+
+#### Analytics
+
+- The system tracks and displays the hit count for each post, allowing the admin to see which posts are the most popular and attract the most views.
+- The analytics feature provides valuable insights into user engagement and the performance of different posts.
+- Admins can utilize this information to understand user preferences, identify popular topics, and make data-driven decisions for content management and improvement.
 ### Future Features
 
-## The Structure Plane
+# The Structure Plane
 
 ## The Skeleton Plane
+
 ### Wireframes
 ### Database Design
 ### Security
