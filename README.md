@@ -319,3 +319,5 @@ This project acknowledges the following resources and individuals who contribute
 - **Matt Rudge from Code Institute:** Grateful acknowledgement goes to Matt Rudge from Code Institute for his valuable contributions. You can find his work and resources in the [Code Institute Django3blog](https://github.com/Code-Institute-Solutions/Django3blog/tree/master/12_final_deployment) GitHub repository.
   
 - **Portfolio-Project-4-SizzleAndSteak:** Acknowledgements to Gareth McGirr for the inspiration and basis provided for implementing the verification email and password reset functionalities in this project. [GitHub Repository](https://github.com/Gareth-McGirr/Portfolio-Project-4-SizzleAndSteak)
+- https://www.youtube.com/watch?v=_QTESQ6vSWE&ab_channel=Devmaesters
+- 

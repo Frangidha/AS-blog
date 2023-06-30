@@ -4,12 +4,13 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.auth.models import User
 from django.urls import reverse
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from taggit.managers import TaggableManager
 from cloudinary.models import CloudinaryField
 from hitcount.models import HitCountMixin, HitCount
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
-
+from django import forms
 
 STATUS = (
     (0, 'Draft'),
@@ -58,7 +59,7 @@ class Post(models.Model):
     )
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
-    content = RichTextField()
+    content = RichTextUploadingField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
@@ -119,6 +120,14 @@ class Review(models.Model):
         null=True, choices=RATINGS)
 
     approved = models.BooleanField(default=False)
+
+    widgets = {
+        'methodology_and_experimental_design': forms.RadioSelect(attrs={'class': 'star-rating'}),
+        'results_and_data_analysis': forms.RadioSelect(attrs={'class': 'star-rating'}),
+        'discussion_and_interpretation': forms.RadioSelect(attrs={'class': 'star-rating'}),
+        'contribution_and_originality': forms.RadioSelect(attrs={'class': 'star-rating'}),
+        'research_objective_and_importance': forms.RadioSelect(attrs={'class': 'star-rating'}),
+    }
 
 
 def __str__(self):
