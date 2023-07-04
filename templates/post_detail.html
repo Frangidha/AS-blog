@@ -17,6 +17,7 @@
                 <p class="post-subtitle"><a href=" /profiles/user/{{ post.author.id }} ">{{ post.author.username }}</a>
                     |
                     {{ post.created_on|date:'d M Y' }}</p>
+
                 {% if user.is_authenticated %}
                 {% if post.author.username == user.username %}
                 {% if post.status == 2 %}
@@ -40,6 +41,11 @@
                 <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
                 {% else %}
                 <img src="{{ post.featured_image.url }}" width="100%">
+                {% endif %}
+                {% if post.is_new %}
+                <div class="new-flash">
+                    <p class="new-banner"><span class="rotate-text">New</span></p>
+                </div>
                 {% endif %}
             </div>
         </div>
@@ -123,6 +129,7 @@
                         Discussion and Interpretation: {{ review.discussion_and_interpretation }}<br>
                         Contribution and Originality: {{ review.contribution_and_originality }}
                     </p>
+
                     <!-- The body of the review goes before the | -->
                     {{ review.body | linebreaks }}
                 </div>

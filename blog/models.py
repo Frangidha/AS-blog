@@ -11,6 +11,7 @@ from hitcount.models import HitCountMixin, HitCount
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django import forms
+from django.utils import timezone
 
 STATUS = (
     (0, 'Draft'),
@@ -90,15 +91,19 @@ class Post(models.Model):
                 self.featured_image = default_image.url
         super().save(*args, **kwargs)
 
+    def is_new(self):
+        time_difference = timezone.now() - self.created_on
+        return time_difference.days <= 7
+
 
 class Review(models.Model):
 
-    RATINGS = (
-        (1, '1'),
-        (2, '2'),
-        (3, '3'),
-        (4, '4'),
-        (5, '5'),
+    RATING_CHOICES = (
+        (1, 'Needs Improvement'),
+        (2, 'Fair'),
+        (3, 'Average'),
+        (4, 'Good'),
+        (5, 'Excellent'),
     )
 
     post = models.ForeignKey(
@@ -107,28 +112,19 @@ class Review(models.Model):
     email = models.EmailField()
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-
     research_objective_and_importance = models.PositiveIntegerField(
-        null=True, choices=RATINGS)
+        choices=RATING_CHOICES, default=1)
     methodology_and_experimental_design = models.PositiveIntegerField(
-        null=True, choices=RATINGS)
+        choices=RATING_CHOICES, default=1)
     results_and_data_analysis = models.PositiveIntegerField(
-        null=True, choices=RATINGS)
+        choices=RATING_CHOICES, default=1)
     discussion_and_interpretation = models.PositiveIntegerField(
-        null=True, choices=RATINGS)
+        choices=RATING_CHOICES, default=1)
     contribution_and_originality = models.PositiveIntegerField(
-        null=True, choices=RATINGS)
+        choices=RATING_CHOICES, default=1)
 
     approved = models.BooleanField(default=False)
 
-    widgets = {
-        'methodology_and_experimental_design': forms.RadioSelect(attrs={'class': 'star-rating'}),
-        'results_and_data_analysis': forms.RadioSelect(attrs={'class': 'star-rating'}),
-        'discussion_and_interpretation': forms.RadioSelect(attrs={'class': 'star-rating'}),
-        'contribution_and_originality': forms.RadioSelect(attrs={'class': 'star-rating'}),
-        'research_objective_and_importance': forms.RadioSelect(attrs={'class': 'star-rating'}),
-    }
-
 
 def __str__(self):
-    return self.author
+    return self.author,
