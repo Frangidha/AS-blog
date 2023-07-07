@@ -321,3 +321,5 @@ This project acknowledges the following resources and individuals who contribute
 - **Portfolio-Project-4-SizzleAndSteak:** Acknowledgements to Gareth McGirr for the inspiration and basis provided for implementing the verification email and password reset functionalities in this project. [GitHub Repository](https://github.com/Gareth-McGirr/Portfolio-Project-4-SizzleAndSteak)
 - https://www.youtube.com/watch?v=_QTESQ6vSWE&ab_channel=Devmaesters
 - https://stackoverflow.com/questions/70867102/text-banner-over-image-not-aligned-properly
+- https://codepen.io/hesguru/pen/BaybqXv
+- 

@@ -209,39 +209,6 @@ body {
 }
 
 /* Review Rating */
-.controls label {
-    float: right;
-    width: 1em;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 30px;
-    color: #ccc;
-}
-
-.controls label:before {
-    content: '★';
-}
-
-.controls input[type="radio"] {
-    position: absolute;
-    top: -9999px;
-}
-
-.controls input[type="radio"]:checked+label {
-    color: #ffc700;
-}
-
-.controls label:hover,
-.controls label:hover~label {
-    color: #deb217;
-}
-
-.controls input[type="radio"]:checked+label:hover,
-.controls input[type="radio"]:checked~label:hover,
-.controls label:hover~input[type="radio"]:checked~label {
-    color: #c59b08;
-}
 
 /* media queries */
 @media (min-width: 750px) {

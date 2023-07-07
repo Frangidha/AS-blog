@@ -9,49 +9,6 @@ from cloudinary.forms import CloudinaryFileField
 class ReviewForm(forms.ModelForm):
     """Form to create a Review"""
 
-    RATING_CHOICES = (
-        (1, 'Needs Improvement'),
-        (2, 'Fair'),
-        (3, 'Average'),
-        (4, 'Good'),
-        (5, 'Excellent'),
-    )
-
-    methodology_and_experimental_design = forms.ChoiceField(
-        label='Methodology and Experimental Design',
-        widget=forms.RadioSelect(attrs={'class': 'radio-inline'}),
-        choices=RATING_CHOICES,
-        initial=1
-    )
-
-    results_and_data_analysis = forms.ChoiceField(
-        label='Results and Data Analysis',
-        widget=forms.RadioSelect(attrs={'class': 'rate'}),
-        choices=RATING_CHOICES,
-        initial=1
-    )
-
-    discussion_and_interpretation = forms.ChoiceField(
-        label='Discussion and Interpretation',
-        widget=forms.RadioSelect(attrs={'class': 'rate'}),
-        choices=RATING_CHOICES,
-        initial=1
-    )
-
-    contribution_and_originality = forms.ChoiceField(
-        label='Contribution and Originality',
-        widget=forms.RadioSelect(attrs={'class': 'rate'}),
-        choices=RATING_CHOICES,
-        initial=1
-    )
-
-    research_objective_and_importance = forms.ChoiceField(
-        label='Research Objective and Importance',
-        widget=forms.RadioSelect(attrs={'class': 'rate'}),
-        choices=RATING_CHOICES,
-        initial=1
-    )
-
     class Meta:
         model = Review
         fields = ('body', 'methodology_and_experimental_design', 'results_and_data_analysis',

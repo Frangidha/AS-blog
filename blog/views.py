@@ -82,6 +82,7 @@ class PostDetail(HitCountDetailView):
             liked = True
 
         review_form = ReviewForm(data=request.POST)
+        review = None
         if review_form.is_valid():
             review_form.instance.email = request.user.email
             review_form.instance.author = request.user.username
