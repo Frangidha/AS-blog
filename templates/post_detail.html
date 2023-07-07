@@ -11,6 +11,22 @@
                 {% if post.status == 0 %}
                 <h2 class="post-status">Waiting for approval</h2>
                 {% endif %}
+                {% if user.is_authenticated %}
+                {% if post.author.username == user.username %}
+                {% if post.status == 2 %}
+                <form class="d-inline" action="{% url 'archive_post' post.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary archive">UnArchive</button>
+
+                </form>
+                {% elif post.status == 1 %}
+                <form class="d-inline" action="{% url 'archive_post' post.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary archive">Archive</button>
+                </form>
+                {% endif %}
+                {% endif %}
+                {% endif %}
                 <!-- Post title goes in these h1 tags -->
                 <h1 class="post-title">{{ post.title }}</h1>
                 <!-- Post author goes before the | the post's created date goes after -->
@@ -18,22 +34,7 @@
                     |
                     {{ post.created_on|date:'d M Y' }}</p>
 
-                {% if user.is_authenticated %}
-                {% if post.author.username == user.username %}
-                {% if post.status == 2 %}
-                <form class="d-inline" action="{% url 'archive_post' post.pk %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">UnArchive</button>
 
-                </form>
-                {% elif post.status == 1 %}
-                <form class="d-inline" action="{% url 'archive_post' post.pk %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">Archive</button>
-                </form>
-                {% endif %}
-                {% endif %}
-                {% endif %}
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->

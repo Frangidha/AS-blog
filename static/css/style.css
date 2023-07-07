@@ -18,11 +18,11 @@ body {
 }
 
 .light-bg {
-    background-color: #fff;
+    background-color: #5dca36;
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #5dca36;
 }
 
 .main-bg {
@@ -43,11 +43,11 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #23BBBB;
+    background-color: #4CBB17;
 }
 
 .author {
-    color: white;
+    color: #FFF;
     margin: 4px;
     text-transform: uppercase;
 }
@@ -62,8 +62,8 @@ body {
 }
 
 .masthead-text {
-    background-color: #445261;
-    color: white;
+    background-color: #4CBB17;
+    color: #FFF;
     position: relative;
 }
 
@@ -79,7 +79,7 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: #4CBB17;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -103,18 +103,30 @@ body {
 
 .post-subtitle {
     margin-left: 5%;
-    color: lightgray;
+    color: #FFF;
+}
+
+.archive {
+    color: #fff;
+    background-color: #445261;
+    border: 2px solid #445261;
+}
+
+.archive:hover {
+    color: #fff;
+    background-color: gray;
+    border: 2px solid gray;
 }
 
 .btn-signup {
-    background-color: #23BBBB;
+    background-color: #4CBB17;
     color: #fff;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: darkgreen;
+    color: #fff;
 }
 
 .link {
@@ -156,7 +168,7 @@ body {
     width: 180px;
     justify-content: center;
     align-items: center;
-    background-color: orange;
+    background-color: #FFD700;
     position: absolute;
     top: 48px;
     right: -6px;
@@ -185,14 +197,14 @@ body {
     position: absolute;
     width: 141%;
     border-top-width: 0px;
-    border-bottom-color: orange;
+    border-bottom-color: #FFD700;
     top: -2px;
     z-index: -1;
 }
 
 
 .new-banner {
-    color: black;
+    color: #445261;
     margin: 4px;
     text-transform: uppercase;
     font-weight: bold;
@@ -208,8 +220,24 @@ body {
     transform-origin: top right;
 }
 
-/* Review Rating */
+.btn-secondary {
+    background-color: #4CBB17;
+    color: white;
+    border: 2px solid #4CBB17;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
 
+}
+
+.btn-secondary:hover {
+
+    background-color: darkgreen;
+    border-color: darkgreen;
+}
+
+/* Review Rating */
 /* media queries */
 @media (min-width: 750px) {
     .new-banner {

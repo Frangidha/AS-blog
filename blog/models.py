@@ -99,11 +99,11 @@ class Post(models.Model):
 class Review(models.Model):
 
     RATING_CHOICES = (
-        (1, 'Needs Improvement'),
-        (2, 'Fair'),
-        (3, 'Average'),
-        (4, 'Good'),
-        (5, 'Excellent'),
+        (1, '1-Needs Improvement'),
+        (2, '2-Fair'),
+        (3, '3-Average'),
+        (4, '4-Good'),
+        (5, '5-Excellent'),
     )
 
     post = models.ForeignKey(
