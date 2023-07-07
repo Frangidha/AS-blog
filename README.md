@@ -73,6 +73,9 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
     - [Colour Scheme](#colour-scheme)
     - [Typography](#typography)
     - [Imagery](#imagery)
+      - [Default Category Images](#default-category-images)
+      - [User-Provided Featured Images](#user-provided-featured-images)
+      - [Image Insertion with CKEditor](#image-insertion-with-ckeditor)
 - [Technologies](#technologies)
   - [Technology](#technology)
     - [DJANGO](#django)
@@ -188,12 +191,55 @@ Implementing the User Registration and Authentication feature enhances the secur
 ### Database Design
 ### Security
 
+Views were secured by using the django class based view mixin, UserPassesTextMixin. A test function was created to use the mixin and checks were ran to ensure that the user who is trying to access the page is authorized. Any staff restricted functionality, user edit/delete functionality listed in the features was secured using this method.
+
+Environment variables were stored in an env.py for local development for security purposes to ensure no secret keys, api keys or sensitive information was added the the repository. In production, these variables were added to the heroku config vars within the project.
+
+
 ## The Surface Plane
 ### Design
+Minimalistic Design: The project follows a minimalistic design approach, emphasizing simplicity, clean lines, and ample white space. This minimalistic aesthetic enhances focus on content and provides a modern and uncluttered interface.
+
+Responsive Design: The project is designed to be responsive, adapting to different screen sizes and devices. This ensures an optimal user experience across desktop, tablet, and mobile devices.
+
+Consistent Visual Language: A consistent visual language is maintained throughout the project, with uniform colors, typography, and UI elements. This consistency enhances usability and creates a cohesive experience.
 ### Colour Scheme
+The project embraces a sophisticated and visually captivating color scheme that seamlessly blends white, gray, and green hues. This thoughtfully chosen palette serves to elevate readability and infuse the project with a vibrant and contemporary ambiance. Here is an overview of the key colors employed:
+
+White: As the project's cornerstone, the primary background color gracefully envelops the visual landscape, promoting a sense of openness and emphasizing the core content.
+
+Gray: Comprising a range of shades, including #445261, gray, and #4A4A4F, the grayscale palette is skillfully utilized for borders, backgrounds, and delicate accents. These understated tones imbue the design with depth and an air of sophistication.
+
+Green: Infused with life and energy, a vivid shade of green (#4CBB1 and dark green for extra effect) is selectively applied as an accent color to command attention towards crucial elements. Its infusion brings a touch of nature's vibrancy and rejuvenation to the project.
+
+The cohesive utilization of this color scheme aims to create a visually pleasing and harmonious user experience, cultivating an environment that is both polished and contemporary.
 ### Typography
+Fonts
+Primary Font: The project utilizes the "Lato" font as the primary typeface. Lato is a sans-serif font known for its modern and clean aesthetic, making it highly legible in various sizes and weights.
+
+Heading Styles: The project employs a hierarchy of heading styles to structure content. Headings use the Lato font with different font weights and sizes to indicate different levels of importance.
+
+Body Text: Body text is set in Lato with a regular font weight, ensuring optimal legibility and readability for extended reading.
+
+Font Sizes and Weights
+Primary Font Size: The project uses a base font size of 1.4rem for most of the content, providing a comfortable reading experience across different devices.
+
+Font Weights: Different font weights, such as 300 (thin) and 700 (bold), are selectively applied to headings and other text elements to establish visual hierarchy and emphasize important information.
 ### Imagery
 
+#### Default Category Images
+
+In the absence of user-provided featured images, the project automatically assigns default category images that represent each category's theme or topic. These carefully selected images provide visual cues and ensure a cohesive browsing experience. For example, a microscope symbolizes microscopy, while a droplet represents liquid chromatography, a technique used in chemical analysis. These default symbols enhance consistency, aid in categorization, and contribute to an overall visually appealing interface.
+
+#### User-Provided Featured Images
+
+On the other hand, users have the freedom to choose and input their own featured images for their content, such as blog posts or articles. These user-provided images take priority over default category images, allowing users to personalize their content and capture the attention of the audience. These featured images serve as engaging thumbnails or header visuals, enhancing the overall visual appeal and enticing users to explore the content further.
+
+#### Image Insertion with CKEditor
+
+To further enrich the content/post, the project integrates CKEditor, which allows users to seamlessly insert images within their text. Users can upload images from their local devices or provide image URLs, enabling them to incorporate relevant imagery that supports their written content. The seamless integration of CKEditor's image insertion feature enhances the visual appeal and provides users with flexibility in incorporating visually appealing and informative images.
+
+By combining the default category images, user-provided featured images, and the image insertion capabilities of CKEditor, the post creates a visually rich and dynamic experience. Users can enjoy a consistent visual representation through default images, while also having the flexibility to personalize their content with unique and eye-catching featured images. The ability to insert images within the content further enhances the visual storytelling aspect of the project, allowing users to effectively convey their message with the support of relevant and visually appealing imagery.
 # Technologies
 
 ## Technology
