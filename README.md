@@ -66,6 +66,12 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
 - [The Structure Plane](#the-structure-plane)
   - [The Skeleton Plane](#the-skeleton-plane)
     - [Wireframes](#wireframes)
+      - [index.html,tags.html, category.html](#indexhtmltagshtml-categoryhtml)
+      - [profile.html](#profilehtml)
+      - [addpost.html](#addposthtml)
+      - [post\_details.html](#post_detailshtml)
+      - [authentication](#authentication)
+      - [error pages](#error-pages)
     - [Database Design](#database-design)
     - [Security](#security)
   - [The Surface Plane](#the-surface-plane)
@@ -188,7 +194,105 @@ Implementing the User Registration and Authentication feature enhances the secur
 ## The Skeleton Plane
 
 ### Wireframes
+
+#### index.html,tags.html, category.html
+
+-Website 
+not logged in
+![wireframe no login](./static/images/readme/index%20-%20no%20user.jpg)
+logged in
+![wireframe logged in](./static/images/readme/index%20-%20no%20user.jpg)
+
+-Phone
+general phone
+![wireframe no login](./static/images/readme/index%20-%20phone.jpg)
+not logged in
+![wireframe no login](./static/images/readme/index%20-%20phone%20-%20nouser.jpg)
+logged in
+![wireframe login](./static/images/readme/index%20-%20phone%20-%20user.jpg)
+
+#### profile.html
+-Website
+not logged in
+![wireframe no login](./static/images/readme/profile%20-%20no%20user.jpg)
+logged in
+![wireframe logged in](./static/images/readme/profile%20-%20user.jpg)
+
+-Phone
+not logged in
+![wireframe no login](./static/images/readme/profile%20-%20phone%20-%20nouser.jpg)
+logged in
+![wireframe logged in](./static/images/readme/profile%20-%20phone%20-%20user.jpg)
+
+#### addpost.html
+-Website
+![wireframe no login](./static/images/readme/addpost.jpg)
+-Phone
+![wireframe logged in](./static/images/readme/addpost%20phone.jpg)
+
+#### post_details.html
+-Website
+not logged in
+![wireframe no login](./static/images/readme/postdetails%20-%20index%20-%20nouser.jpg)
+logged in
++author of the comment
+![wireframe logged in](./static/images/readme/postdetails%20-%20index%20-%20user%20-%20author.jpg)
++author of the post but not comment
+![wireframe logged in](./static/images/readme/postdetails%20-%20index%20-%20user%20-%20NOauthor.jpg)
++waiting approval
+![wireframe logged in](./static/images/readme/postdetails%20-%20index%20-%20user%20-%20author-approval.jpg)
+-Phone
+not logged in
+![wireframe logged in](./static/images/readme/postdetails%20-%20phone%20-%20nouser.jpg)
++author of the post but not comment
+![wireframe logged in](./static/images/readme/postdetails%20-phone%20-%20user%20-%20author.jpg)
++waiting approval
+![wireframe logged in](./static/images/readme/postdetails%20-phone%20-%20user%20-%20author-approval.jpg)
+
+#### authentication
+-website
+
+sign up
+![sign up website](./static/images/readme/Signup-web.jpg)
+sign in
+![sign in website](./static/images/readme/Signin-web.jpg)
+Sign out
+![sign out website](./static/images/readme/Signout-web.jpg)
+Password reset
+![Password Reset website](./static/images/readme/reset.jpg)
+
+-phone
+
+sign up
+![sign up phone](./static/images/readme/signup-phone.jpg)
+sign in
+![sign in phone](./static/images/readme/signin-phone.jpg)
+Sign out
+![sign out phone](./static/images/readme/Signout-phone.jpg)
+Password reset
+![Password Reset phone](./static/images/readme/reset-phone.jpg)
+
+#### error pages
+
+-website
+
+404
+![404 website](./static/images/readme/404.jpg)
+403
+![403 website](./static/images/readme/403.jpg)
+500
+![500 website](./static/images/readme/500.jpg)
+
+-phone
+404
+![404 phone](./static/images/readme/404-phone.jpg)
+403
+![403 phone](./static/images/readme/403-phone.jpg)
+500
+![500 phone](./static/images/readme/500-phone.jpg)
+
 ### Database Design
+
 ### Security
 
 Views were secured by using the django class based view mixin, UserPassesTextMixin. A test function was created to use the mixin and checks were ran to ensure that the user who is trying to access the page is authorized. Any staff restricted functionality, user edit/delete functionality listed in the features was secured using this method.
