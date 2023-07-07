@@ -295,6 +295,10 @@ Implementing the User Registration and Authentication feature enhances the secur
 
 ### Database Design
 
+The database was designed to allow CRUD functionality to be available to registered users, when signed in. The user model is at the heart of the application as it is connected the the post, profile and  review linked by primary/foreign key relationships.
+
+![DB design](./static/images/readme/DB.jpg)
+
 ### Security
 
 Views were secured by using the django class based view mixin, UserPassesTextMixin. A test function was created to use the mixin and checks were ran to ensure that the user who is trying to access the page is authorized. Any staff restricted functionality, user edit/delete functionality listed in the features was secured using this method.
