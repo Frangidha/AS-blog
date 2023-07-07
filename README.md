@@ -66,7 +66,7 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
 - [The Structure Plane](#the-structure-plane)
   - [The Skeleton Plane](#the-skeleton-plane)
     - [Wireframes](#wireframes)
-      - [index.html,tags.html, category.html](#indexhtmltagshtml-categoryhtml)
+      - [index.html, tags.html, category.html](#indexhtml-tagshtml-categoryhtml)
       - [profile.html](#profilehtml)
       - [addpost.html](#addposthtml)
       - [post\_details.html](#post_detailshtml)
@@ -195,101 +195,103 @@ Implementing the User Registration and Authentication feature enhances the secur
 
 ### Wireframes
 
-#### index.html,tags.html, category.html
+#### index.html, tags.html, category.html
 
--Website 
-not logged in
-![wireframe no login](./static/images/readme/index%20-%20no%20user.jpg)
-logged in
-![wireframe logged in](./static/images/readme/index%20-%20no%20user.jpg)
+- **Website**
+  - Not Logged In
+    ![Wireframe - No Login - Website](./static/images/readme/index%20-%20no%20user.jpg)
+  - Logged In
+    ![Wireframe - Logged In - Website](./static/images/readme/index%20-%20no%20user.jpg)
 
--Phone
-general phone
-![wireframe no login](./static/images/readme/index%20-%20phone.jpg)
-not logged in
-![wireframe no login](./static/images/readme/index%20-%20phone%20-%20nouser.jpg)
-logged in
-![wireframe login](./static/images/readme/index%20-%20phone%20-%20user.jpg)
+- **Phone**
+  - General Phone
+    ![Wireframe - General Phone](./static/images/readme/index%20-%20phone.jpg)
+  - Not Logged In
+    ![Wireframe - No Login - Phone](./static/images/readme/index%20-%20phone%20-%20nouser.jpg)
+  - Logged In
+    ![Wireframe - Logged In - Phone](./static/images/readme/index%20-%20phone%20-%20user.jpg)
 
 #### profile.html
--Website
-not logged in
-![wireframe no login](./static/images/readme/profile%20-%20no%20user.jpg)
-logged in
-![wireframe logged in](./static/images/readme/profile%20-%20user.jpg)
 
--Phone
-not logged in
-![wireframe no login](./static/images/readme/profile%20-%20phone%20-%20nouser.jpg)
-logged in
-![wireframe logged in](./static/images/readme/profile%20-%20phone%20-%20user.jpg)
+- **Website**
+  - Not Logged In
+    ![Wireframe - No Login - Website](./static/images/readme/profile%20-%20no%20user.jpg)
+  - Logged In
+    ![Wireframe - Logged In - Website](./static/images/readme/profile%20-%20user.jpg)
+
+- **Phone**
+  - Not Logged In
+    ![Wireframe - No Login - Phone](./static/images/readme/profile%20-%20phone%20-%20nouser.jpg)
+  - Logged In
+    ![Wireframe - Logged In - Phone](./static/images/readme/profile%20-%20phone%20-%20user.jpg)
 
 #### addpost.html
--Website
-![wireframe no login](./static/images/readme/addpost.jpg)
--Phone
-![wireframe logged in](./static/images/readme/addpost%20phone.jpg)
+
+- **Website**
+  ![Wireframe - Add Post - Website](./static/images/readme/addpost.jpg)
+
+- **Phone**
+  ![Wireframe - Add Post - Phone](./static/images/readme/addpost%20phone.jpg)
 
 #### post_details.html
--Website
-not logged in
-![wireframe no login](./static/images/readme/postdetails%20-%20index%20-%20nouser.jpg)
-logged in
-+author of the comment
-![wireframe logged in](./static/images/readme/postdetails%20-%20index%20-%20user%20-%20author.jpg)
-+author of the post but not comment
-![wireframe logged in](./static/images/readme/postdetails%20-%20index%20-%20user%20-%20NOauthor.jpg)
-+waiting approval
-![wireframe logged in](./static/images/readme/postdetails%20-%20index%20-%20user%20-%20author-approval.jpg)
--Phone
-not logged in
-![wireframe logged in](./static/images/readme/postdetails%20-%20phone%20-%20nouser.jpg)
-+author of the post but not comment
-![wireframe logged in](./static/images/readme/postdetails%20-phone%20-%20user%20-%20author.jpg)
-+waiting approval
-![wireframe logged in](./static/images/readme/postdetails%20-phone%20-%20user%20-%20author-approval.jpg)
+
+- **Website**
+  - Not Logged In
+    ![Wireframe - No Login - Website](./static/images/readme/postdetails%20-%20index%20-%20nouser.jpg)
+  - Logged In (Author of the Comment)
+    ![Wireframe - Logged In - Website (Author of Comment)](./static/images/readme/postdetails%20-%20index%20-%20user%20-%20author.jpg)
+  - Logged In (Author of the Post, No Comment)
+    ![Wireframe - Logged In - Website (Author of Post, No Comment)](./static/images/readme/postdetails%20-%20index%20-%20user%20-%20NOauthor.jpg)
+  - Logged In (Waiting for Approval)
+    ![Wireframe - Logged In - Website (Waiting for Approval)](./static/images/readme/postdetails%20-%20index%20-%20user%20-%20author-approval.jpg)
+
+- **Phone**
+  - Not Logged In
+    ![Wireframe - No Login - Phone](./static/images/readme/postdetails%20-%20phone%20-%20nouser.jpg)
+  - Logged In (Author of the Post, No Comment)
+    ![Wireframe - Logged In - Phone (Author of Post, No Comment)](./static/images/readme/postdetails%20-phone%20-%20user%20-%20author.jpg)
+  - Logged In (Waiting for Approval)
+    ![Wireframe - Logged In - Phone (Waiting for Approval)](./static/images/readme/postdetails%20-phone%20-%20user%20-%20author-approval.jpg)
 
 #### authentication
--website
 
-sign up
-![sign up website](./static/images/readme/Signup-web.jpg)
-sign in
-![sign in website](./static/images/readme/Signin-web.jpg)
-Sign out
-![sign out website](./static/images/readme/Signout-web.jpg)
-Password reset
-![Password Reset website](./static/images/readme/reset.jpg)
+- **Website**
+  - Sign Up
+    ![Wireframe - Sign Up - Website](./static/images/readme/Signup-web.jpg)
+  - Sign In
+    ![Wireframe - Sign In - Website](./static/images/readme/Signin-web.jpg)
+  - Sign Out
+    ![Wireframe - Sign Out - Website](./static/images/readme/Signout-web.jpg)
+  - Password Reset
+    ![Wireframe - Password Reset - Website](./static/images/readme/reset.jpg)
 
--phone
-
-sign up
-![sign up phone](./static/images/readme/signup-phone.jpg)
-sign in
-![sign in phone](./static/images/readme/signin-phone.jpg)
-Sign out
-![sign out phone](./static/images/readme/Signout-phone.jpg)
-Password reset
-![Password Reset phone](./static/images/readme/reset-phone.jpg)
+- **Phone**
+  - Sign Up
+    ![Wireframe - Sign Up - Phone](./static/images/readme/signup-phone.jpg)
+  - Sign In
+    ![Wireframe - Sign In - Phone](./static/images/readme/signin-phone.jpg)
+  - Sign Out
+    ![Wireframe - Sign Out - Phone](./static/images/readme/Signout-phone.jpg)
+  - Password Reset
+    ![Wireframe - Password Reset - Phone](./static/images/readme/reset-phone.jpg)
 
 #### error pages
 
--website
+- **Website**
+  - 404
+    ![Wireframe - 404 - Website](./static/images/readme/404.jpg)
+  - 403
+    ![Wireframe - 403 - Website](./static/images/readme/403.jpg)
+  - 500
+    ![Wireframe - 500 - Website](./static/images/readme/500.jpg)
 
-404
-![404 website](./static/images/readme/404.jpg)
-403
-![403 website](./static/images/readme/403.jpg)
-500
-![500 website](./static/images/readme/500.jpg)
-
--phone
-404
-![404 phone](./static/images/readme/404-phone.jpg)
-403
-![403 phone](./static/images/readme/403-phone.jpg)
-500
-![500 phone](./static/images/readme/500-phone.jpg)
+- **Phone**
+  - 404
+    ![Wireframe - 404 - Phone](./static/images/readme/404-phone.jpg)
+  - 403
+    ![Wireframe - 403 - Phone](./static/images/readme/403-phone.jpg)
+  - 500
+    ![Wireframe - 500 - Phone](./static/images/readme/500-phone.jpg)
 
 ### Database Design
 
