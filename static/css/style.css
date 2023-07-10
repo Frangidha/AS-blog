@@ -211,7 +211,6 @@ body {
     transform: rotate(-35deg);
     transform-origin: top right;
     font-size: 2vw;
-    font
 }
 
 .rotate-text {
@@ -235,6 +234,11 @@ body {
 
     background-color: darkgreen;
     border-color: darkgreen;
+}
+
+.btn-review {
+    margin-top: 10px;
+    /* Adjust the values as per your preference */
 }
 
 /* media queries */

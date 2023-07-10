@@ -106,23 +106,27 @@
             <div class="card-body">
                 <!-- We want a for loop inside the empty control tags to iterate through each review in reviews -->
                 {% for review in reviews %}
-                <div class="comments" style="padding: 10px;">
+                <div class="comments" style="padding: 10px; position: relative;">
                     <p class="font-weight-bold">
                         <!-- The reviewer's name goes here -->
                         {{ review.author }}
                         <span class="text-muted font-weight-normal">
                             <!-- The review's created date goes here -->
                             {{ review.created_at }}
-                            {% if user.is_authenticated %}
-                            {% if review.author == user.username %}
-                            <form class="d-inline" action="{% url 'delete_review' review.pk %}" method="POST">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                            {% endif %}
-                            {% endif %}
+
+
                         </span> wrote:
+
                     </p>
+                    {% if user.is_authenticated %}
+                    {% if review.author == user.username %}
+                    <form class="d-inline" action="{% url 'delete_review' review.pk %}" method="POST"
+                        style="position: absolute; top: 0; right: 0;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger ">Delete</button>
+                    </form>
+                    {% endif %}
+                    {% endif %}
                     <p>
                         Research Objective and Importance: {{ review.research_objective_and_importance }}<br>
                         Methodology and Experimental Design: {{ review.methodology_and_experimental_design }}<br>
@@ -152,7 +156,7 @@
                 <form method="post" style="margin-top: 1.3em;">
                     {{ review_form | crispy }}
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                    <button type="submit" class="btn btn-signup btn-lg btn-review">Create</button>
                 </form>
                 {% endif %}
                 {% endif %}

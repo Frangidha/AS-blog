@@ -87,6 +87,78 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
     - [DJANGO](#django)
     - [Other technologies](#other-technologies)
 - [Testing](#testing)
+  - [Authentication](#authentication-1)
+    - [Description](#description)
+    - [Steps](#steps)
+    - [Expected](#expected)
+    - [Actual](#actual)
+    - [Description](#description-1)
+    - [Steps](#steps-1)
+    - [Expected](#expected-1)
+    - [Actual](#actual-1)
+    - [Description](#description-2)
+    - [Steps](#steps-2)
+    - [Expected](#expected-2)
+    - [Actual](#actual-2)
+    - [Description](#description-3)
+    - [Steps](#steps-3)
+    - [Expected](#expected-3)
+    - [Actual](#actual-3)
+  - [Add Post (repeated twice with and without Featured image)](#add-post-repeated-twice-with-and-without-featured-image)
+    - [Description](#description-4)
+    - [Steps](#steps-4)
+    - [Expected](#expected-4)
+    - [Actual](#actual-4)
+  - [Profile](#profile)
+    - [Description](#description-5)
+    - [Steps](#steps-5)
+    - [Expected](#expected-5)
+    - [Actual](#actual-5)
+  - [Post](#post)
+    - [Description](#description-6)
+    - [Steps](#steps-6)
+    - [Expected](#expected-6)
+    - [Actual](#actual-6)
+    - [Description](#description-7)
+    - [Steps](#steps-7)
+    - [Expected](#expected-7)
+    - [Actual](#actual-7)
+    - [Description](#description-8)
+    - [Steps](#steps-8)
+    - [Expected](#expected-8)
+    - [Actual](#actual-8)
+    - [Actual](#actual-9)
+    - [Description](#description-9)
+    - [Steps](#steps-9)
+    - [Expected](#expected-9)
+    - [Actual](#actual-10)
+  - [filter pages](#filter-pages)
+    - [Description](#description-10)
+    - [Steps](#steps-10)
+    - [Expected](#expected-10)
+    - [Actual](#actual-11)
+    - [Description](#description-11)
+    - [Steps](#steps-11)
+    - [Expected](#expected-11)
+    - [Actual](#actual-12)
+    - [Description](#description-12)
+    - [Steps](#steps-12)
+    - [Expected](#expected-12)
+    - [Actual](#actual-13)
+  - [admin](#admin)
+    - [Description](#description-13)
+    - [Steps](#steps-13)
+    - [Expected](#expected-13)
+    - [Actual](#actual-14)
+    - [Description](#description-14)
+    - [Steps](#steps-14)
+    - [Expected](#expected-14)
+    - [Actual](#actual-15)
+  - [Navigation Links](#navigation-links)
+  - [Footer](#footer)
+  - [Unit Testing](#unit-testing)
+  - [Accessibility](#accessibility)
+  - [Validator Testing](#validator-testing)
 - [Deployment](#deployment)
   - [Version Control](#version-control)
   - [Heroku Deployment](#heroku-deployment)
@@ -199,98 +271,148 @@ Implementing the User Registration and Authentication feature enhances the secur
 
 - **Website**
   - Not Logged In
+    
     ![Wireframe - No Login - Website](./static/images/readme/index%20-%20no%20user.jpg)
+  
   - Logged In
+    
     ![Wireframe - Logged In - Website](./static/images/readme/index%20-%20no%20user.jpg)
 
 - **Phone**
   - General Phone
+    
     ![Wireframe - General Phone](./static/images/readme/index%20-%20phone.jpg)
+  
   - Not Logged In
+    
     ![Wireframe - No Login - Phone](./static/images/readme/index%20-%20phone%20-%20nouser.jpg)
+   
   - Logged In
+    
     ![Wireframe - Logged In - Phone](./static/images/readme/index%20-%20phone%20-%20user.jpg)
 
 #### profile.html
 
 - **Website**
   - Not Logged In
+    
     ![Wireframe - No Login - Website](./static/images/readme/profile%20-%20no%20user.jpg)
+  
   - Logged In
+    
     ![Wireframe - Logged In - Website](./static/images/readme/profile%20-%20user.jpg)
 
 - **Phone**
   - Not Logged In
+  
     ![Wireframe - No Login - Phone](./static/images/readme/profile%20-%20phone%20-%20nouser.jpg)
+  
   - Logged In
+  
     ![Wireframe - Logged In - Phone](./static/images/readme/profile%20-%20phone%20-%20user.jpg)
 
 #### addpost.html
 
 - **Website**
+  
   ![Wireframe - Add Post - Website](./static/images/readme/addpost.jpg)
 
 - **Phone**
+  
   ![Wireframe - Add Post - Phone](./static/images/readme/addpost%20phone.jpg)
 
 #### post_details.html
 
 - **Website**
   - Not Logged In
+  
     ![Wireframe - No Login - Website](./static/images/readme/postdetails%20-%20index%20-%20nouser.jpg)
+  
   - Logged In (Author of the Comment)
+    
     ![Wireframe - Logged In - Website (Author of Comment)](./static/images/readme/postdetails%20-%20index%20-%20user%20-%20author.jpg)
+  
   - Logged In (Author of the Post, No Comment)
+    
     ![Wireframe - Logged In - Website (Author of Post, No Comment)](./static/images/readme/postdetails%20-%20index%20-%20user%20-%20NOauthor.jpg)
+  
   - Logged In (Waiting for Approval)
     ![Wireframe - Logged In - Website (Waiting for Approval)](./static/images/readme/postdetails%20-%20index%20-%20user%20-%20author-approval.jpg)
 
 - **Phone**
   - Not Logged In
+- 
     ![Wireframe - No Login - Phone](./static/images/readme/postdetails%20-%20phone%20-%20nouser.jpg)
+
   - Logged In (Author of the Post, No Comment)
+  
     ![Wireframe - Logged In - Phone (Author of Post, No Comment)](./static/images/readme/postdetails%20-phone%20-%20user%20-%20author.jpg)
+  
   - Logged In (Waiting for Approval)
+  
     ![Wireframe - Logged In - Phone (Waiting for Approval)](./static/images/readme/postdetails%20-phone%20-%20user%20-%20author-approval.jpg)
 
 #### authentication
 
 - **Website**
   - Sign Up
+  
     ![Wireframe - Sign Up - Website](./static/images/readme/Signup-web.jpg)
+
   - Sign In
+  
     ![Wireframe - Sign In - Website](./static/images/readme/Signin-web.jpg)
+
   - Sign Out
+  
     ![Wireframe - Sign Out - Website](./static/images/readme/Signout-web.jpg)
+
   - Password Reset
+- 
     ![Wireframe - Password Reset - Website](./static/images/readme/reset.jpg)
 
 - **Phone**
   - Sign Up
+
     ![Wireframe - Sign Up - Phone](./static/images/readme/signup-phone.jpg)
+
   - Sign In
+  
     ![Wireframe - Sign In - Phone](./static/images/readme/signin-phone.jpg)
+
   - Sign Out
+  
     ![Wireframe - Sign Out - Phone](./static/images/readme/Signout-phone.jpg)
+
   - Password Reset
+- 
     ![Wireframe - Password Reset - Phone](./static/images/readme/reset-phone.jpg)
 
 #### error pages
 
 - **Website**
   - 404
+    
     ![Wireframe - 404 - Website](./static/images/readme/404.jpg)
+  
   - 403
+    
     ![Wireframe - 403 - Website](./static/images/readme/403.jpg)
   - 500
+  
     ![Wireframe - 500 - Website](./static/images/readme/500.jpg)
 
 - **Phone**
   - 404
+    
     ![Wireframe - 404 - Phone](./static/images/readme/404-phone.jpg)
+
   - 403
+    
     ![Wireframe - 403 - Phone](./static/images/readme/403-phone.jpg)
+
   - 500
+  
     ![Wireframe - 500 - Phone](./static/images/readme/500-phone.jpg)
 
 ### Database Design
@@ -400,6 +522,419 @@ The project incorporates several technologies and libraries to enhance its funct
 - Favicon: A small icon that represents your website in the browser's tab or bookmark bar.
   
 # Testing
+
+## Authentication
+
+### Description
+
+Ensure a user can sign up for the website.
+
+### Steps
+
+1. Navigate to [AS-blog](https://as-blog.herokuapp.com/) and click Register.
+2. Enter email, username, and password.
+3. Click Sign up.
+
+### Expected
+
+An email is received with a link to sign up. Upon clicking the link, registration is successful.
+
+### Actual
+
+An email is received with a link to sign up. Upon clicking the link, registration is successful.
+
+---
+
+### Description
+
+Ensure a user can log in once signed up.
+
+### Steps
+
+1. Navigate to [AS-blog](https://as-blog.herokuapp.com/).
+2. Enter login details created in the previous test case.
+3. Click login.
+
+### Expected
+
+User is successfully logged in and redirected to the home page.
+
+### Actual
+
+User is successfully logged in and redirected to the home page.
+
+---
+
+### Description
+
+Ensure a user can sign out.
+
+### Steps
+
+1. Login to the website.
+2. Click the logout button.
+3. Click confirm on the confirm logout page.
+
+### Expected
+
+User is logged out.
+
+### Actual
+
+User is logged out.
+
+---
+### Description
+
+Ensure a user can log in once signed up.
+
+### Steps
+
+1. Navigate to [AS-blog](https://as-blog.herokuapp.com/).
+2. Enter login details created in the previous test case.
+3. Click login.
+
+### Expected
+
+User is successfully logged in and redirected to the home page.
+
+### Actual
+
+User is successfully logged in and redirected to the home page.
+
+## Add Post (repeated twice with and without Featured image)
+
+### Description
+
+Ensure a new post can be created
+
+### Steps
+
+1. Navigate to the page - Login if prompted.
+2. Enter the following details:
+   - Category: Microscopy
+   - Title: Optical Microscopy
+   - Abtract: Advancements in optical microscopy: Enhanced imaging, fluorescence techniques, and multimodal approaches offer insights in diverse scientific fields, from cellular imaging to nanomaterial characterization, with potential for medical diagnostics and personalized medicine.
+   -content
+
+    Optical microscopy has played a vital role in scientific research, providing researchers with a powerful tool for visualizing and analyzing a wide range of samples with high resolution and contrast. Over the years, significant advancements have been made in optical microscopy techniques, resulting in improved imaging capabilities and expanding the scope of applications. In this comprehensive review, we aim to provide an overview of the recent developments in optical microscopy and explore their diverse applications across various scientific disciplines.
+
+    Conventional bright-field microscopy, although widely used, has its limitations, particularly when it comes to visualizing transparent or unstained samples. To address these challenges, advanced contrast-enhancing techniques have been developed, including phase contrast, differential interference contrast (DIC), and dark-field microscopy. These techniques have revolutionized the visualization of cellular structures and subcellular components, enabling detailed examination even in samples without specific staining or labeling.
+
+    Fluorescence microscopy has emerged as a powerful tool for studying biological systems, allowing researchers to selectively label and visualize specific molecules or structures within complex samples. In recent years, there have been significant advancements in fluorescence microscopy techniques. Confocal microscopy, multiphoton microscopy, stimulated emission depletion (STED) microscopy, and stochastic optical reconstruction microscopy (STORM) are just a few examples. These techniques offer exceptional spatial resolution, allowing researchers to investigate subcellular dynamics and molecular interactions with remarkable precision.
+
+    Moreover, there is a growing interest in combining optical microscopy with other imaging modalities, such as spectroscopy and optical coherence tomography (OCT), to gain complementary information about the structural, chemical, and functional properties of samples. These multimodal approaches provide deeper insights into complex biological systems and materials, facilitating a comprehensive understanding of their behavior and characteristics.
+
+    The applications of optical microscopy are widespread across numerous scientific disciplines. In cell biology, optical microscopy enables the visualization of cellular processes, organelles, and cellular interactions. In neuroscience, it aids in the mapping of neuronal circuits and studying brain activity. In materials science and nanotechnology, optical microscopy plays a crucial role in characterizing nanomaterials and understanding their properties. Furthermore, these advancements have the potential to impact medical diagnostics, drug discovery, and personalized medicine, offering new avenues for improved healthcare.
+
+    In conclusion, recent advancements in optical microscopy have significantly enhanced our ability to visualize and analyze biological and material samples with unprecedented detail. The development of novel contrast-enhancing techniques, fluorescence imaging modalities, and multimodal approaches has expanded the capabilities of optical microscopy, enabling researchers to push the boundaries of scientific understanding across various disciplines. As these techniques continue to evolve, we anticipate further breakthroughs that will drive new discoveries and innovations in the years to come.
+
+    + add an image
+
+- Featured image: yes/No
+
+- Tags: Mic, Optical
+
+3. Click Create.
+4. Navigate to the profile
+    - Post is waiting approval 
+   
+
+### Expected
+
+Form successfully submits, the post is waiting approval the post can found on the profile part(waiting approval).
+
+### Actual
+
+Form successfully submits, the post is waiting approval the post can found on the profile part(waiting approval).
+
+---
+## Profile
+
+### Description
+
+Ensure a profile can be edited.
+
+### Steps
+
+1. Navigate to the page (profile) - Login in first
+2. Enter the following details:
+   - Image: new image
+   - Occupation: Scientist
+   - Bio: I'm renowned scientist at INEOS, specializing in materials science and chemical engineering. With a Ph.D. in Chemistry, she is a key contributor to INEOS's research and development team, driving innovation and sustainability in the industry. Dr. Hayes's expertise in advanced materials and her commitment to environmental stewardship make her a valuable asset in shaping the future of scientific discovery.
+   - Experises
+3. Click edit.
+
+### Expected
+
+Form successfully submits, the profile is edited with the new added image and information
+
+### Actual
+
+Form successfully submits, the profile is edited with the new added image and information
+
+---
+## Post
+
+### Description
+
+Post are displayed Latest, Archived and waiting approval 
+
+### Steps
+
+1. Navigate to the page (profile) - Login in first + author(of some post)
+2. Click on the Latest Post
+3. Click the archive button
+   - succes to index.html
+4. Navigate to the page (profile) - post moved to Archived post
+5. Click on the Post
+6. Click on the Unarchive button
+7. Navigate to the page (profile) - post moved to Latest Post
+
+### Expected
+
+The post was successfully archived and then unarchived
+
+### Actual
+
+The post was successfully archived and then unarchived
+
+---
+
+### Description
+
+Ensure a user can successfully Create a review.
+
+### Steps
+
+1. Navigate to the a post - Login in first
+   - You should observe the Leave comment section
+2. Enter the following details:
+   - This innovation is amazing 
+    
+   - Methodology and Experimental design
+     - 2-fair
+   - Results and data analysis
+     - 3-Average
+   - Discussion and interpreation
+     - 4-Good
+   - Contribution and Originality
+     - 4-Excellent
+   - Research Objective and Importance 
+     - 1-Needs Improvement
+   
+3. Click Create 
+
+### Expected
+
+Review is succesfully Created and waiting approval.
+
+### Actual
+
+Review is succesfully Created and waiting approval.
+
+--- 
+
+### Description
+
+Ensure a user can delete his own review
+
+### Steps
+
+1. Navigate to the a post(where you have comment) - Login in first
+   - You should observe the comment section with your comment
+   
+2. Click Delete
+
+### Expected
+
+the review is deleted
+
+### Actual
+
+the review is deleted
+
+--- 
+
+### Actual
+
+Ensure people can like a post
+
+--- 
+
+### Description
+
+Ensure people can like a post
+
+### Steps
+
+1. Navigate to the a post
+   
+2. Click on the Like(heart) button 
+
+### Expected
+
+Page refreshes and post is liked 
+
+### Actual
+
+Page refreshes and post is liked
+
+## filter pages
+
+### Description
+
+ensure the search give improves search capabilities
+
+### Steps
+
+1. Click on the Search bar
+2. Enter the following details:
+   AFM
+3. Click enter
+
+### Expected
+
+The post containing the entered word or part will show.
+
+### Actual
+
+The post containing the entered word or part will show.
+
+---
+
+### Description
+
+ensure the user can filter based on categories
+
+### Steps
+
+1. Navigate to the home page 
+2. Click on a Category
+
+### Expected
+
+Only the post of the same Category will be shown
+
+### Actual
+
+Only the post of the same Category will be shown
+
+---
+
+### Description
+
+ensure the user can filter based on Tags
+
+### Steps
+
+1. Navigate to Home page
+2. Click one of Tags
+
+### Expected
+
+Only the post with the Same tag will be shown
+
+### Actual
+
+Only the post with the Same tag will be shown
+
+## admin 
+
+### Description
+
+ensure admin can change status of a blog past
+
+### Steps
+
+1. Sign in as a staff user.
+2. Select the Post.
+3. Select the post 
+4. Change status (Draft - Publisched - Archive)
+5. Navigate to Home page (Publisched) - other not visible
+
+### Expected
+
+Appearing and dissapearing of post on the blog 
+
+### Actual
+
+Appearing and dissapearing of post on the blog
+
+---
+
+### Description
+
+ensure the admin can see the views on each Post 
+
+### Steps
+
+1. Click on a few post 
+2. Sign in as a staff user.
+3. go to HIT COUNT
+4. hitcount +1
+5. if clicked a again
+6. No change
+
+### Expected
+
+first time somebody clicks a post it will be registered the second one won't 
+until after 5 days and not a maximum of 5 per IP address 
+
+### Actual
+
+first time somebody clicks a post it will be registered the second one won't
+until after 5 days and not a maximum of 5 per IP address
+
+## Navigation Links
+
+Testing was performed to ensure all navigation links on the respective pages navigated to the correct pages as per the design. This was done by clicking on the navigation links on each page.
+
+- Home -> index.html
+- Profile -> Profile.html
+- Add Post -> add_post.html
+- Post -> Post_detail.html
+- Logout -> Sign out all auth page
+- Login -> Sign in all auth page
+- Register -> Sign up all auth page
+
+
+All navigation links directed to the correct pages as expected.
+
+## Footer
+
+Testing was performed on the footer links by clicking the Font Awesome icons and ensuring that the Facebook icon opened Facebook in a new tab and the Twitter icon opened Twitter in a new tab. These behaved as expected.
+
+- Facebook -> https://www.facebook.com/
+- Twitter -> https://twitter.com/
+- Instagram -> https://www.instagram.com/
+- youtube -> https://www.youtube.com/
+
+
+## Unit Testing
+
+Unit tests were created to test some basic functionality such as templates used and redirects. These can be found in the `tests.py` files in the respective apps.
+
+## Accessibility
+
+Wave Accessibility tool was used throughout development and for final testing of the deployed website to check for any aid accessibility testing. Testing was focused to ensure the following criteria were met:
+
+- All forms have associated labels or `aria-labels` so that this is read out on a screen reader to users who tab to form inputs.
+- Color contrasts meet a minimum ratio as specified in WCAG 2.1 Contrast Guidelines.
+- Heading levels are not missed or skipped to ensure the importance of content is relayed correctly to the end user.
+- All content is contained within landmarks to ensure ease of use for assistive technology, allowing the user to navigate by page regions.
+- All non-textual content had alternative text or titles so descriptions are read out to screen readers.
+- HTML page `lang` attribute has been set.
+- ARIA properties have been implemented correctly.
+- WCAG 2.1 coding best practices are being followed.
+
+## Validator Testing
+
+All pages were run through the W3 HTML Validator. Initially, there were some errors due to stray script tags, misuse of headings within spans, and some unclosed elements. All of these issues were corrected, and all pages passed validation.
+
+HTML Validator
+
+All pages were run through the official Pep8 validator to ensure all code was PEP8 compliant. Some errors were shown due to blank spacing
 
 # Deployment
 

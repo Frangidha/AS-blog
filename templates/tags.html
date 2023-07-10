@@ -19,6 +19,11 @@
                                 {% else %}
                                 <img class="card-img-top" src="{{ post.featured_image.url }}">
                                 {% endif %}
+                                {% if post.is_new %}
+                                <div class="new-flash">
+                                    <p class="new-banner"><span class="rotate-text">New</span></p>
+                                </div>
+                                {% endif %}
                                 <div class="image-flash">
                                     <p class="author">Author: {{ post.author }}</p>
                                 </div>
