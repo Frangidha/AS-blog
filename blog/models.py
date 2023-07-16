@@ -96,7 +96,8 @@ class Post(models.Model):
         time_difference = timezone.now() - self.created_on
         return time_difference.days <= 7
 
-   # https://www.youtube.com/watch?v=iGPPhzhXBFg&t=176s&ab_channel=MakersGroup    @receiver(post_save, sender=Post)
+   # https://www.youtube.com/watch?v=iGPPhzhXBFg&t=176s&ab_channel=MakersGroup
+    @receiver(post_save, sender=Post)
     def send_latest_posts_email(sender, instance, created, **kwargs):
         if created and instance.status == 2:
             latest_published_posts = Post.objects.filter(
