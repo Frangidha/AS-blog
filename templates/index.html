@@ -15,17 +15,19 @@
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
-                                <img class="card-img-top" src="{{ category_image }}">
+                                <img class="card-img-top" src="{{ category_image }}"
+                                    alt="category image of blog {{post.title}}">
                                 {% else %}
-                                <img class="card-img-top" src="{{ post.featured_image.url }}">
+                                <img class="card-img-top" src="{{ post.featured_image.url }}"
+                                    alt="blogpost image of {{post.title}}">
                                 {% endif %}
                                 {% if post.is_new %}
                                 <div class="new-flash">
-                                     <p class="new-banner"><span class="rotate-text">New</span></p>
+                                    <p class="new-banner"><span class="rotate-text">New</span></p>
                                 </div>
                                 {% endif %}
                                 <div class="image-flash">
-                                    <p class="author">Author: {{ post.author }}</p>
+                                    <p class="author"> <a href=" /profiles/user/{{ post.author.id }} " class="profile-link">Author: {{ post.author.username }}</a></p>
                                 </div>
                             </div>
                             <a href="{% url 'post_detail' post.slug  %}" class="post-link">

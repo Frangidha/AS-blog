@@ -3,18 +3,17 @@
 {% block content %}
 <html>
 
-<head>
-    <title>Create Post</title>
-</head>
-
 <body>
-    <h1>Create Post</h1>
+    <h1 class="text-center">Create Post</h1>
     <form method="POST" enctype="multipart/form-data">
         {{ form.media }}
         {{ form| crispy }}
         {% csrf_token %}
 
-        <button type="submit">Create</button>
+        <div class="d-flex justify-content-center">
+
+            <button class="btn btn-secondary btn-create" type="submit">Create</button>
+        </div>
     </form>
 </body>
 

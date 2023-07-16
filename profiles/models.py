@@ -20,7 +20,9 @@ class Profile(models.Model):
             # Set the desired width and height
             {'width': 300, 'height': 300, 'crop': 'fill'}
         ],
-        default='https://res.cloudinary.com/dxwttijho/image/upload/v1687161088/media/profiles/avatar_pnpyxq.png', blank=True
+        default=('https://res.cloudinary.com/dxwttijho/image/'
+                 'upload/v1687161088/media/profiles/avatar_pnpyxq.png'),
+        blank=True
     )
     bio_user = RichTextField(max_length=2500, null=True, blank=True)
     occupation = models.CharField(max_length=500, default="N/A")

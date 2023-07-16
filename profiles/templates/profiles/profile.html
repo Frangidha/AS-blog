@@ -78,18 +78,22 @@
     <!-- Modal content -->
     <div class="modal-content container">
         <span class="close fs-1 pe-2">&times;</span>
-        <form method="POST" action="{% url 'edit_profile' request.user.id %}" class="mb-2 p-2"
-            enctype="multipart/form-data">
-            <h2 class="text-center fs-4">Edit Profile</h2>
-            {% csrf_token %}
-            {{ form|crispy }}
-            {{ form.media }}
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary w-25">Edit</button>
-            </div>
-        </form>
+        <div class="scrollable-content">
+            <form method="POST" action="{% url 'edit_profile' request.user.id %}" class="mb-2 p-2"
+                enctype="multipart/form-data">
+                <h2 class="text-center fs-4">Edit Profile</h2>
+                {% csrf_token %}
+                {{ form|crispy }}
+                {{ form.media }}
+                <div class="d-flex justify-content-center align-items-center form-button-container">
+                    <!-- Add the 'form-button-container' class to the div -->
+
+                    <!-- Add 'w-100' class to make the button occupy the full width -->
+                    <button type="submit" class="btn btn-primary w-100">Edit</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 </div>
 {% endblock %}
 

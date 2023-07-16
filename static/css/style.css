@@ -238,7 +238,48 @@ body {
 
 .btn-review {
     margin-top: 10px;
-    /* Adjust the values as per your preference */
+}
+
+
+
+.post-subtitle .profile-link {
+    color: white;
+    text-decoration: none;
+}
+
+
+.post-subtitle .profile-link:hover {
+    color: darkgreen;
+    background: white
+}
+
+.author .profile-link {
+    color: white;
+    text-decoration: none;
+}
+
+
+.author .profile-link:hover {
+    color: darkgreen;
+    background: white
+}
+
+.btn-create {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.scrollable-content {
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+}
+
+
+@media (min-width: 768px) {
+    .modal-content.container {
+        width: 80%;
+
+    }
 }
 
 /* media queries */

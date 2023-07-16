@@ -30,7 +30,7 @@
                 <!-- Post title goes in these h1 tags -->
                 <h1 class="post-title">{{ post.title }}</h1>
                 <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle"><a href=" /profiles/user/{{ post.author.id }} ">{{ post.author.username }}</a>
+                <p class="post-subtitle"><a href=" /profiles/user/{{ post.author.id }} " class="profile-link">{{ post.author.username }}</a>
                     |
                     {{ post.created_on|date:'d M Y' }}</p>
 

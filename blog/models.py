@@ -3,7 +3,6 @@ from django.db import models
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.auth.models import User
 from django.urls import reverse
-from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from taggit.managers import TaggableManager
 from cloudinary.models import CloudinaryField
@@ -12,6 +11,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django import forms
 from django.utils import timezone
+from django.dispatch import receiver
 
 STATUS = (
     (0, 'Draft'),
@@ -24,9 +24,10 @@ STATUS = (
 class Category(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField()
+    # Set the desired width and height
     featured_image_default = CloudinaryField('image',
                                              transformation=[
-                                                 # Set the desired width and height
+
                                                  {'width': 400, 'height': 200,
                                                      'crop': 'fill'}
                                              ], blank=True)
@@ -94,6 +95,24 @@ class Post(models.Model):
     def is_new(self):
         time_difference = timezone.now() - self.created_on
         return time_difference.days <= 7
+
+   # https://www.youtube.com/watch?v=iGPPhzhXBFg&t=176s&ab_channel=MakersGroup    @receiver(post_save, sender=Post)
+    def send_latest_posts_email(sender, instance, created, **kwargs):
+        if created and instance.status == 2:
+            latest_published_posts = Post.objects.filter(
+                status=2).order_by('-created_at')[:3]
+            if latest_published_posts.count() == 3:
+                users = User.objects.all()
+
+                for user in users:
+                    user_email = user.email
+
+                    subject = "Latest Published Posts from YourWebsite"
+                    context = {"latest_posts": latest_published_posts}
+                    message = render_to_string(
+                        "latest_posts_email.html", context)
+                    email = EmailMessage(subject, message, to=[user_email])
+                    email.send()
 
 
 class Review(models.Model):

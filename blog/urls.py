@@ -8,9 +8,11 @@ urlpatterns = [
     path('like/<slug:slug>/', views.PostLike.as_view(), name='post_like'),
     path('category/<slug:slug>/',
          views.CategoryDetail.as_view(), name='category_detail'),
-    path('tag/<slug:tag_slug>/', views.TagFilterView.as_view(), name='tag_filter'),
+    path('tag/<slug:tag_slug>/',
+         views.TagFilterView.as_view(), name='tag_filter'),
     path('profiles/', include('profiles.urls')),
     path('review/<int:pk>/delete/',
          views.DeleteReview.as_view(), name='delete_review'),
-    path('post/<int:pk>/archive/', views.ArchivePost.as_view(), name='archive_post'),
+    path('post/<int:pk>/archive/',
+         views.ArchivePost.as_view(), name='archive_post'),
 ]
