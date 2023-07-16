@@ -96,25 +96,6 @@ class Post(models.Model):
         time_difference = timezone.now() - self.created_on
         return time_difference.days <= 7
 
-   # https://www.youtube.com/watch?v=iGPPhzhXBFg&t=176s&ab_channel=MakersGroup
-    @receiver(post_save, sender=Post)
-    def send_latest_posts_email(sender, instance, created, **kwargs):
-        if created and instance.status == 2:
-            latest_published_posts = Post.objects.filter(
-                status=2).order_by('-created_at')[:3]
-            if latest_published_posts.count() == 3:
-                users = User.objects.all()
-
-                for user in users:
-                    user_email = user.email
-
-                    subject = "Latest Published Posts from YourWebsite"
-                    context = {"latest_posts": latest_published_posts}
-                    message = render_to_string(
-                        "latest_posts_email.html", context)
-                    email = EmailMessage(subject, message, to=[user_email])
-                    email.send()
-
 
 class Review(models.Model):
 
@@ -148,3 +129,26 @@ class Review(models.Model):
 
 def __str__(self):
     return self.author,
+
+
+# https://www.youtube.com/watch?v=iGPPhzhXBFg&t=176s&ab_channel=MakersGroup
+
+
+@receiver(post_save, sender=Post)
+def send_latest_posts_email(sender, instance, created, **kwargs):
+    if created and instance.status == 1:
+        latest_published_posts = Post.objects.filter(
+            status=2).order_by('-created_on')[:3]
+
+        if latest_published_posts.count() == 3:
+            users = User.objects.all()
+
+            for user in users:
+                user_email = user.email
+
+                subject = "Latest Scientific developments"
+                context = {"latest_posts": latest_published_posts}
+                message = render_to_string(
+                    "latest_posts_email.html", context)
+                email = EmailMessage(subject, message, to=[user_email])
+                email.send()
