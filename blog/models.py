@@ -85,7 +85,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('post-detail', args=[self.category.slug, self.slug])
+        return reverse('post_detail', args=[self.category.slug, self.slug])
 
     def save(self, *args, **kwargs):
         if not self.featured_image:
