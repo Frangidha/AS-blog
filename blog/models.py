@@ -11,7 +11,9 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django import forms
 from django.utils import timezone
+from django.template.loader import render_to_string
 from django.dispatch import receiver
+from django.core.mail import EmailMessage
 
 STATUS = (
     (0, 'Draft'),
@@ -137,18 +139,13 @@ def __str__(self):
 @receiver(post_save, sender=Post)
 def send_latest_posts_email(sender, instance, created, **kwargs):
     if created and instance.status == 1:
-        latest_published_posts = Post.objects.filter(
-            status=2).order_by('-created_on')[:3]
+        users = User.objects.all()
+        for user in users:
+            user_email = user.email
 
-        if latest_published_posts.count() == 3:
-            users = User.objects.all()
-
-            for user in users:
-                user_email = user.email
-
-                subject = "Latest Scientific developments"
-                context = {"latest_posts": latest_published_posts}
-                message = render_to_string(
-                    "latest_posts_email.html", context)
-                email = EmailMessage(subject, message, to=[user_email])
-                email.send()
+            subject = "New Post Discovery"
+            context = {"post": instance}
+            message = render_to_string(
+                "latest_post_email.html", context)
+            email = EmailMessage(subject, message, to=[user_email])
+            email.send()
