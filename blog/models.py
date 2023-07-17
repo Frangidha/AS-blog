@@ -138,17 +138,18 @@ def __str__(self):
 
 @receiver(post_save, sender=Post)
 def send_latest_posts_email(sender, instance, created, **kwargs):
-    if created and instance.status == 1:
+    if (created and instance.status == 1) or (instance.status == 1 and instance._previous_status == 0):
         latest_post = Post.objects.filter(
             status=1).order_by('-created_on').first()
         users = User.objects.all()
         for user in users:
             user_email = user.email
 
-            subject = "New Post Discovery"
+            subject = "New Discovery"
             context = {"post": instance}
             message = render_to_string(
                 "latest_post_email.html", context)
             email = EmailMessage(subject, message, to=[user_email])
             email.content_subtype = "html"
             email.send()
+    instance._previous_status = instance.status

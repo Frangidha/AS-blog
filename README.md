@@ -59,10 +59,12 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
     - [Features](#features)
       - [User Registration and Authentication](#user-registration-and-authentication)
       - [Email Verification and Password Reset](#email-verification-and-password-reset)
+      - [Blog Post list](#blog-post-list)
       - [User Profile](#user-profile)
       - [User-Generated Posts, Comments, and Interactions](#user-generated-posts-comments-and-interactions)
       - [Analytics](#analytics)
     - [Future Features](#future-features)
+  - [Getting Started](#getting-started)
 - [The Structure Plane](#the-structure-plane)
   - [The Skeleton Plane](#the-skeleton-plane)
     - [Wireframes](#wireframes)
@@ -235,9 +237,19 @@ Implementing the User Registration and Authentication feature enhances the secur
 
 - The email verification feature ensures that users' email addresses are valid and verified before activating their accounts.
 - It adds an extra layer of security and helps prevent unauthorized access to user accounts.
+
+  ![Wireframe - No Login - Website](./static/images/readme/index%20-%20no%20user.jpg)
+
 - The password reset feature allows users to securely reset their passwords if they forget them or need to change them.
 - Users can request a password reset link, which will be sent to their registered email address, allowing them to create a new password.
+  
+  ![Wireframe - No Login - Website](./static/images/readme/index%20-%20no%20user.jpg)
 
+#### Blog Post list
+
+- **Latest Posts First:** The blog posts are displayed in reverse chronological order, with the most recently created post appearing at the top of the blog feed. This ensures visitors can easily access the newest content without scrolling.
+
+![blog post list](./static/images/readme/index%20page.jpg)
 
 #### User Profile
 - The user profile feature provides users with a dedicated space within the website to manage their personal information and interactions.
@@ -245,6 +257,8 @@ Implementing the User Registration and Authentication feature enhances the secur
 - Additionally, users can customize their profile with optional details like a bio.
 - The user profile allows users to have an overview of their posts, including those awaiting approval, archived posts, and published posts.
 - Including the user profile feature enhances the user experience by allowing users to personalize their account settings, maintain their information, and tailor their interactions according to their preferences.
+
+![profile page](./static/images/readme/Profilepage.jpg)
   
 #### User-Generated Posts, Comments, and Interactions
 
@@ -253,13 +267,29 @@ Implementing the User Registration and Authentication feature enhances the secur
 - Users have the ability to archive their posts, keeping them for reference while removing them from the main published feed.(unarchiving is also possible)
 - Users can leave comments on published posts and also have the option to delete their own comments if desired.
 - Additionally, users can like or upvote posts, showing their appreciation or agreement.
+- Is new Banner for the first 7 days that the post is created
+
+![Post details  page](./static/images/readme/Post_details.jpg)
+
+![Post details  page](./static/images/readme/comment%20section%20.jpg)
 
 #### Analytics
 
 - The system tracks and displays the hit count for each post, allowing the admin to see which posts are the most popular and attract the most views.
 - The analytics feature provides valuable insights into user engagement and the performance of different posts.
 - Admins can utilize this information to understand user preferences, identify popular topics, and make data-driven decisions for content management and improvement.
+
+![hit counts for each post](./static/images/readme/HitCOUNT.jpg)
+
+![hit count per IP address](./static/images/readme/index%20-%20no%20user.jpg)
+
 ### Future Features
+
+- **Post Editing with Approval:** Users can edit posts, but changes need approval before becoming visible to others, maintaining content quality.
+
+- **Comment Editing:** Users can edit comments for better clarity or corrections after posting.
+
+- **Analytics Graphs:** Visualize user engagement and platform performance using interactive graphs like line charts and bar graphs.
 
 # The Structure Plane
 

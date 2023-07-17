@@ -27,7 +27,8 @@
                                 </div>
                                 {% endif %}
                                 <div class="image-flash">
-                                    <p class="author"> <a href=" /profiles/user/{{ post.author.id }} " class="profile-link">Author: {{ post.author.username }}</a></p>
+                                    <p class="author"> <a href=" /profiles/user/{{ post.author.id }} "
+                                            class="profile-link">Author: {{ post.author.username }}</a></p>
                                 </div>
                             </div>
                             <a href="{% url 'post_detail' post.slug  %}" class="post-link">
@@ -37,7 +38,7 @@
                             </a>
                             <hr />
                             <p class="card-text text-muted h6">{{ post.created_on }} <i class="far fa-heart"></i>
-                                {{ post.number_of_likes }}</p>
+                                {{ post.likes.count }}</p>
                             {% if post.tags.all %}
                             <p class="card-text text-muted h6">
                                 {% for tag in post.tags.all %}
