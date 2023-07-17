@@ -7,12 +7,11 @@
 <body>
     <h2>Latest Published Posts</h2>
     <ul>
-        {% for post in latest_posts %}
         <li>
-            <strong>{{ post.title }}</strong>: {{ post.content|truncatewords:30 }}
+            <strong>{{ post.title }}</strong>:
+            <p>{{ post.excerpt}}</p>
             <a href="{{ post.get_absolute_url }}">Read More</a>
         </li>
-        {% endfor %}
     </ul>
 </body>
 
