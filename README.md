@@ -238,12 +238,10 @@ Implementing the User Registration and Authentication feature enhances the secur
 - The email verification feature ensures that users' email addresses are valid and verified before activating their accounts.
 - It adds an extra layer of security and helps prevent unauthorized access to user accounts.
 
-  ![Wireframe - No Login - Website](./static/images/readme/index%20-%20no%20user.jpg)
 
 - The password reset feature allows users to securely reset their passwords if they forget them or need to change them.
 - Users can request a password reset link, which will be sent to their registered email address, allowing them to create a new password.
   
-  ![Wireframe - No Login - Website](./static/images/readme/index%20-%20no%20user.jpg)
 
 #### Blog Post list
 

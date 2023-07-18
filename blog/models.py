@@ -14,7 +14,9 @@ from django.utils import timezone
 from django.template.loader import render_to_string
 from django.dispatch import receiver
 from django.core.mail import EmailMessage
+from django.db.models.signals import pre_save
 
+# Status choices of the Post
 STATUS = (
     (0, 'Draft'),
     (1, 'Published'),
@@ -77,6 +79,7 @@ class Post(models.Model):
 
     class Meta:
         ordering = ('-created_on',)
+    # count the current hits
 
     def current_hit_count(self):
         return self.hit_count.hits
@@ -86,6 +89,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_detail', args=[self.category.slug, self.slug])
+    # set the default images depending on a category
 
     def save(self, *args, **kwargs):
         if not self.featured_image:
@@ -93,6 +97,7 @@ class Post(models.Model):
             if default_image:
                 self.featured_image = default_image.url
         super().save(*args, **kwargs)
+    # is new banner
 
     def is_new(self):
         time_difference = timezone.now() - self.created_on
@@ -100,7 +105,7 @@ class Post(models.Model):
 
 
 class Review(models.Model):
-
+    # Choices for rating model
     RATING_CHOICES = (
         (1, '1-Needs Improvement'),
         (2, '2-Fair'),
@@ -134,6 +139,17 @@ def __str__(self):
 
 
 # https://www.youtube.com/watch?v=iGPPhzhXBFg&t=176s&ab_channel=MakersGroup
+# https://docs.djangoproject.com/en/4.2/ref/signals/
+# checks the previous status of the POST
+@receiver(pre_save, sender=Post)
+def track_previous_status(sender, instance, **kwargs):
+    try:
+        old_instance = Post.objects.get(pk=instance.pk)
+        instance._previous_status = old_instance.status
+    except Post.DoesNotExist:
+        pass
+
+# send the email that a new post is posted
 
 
 @receiver(post_save, sender=Post)

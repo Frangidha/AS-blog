@@ -17,7 +17,7 @@ class ReviewForm(forms.ModelForm):
                   'contribution_and_originality',
                   'research_objective_and_importance')
 
-
+# add_post form
 class PostForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=Category.objects.all(
     ), widget=forms.Select(attrs={'class': 'form-control'}))
@@ -36,7 +36,7 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('category', 'title', 'excerpt',
                   'content', 'featured_image', 'tags')
-
+                  
     def check_title(self):
         title = self.cleaned_data['title']
         # Check if a post with the same title already exists
