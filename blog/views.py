@@ -153,7 +153,7 @@ class TagFilterView(CategoryList, generic.ListView):
 # this class allows add their on post
 
 
-class AddPost(View):
+class AddPost(LoginRequiredMixin, View):
     form_class = PostForm
     template_name = 'add_post.html'
 
