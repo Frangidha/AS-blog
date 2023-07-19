@@ -64,7 +64,6 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
       - [User-Generated Posts, Comments, and Interactions](#user-generated-posts-comments-and-interactions)
       - [Analytics](#analytics)
     - [Future Features](#future-features)
-  - [Getting Started](#getting-started)
 - [The Structure Plane](#the-structure-plane)
   - [The Skeleton Plane](#the-skeleton-plane)
     - [Wireframes](#wireframes)
@@ -179,7 +178,7 @@ Our aim at the Analytical Science Blog is to serve as a comprehensive platform d
 
 Through our blog, we strive to bridge the gap between scientific research and the broader community, making complex concepts accessible and engaging to a wide range of audiences. Whether you are a student, researcher, industry professional, or simply someone with a passion for science, we invite you to join us on this exciting journey of exploration and discovery.
 ### Agile Planning
-This project was developed using agile methodologies, following the principles of delivering small features in incremental sprints. In total, there were x sprints, evenly spaced out over xxx weeks, to ensure a steady pace of development.
+This project was developed using agile methodologies, following the principles of delivering small features in incremental sprints. In total, there were 4 sprints, evenly spaced out over 2 weeks, to ensure a steady pace of development.
 
 All project tasks were organized into epics and categorized based on their priority under the labels of "Must have," "Should have," and "Could have." During the sprint planning, the epics were assigned to specific sprints and story pointed according to their complexity. This approach allowed the team to focus on completing the critical and high-priority stories first, followed by the medium-priority stories, and finally the low-priority or "nice to have" features. By prioritizing in this manner, the core requirements of the project were ensured to be completed, while additional features were added if there was available capacity.
 
@@ -216,7 +215,7 @@ To track the progress and manage the project tasks, a Kanban board was created u
 - User Story #5: Comment Moderation 
 - User Story #6: Tag Blog Posts 
 - User Story #7: View Blog Analytics 
-- User Story #8: Display Latest Articles in News Ticker Format 
+- User Story #8: Send email with new post
 ## The Scope Plane
 ### Features
 
@@ -249,6 +248,16 @@ Implementing the User Registration and Authentication feature enhances the secur
 
 ![blog post list](./static/images/readme/index%20page.jpg)
 
+- **Searching:** This capability allows so quickly search post based on their title. 
+  
+![blog Search](./static/images/readme/Searchbar.jpg)
+
+- **tags:** The blog posts have each their own tags which makes it easy to filter post which have similar field/topic but using a different technique.
+![blog Tags](./static/images/readme/Tag-filter.jpg)
+
+- **Categories:** The blog posts are displayed in reverse chronological order, with the most recently created post appearing at the top of the blog feed. This ensures visitors can easily access the newest content without scrolling.
+![Blog Categories](./static/images/readme/filter-categories.jpg)
+
 #### User Profile
 - The user profile feature provides users with a dedicated space within the website to manage their personal information and interactions.
 - Users can update their profile details, such as their name, profile picture, occupation, expertises, and contact information.
@@ -260,16 +269,32 @@ Implementing the User Registration and Authentication feature enhances the secur
   
 #### User-Generated Posts, Comments, and Interactions
 
+![Post details  page](./static/images/readme/Post_details.jpg) 
+
 - Users can create their own posts, sharing their thoughts, ideas, or experiences with the community.
 - The created posts are sent for approval before they are published to ensure content quality and adherence to guidelines.
+
+![addpost  page](./static/images/readme/add-post.jpg)
+
+
 - Users have the ability to archive their posts, keeping them for reference while removing them from the main published feed.(unarchiving is also possible)
-- Users can leave comments on published posts and also have the option to delete their own comments if desired.
-- Additionally, users can like or upvote posts, showing their appreciation or agreement.
+
+![Is New Banner](./static/images/readme/Archiving.jpg)  
+
 - Is new Banner for the first 7 days that the post is created
 
-![Post details  page](./static/images/readme/Post_details.jpg)
+![Is New Banner](./static/images/readme/ISNEW.jpg)   
+ 
+- Additionally, users can like or upvote posts, showing their appreciation or agreement.
+  
+![Likes page](./static/images/readme/Likes)   
+ 
+- Users can leave comments on published posts and also have the option to delete their own comments if desired.
+    form:
+![comment  page](./static/images/readme/comment%20section%20.jpg)   
+    result: 
+![comment result  page](./static/images/readme/CommentResult.jpg)
 
-![Post details  page](./static/images/readme/comment%20section%20.jpg)
 
 #### Analytics
 
@@ -279,7 +304,7 @@ Implementing the User Registration and Authentication feature enhances the secur
 
 ![hit counts for each post](./static/images/readme/HitCOUNT.jpg)
 
-![hit count per IP address](./static/images/readme/index%20-%20no%20user.jpg)
+![hit count per IP address](./static/images/readme/IP.jpg)
 
 ### Future Features
 
