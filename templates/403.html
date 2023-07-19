@@ -2,17 +2,18 @@
 
 {% block content %}
 
-<h1>Page not found</h1>
-<p>Oops! You do not have permission to access this page.
-</p>
+<div class="container text-center mt-5">
+    <h1>Page not found</h1>
+    <p>Oops! You do not have permission to access this page.</p>
 
-<p>
-    It appears that you are trying to access a resource for which you do not have the necessary permissions. If you
-    believe
-    this is an error, please contact the administrator for assistance.
+    <p>
+        It appears that you are trying to access a resource for which you do not have the necessary permissions. If you
+        believe this is an error, please contact the administrator for assistance.
 
-    In the meantime, you can try navigating back to the homepage or explore other sections of the website.
-</p>
-<button><a class="home-button" href="index.html">Home</a></button>
+        In the meantime, you can try navigating back to the homepage or explore other sections of the website.
+    </p>
+    <button><a class="btn btn-signup btn-lg btn-review" href="{% url 'index' %}">Home</a></button>
+</div>
+
 
 {% endblock %}

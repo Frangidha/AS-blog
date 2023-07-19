@@ -44,7 +44,7 @@
                 {% endif %}
                 {% endfor %}
             </div>
-            {% if user.is_authenticated %}
+            {% if request.user == profile.user %}
             <div class="profile-author">
                 <h2 class="text-center pb-4">Archived Post</h2>
                 {% for blog_post in profile.user.blog_posts.all %}
@@ -124,6 +124,6 @@
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
+    };
 </script>
 {% endblock %}

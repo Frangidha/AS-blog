@@ -68,7 +68,7 @@ class PostDetail(HitCountDetailView):
                 "reviews": reviews,
                 "reviewed": False,
                 "liked": liked,
-                "review_form": ReviewForm()
+                "review_form": ReviewForm(),
             },
         )
 
@@ -100,7 +100,7 @@ class PostDetail(HitCountDetailView):
                 "review": review,
                 "reviewed": True,
                 "review_form": review_form,
-                "liked": liked
+                "liked": liked,
             },
         )
 

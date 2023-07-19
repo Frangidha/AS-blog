@@ -1,5 +1,5 @@
 body {
-    background-color: #F9FAFC;
+    background-color: #FFF;
 }
 
 .brand {
@@ -7,6 +7,13 @@ body {
     font-size: 1.4rem;
     font-weight: 700;
     color: #4A4A4F;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    all: inherit;
+    text-decoration: none;
 }
 
 .red-o {
@@ -18,15 +25,15 @@ body {
 }
 
 .light-bg {
-    background-color: #5dca36;
+    background-color: #008500;
 }
 
 .dark-bg {
-    background-color: #5dca36;
+    background-color: #008500;
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: #FFF;
 }
 
 .card {
@@ -43,7 +50,7 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #4CBB17;
+    background-color: #008500;
 }
 
 .author {
@@ -57,12 +64,12 @@ body {
     overflow: hidden;
     position: relative;
     display: inline-block;
-    height: 33vh;
+    min-height: 33vh;
     width: 100%;
 }
 
 .masthead-text {
-    background-color: #4CBB17;
+    background-color: #008500;
     color: #FFF;
     position: relative;
 }
@@ -79,7 +86,7 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #4CBB17;
+    background: #008500;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -93,7 +100,7 @@ body {
 
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: #008500;
 }
 
 .post-title {
@@ -119,18 +126,18 @@ body {
 }
 
 .btn-signup {
-    background-color: #4CBB17;
+    background-color: #008500;
     color: #fff;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: darkgreen;
+    background-color: #008500;
     color: #fff;
 }
 
 .link {
-    color: #23BBBB;
+    color: #177D7D;
     text-decoration: none;
 }
 
@@ -220,9 +227,9 @@ body {
 }
 
 .btn-secondary {
-    background-color: #4CBB17;
+    background-color: #008500;
     color: white;
-    border: 2px solid #4CBB17;
+    border: 2px solid #008500;
     border-radius: 4px;
     padding: 10px 20px;
     font-size: 16px;
@@ -232,8 +239,8 @@ body {
 
 .btn-secondary:hover {
 
-    background-color: darkgreen;
-    border-color: darkgreen;
+    background-color: #005e00;
+    border-color: #008500;
 }
 
 .btn-review {
@@ -242,26 +249,20 @@ body {
 
 
 
-.post-subtitle .profile-link {
-    color: white;
-    text-decoration: none;
-}
-
-
-.post-subtitle .profile-link:hover {
-    color: darkgreen;
-    background: white
-}
-
+.post-subtitle .profile-link,
 .author .profile-link {
     color: white;
     text-decoration: none;
 }
 
+.post-subtitle .profile-link:hover {
+    color: #008500;
+    background: white;
+}
 
 .author .profile-link:hover {
-    color: darkgreen;
-    background: white
+    color: #008500;
+    background: white;
 }
 
 .btn-create {
@@ -274,6 +275,14 @@ body {
     overflow-y: auto;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.sr-only {
+    color: #D23F0F;
+}
 
 @media (min-width: 768px) {
     .modal-content.container {
