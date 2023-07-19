@@ -63,6 +63,7 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
       - [User Profile](#user-profile)
       - [User-Generated Posts, Comments, and Interactions](#user-generated-posts-comments-and-interactions)
       - [Analytics](#analytics)
+      - [automatic mail](#automatic-mail)
     - [Future Features](#future-features)
 - [The Structure Plane](#the-structure-plane)
   - [The Skeleton Plane](#the-skeleton-plane)
@@ -155,6 +156,10 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
     - [Steps](#steps-14)
     - [Expected](#expected-14)
     - [Actual](#actual-15)
+    - [Description](#description-15)
+    - [Steps](#steps-15)
+    - [Expected](#expected-15)
+    - [Actual](#actual-16)
   - [Navigation Links](#navigation-links)
   - [Footer](#footer)
   - [Unit Testing](#unit-testing)
@@ -232,15 +237,21 @@ The User Registration and Authentication feature enables individuals to create a
 
 Implementing the User Registration and Authentication feature enhances the security of the website, enables personalized user experiences, and allows users to access and manage their accounts and preferences effectively.
 
-#### Email Verification and Password Reset
+#### Email Verification and Password Reset 
 
 - The email verification feature ensures that users' email addresses are valid and verified before activating their accounts.
 - It adds an extra layer of security and helps prevent unauthorized access to user accounts.
+  after registration:
+  ![Verification pop up](./static/images/readme/Verification%20message.jpg)
+  Verification email
+  ![Verification pop up](./static/images/readme/verificationemail.jpg)
 
 
 - The password reset feature allows users to securely reset their passwords if they forget them or need to change them.
 - Users can request a password reset link, which will be sent to their registered email address, allowing them to create a new password.
-  
+  ![password reset view](./static/images/readme/Password%20reset.jpg)
+  password reset email
+  ![password reset email](./static/images/readme/Password%20resetmail.jpg)
 
 #### Blog Post list
 
@@ -287,13 +298,11 @@ Implementing the User Registration and Authentication feature enhances the secur
  
 - Additionally, users can like or upvote posts, showing their appreciation or agreement.
   
-![Likes page](./static/images/readme/Likes)   
+![Likes page](./static/images/readme/likes.jpg)   
  
 - Users can leave comments on published posts and also have the option to delete their own comments if desired.
-    form:
 ![comment  page](./static/images/readme/comment%20section%20.jpg)   
-    result: 
-![comment result  page](./static/images/readme/CommentResult.jpg)
+
 
 
 #### Analytics
@@ -305,6 +314,12 @@ Implementing the User Registration and Authentication feature enhances the secur
 ![hit counts for each post](./static/images/readme/HitCOUNT.jpg)
 
 ![hit count per IP address](./static/images/readme/IP.jpg)
+
+#### automatic mail
+
+When a new POST is approved an automatic mail we be send to the registered members.
+
+![mail automatic](./static/images/readme/Test%20email.jpg)
 
 ### Future Features
 
@@ -939,6 +954,26 @@ until after 5 days and not a maximum of 5 per IP address
 first time somebody clicks a post it will be registered the second one won't
 until after 5 days and not a maximum of 5 per IP address
 
+---
+
+### Description
+
+Ensure people get an email when I new post get's approved
+
+### Steps
+
+1. post in Draft
+2. Change status to Publisched
+3. Check your Email
+
+### Expected
+
+an email should be received. with the abstract and title of the new post with a link to the website.
+
+### Actual
+
+an email should be received. with the abstract and title of the new post with a link to the website.
+
 ## Navigation Links
 
 Testing was performed to ensure all navigation links on the respective pages navigated to the correct pages as per the design. This was done by clicking on the navigation links on each page.
@@ -1063,7 +1098,7 @@ This project acknowledges the following resources and individuals who contribute
 - **Matt Rudge from Code Institute:** Grateful acknowledgement goes to Matt Rudge from Code Institute for his valuable contributions. You can find his work and resources in the [Code Institute Django3blog](https://github.com/Code-Institute-Solutions/Django3blog/tree/master/12_final_deployment) GitHub repository.
   
 - **Portfolio-Project-4-SizzleAndSteak:** Acknowledgements to Gareth McGirr for the inspiration and basis provided for implementing the verification email and password reset functionalities in this project. [GitHub Repository](https://github.com/Gareth-McGirr/Portfolio-Project-4-SizzleAndSteak)
-- https://www.youtube.com/watch?v=_QTESQ6vSWE&ab_channel=Devmaesters
-- https://stackoverflow.com/questions/70867102/text-banner-over-image-not-aligned-properly
-- https://codepen.io/hesguru/pen/BaybqXv
-- 
+- **CKEditor Images to Cloudinary:**
+   The project utilizes the CKEditor plugin to manage and upload images, and it integrates with Cloudinary for image storage and management. A tutorial or video guide that helped in implementing this feature can be found at the following link:[CKEditor Images to Cloudinary](https://www.youtube.com/watch?v=_QTESQ6vSWE&ab_channel=Devmaesters)
+- **Banner Styling:**
+   The project implements banner styling, allowing text to be displayed over images. To achieve the desired effect, we used a solution from the following Stack Overflow post: Stack Overflow Solution: [Text Banner Over Image Not Aligned Properly](https://stackoverflow.com/questions/70867102/text-banner-over-image-not-aligned-properly)
