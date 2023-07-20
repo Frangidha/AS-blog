@@ -1059,7 +1059,7 @@ The site was deployed to Heroku. The steps to deploy are as follows:
 10. Click "Deploy".
 11. The app should now be deployed.
 
-The live link can be found here: [Live Site](https://example.com)
+The live link can be found here: [Live Site](https://as-blog.herokuapp.com/)
 
 ## Run Locally
 

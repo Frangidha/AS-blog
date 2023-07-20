@@ -11,7 +11,7 @@
             <div class="profile-img text-center">
                 <img src="{{ profile.profile_image.url }}" alt="{{ profile.user.username }}'s profile image">
             </div>
-            <h1>{{ profile.user.username }}</h1>
+            <h2>{{ profile.user.username }}</h2>
             <p><strong>Joined: </strong>{{ profile.user.date_joined|date:'d M Y' }}</p>
             <p><strong>Occuppation:</strong> {{ profile.occupation }}</p>
             <p><strong>Expertises:</strong></p>
