@@ -2,7 +2,6 @@ from .models import Review, Post, Category
 from django import forms
 from django.core.exceptions import ValidationError
 from taggit.forms import TagField, TagWidget
-from ckeditor.widgets import CKEditorWidget
 from cloudinary.forms import CloudinaryFileField
 
 

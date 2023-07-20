@@ -510,7 +510,7 @@ White: As the project's cornerstone, the primary background color gracefully env
 
 Gray: Comprising a range of shades, including #445261, gray, and #4A4A4F, the grayscale palette is skillfully utilized for borders, backgrounds, and delicate accents. These understated tones imbue the design with depth and an air of sophistication.
 
-Green: Infused with life and energy, a vivid shade of green (#4CBB1 and dark green for extra effect) is selectively applied as an accent color to command attention towards crucial elements. Its infusion brings a touch of nature's vibrancy and rejuvenation to the project.
+Green: Infused with life and energy, a vivid shade of green (#008500 and #005e00 for extra effect) is selectively applied as an accent color to command attention towards crucial elements. Its infusion brings a touch of nature's vibrancy and rejuvenation to the project.
 
 The cohesive utilization of this color scheme aims to create a visually pleasing and harmonious user experience, cultivating an environment that is both polished and contemporary.
 ### Typography
