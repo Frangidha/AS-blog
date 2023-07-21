@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Post, Review, Category
 from hitcount.models import Hit
+from django_summernote.admin import SummernoteModelAdmin
 
 
 @admin.register(Category)
@@ -10,7 +11,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(SummernoteModelAdmin):
     # Add desired fields for display
     list_display = ('title', 'author', 'created_on',
                     'status')
@@ -20,6 +21,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('title', 'name', 'email', 'body', 'tags__name')
     # Automatically populate the slug field based on the title
     prepopulated_fields = {'slug': ('title',)}
+    summernote_fields = ('content',)
 
     fieldsets = (
         ('Post Details', {

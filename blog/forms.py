@@ -3,6 +3,8 @@ from django import forms
 from django.core.exceptions import ValidationError
 from taggit.forms import TagField, TagWidget
 from cloudinary.forms import CloudinaryFileField
+from django_summernote.fields import SummernoteTextFormField, SummernoteTextField
+from django_summernote.widgets import SummernoteWidget
 
 
 class ReviewForm(forms.ModelForm):
@@ -17,6 +19,8 @@ class ReviewForm(forms.ModelForm):
                   'research_objective_and_importance')
 
 # add_post form
+
+
 class PostForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=Category.objects.all(
     ), widget=forms.Select(attrs={'class': 'form-control'}))
@@ -35,7 +39,10 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('category', 'title', 'excerpt',
                   'content', 'featured_image', 'tags')
-                  
+        widgets = {
+            'content': SummernoteWidget(),
+        }
+
     def check_title(self):
         title = self.cleaned_data['title']
         # Check if a post with the same title already exists

@@ -3,7 +3,6 @@ from django.db import models
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.auth.models import User
 from django.urls import reverse
-from ckeditor_uploader.fields import RichTextUploadingField
 from taggit.managers import TaggableManager
 from cloudinary.models import CloudinaryField
 from hitcount.models import HitCountMixin, HitCount
@@ -65,7 +64,7 @@ class Post(models.Model):
     )
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
-    content = RichTextUploadingField()
+    content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(

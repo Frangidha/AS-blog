@@ -6,7 +6,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls'), name='blog'),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('summernote/', include('django_summernote.urls')),
     path('accounts/', include('allauth.urls')),
     path('hitcount/', include('hitcount.urls', namespace='hitcount')),
 ]
