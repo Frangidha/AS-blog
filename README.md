@@ -89,6 +89,7 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
     - [DJANGO](#django)
     - [Other technologies](#other-technologies)
 - [Testing](#testing)
+  - [Summary](#summary)
   - [Authentication](#authentication-1)
     - [Description](#description)
     - [Steps](#steps)
@@ -111,53 +112,60 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
     - [Steps](#steps-4)
     - [Expected](#expected-4)
     - [Actual](#actual-4)
+  - [Description](#description-5)
+  - [Test Cases](#test-cases)
+    - [Add Post (Repeated with Title Validation)](#add-post-repeated-with-title-validation)
+      - [Description](#description-6)
+      - [Steps](#steps-5)
+      - [Expected Results](#expected-results)
+      - [Actual Results](#actual-results)
   - [Profile](#profile)
-    - [Description](#description-5)
-    - [Steps](#steps-5)
+    - [Description](#description-7)
+    - [Steps](#steps-6)
     - [Expected](#expected-5)
     - [Actual](#actual-5)
   - [Post](#post)
-    - [Description](#description-6)
-    - [Steps](#steps-6)
+    - [Description](#description-8)
+    - [Steps](#steps-7)
     - [Expected](#expected-6)
     - [Actual](#actual-6)
-    - [Description](#description-7)
-    - [Steps](#steps-7)
+    - [Description](#description-9)
+    - [Steps](#steps-8)
     - [Expected](#expected-7)
     - [Actual](#actual-7)
-    - [Description](#description-8)
-    - [Steps](#steps-8)
+    - [Description](#description-10)
+    - [Steps](#steps-9)
     - [Expected](#expected-8)
     - [Actual](#actual-8)
     - [Actual](#actual-9)
-    - [Description](#description-9)
-    - [Steps](#steps-9)
+    - [Description](#description-11)
+    - [Steps](#steps-10)
     - [Expected](#expected-9)
     - [Actual](#actual-10)
   - [filter pages](#filter-pages)
-    - [Description](#description-10)
-    - [Steps](#steps-10)
+    - [Description](#description-12)
+    - [Steps](#steps-11)
     - [Expected](#expected-10)
     - [Actual](#actual-11)
-    - [Description](#description-11)
-    - [Steps](#steps-11)
+    - [Description](#description-13)
+    - [Steps](#steps-12)
     - [Expected](#expected-11)
     - [Actual](#actual-12)
-    - [Description](#description-12)
-    - [Steps](#steps-12)
+    - [Description](#description-14)
+    - [Steps](#steps-13)
     - [Expected](#expected-12)
     - [Actual](#actual-13)
   - [admin](#admin)
-    - [Description](#description-13)
-    - [Steps](#steps-13)
+    - [Description](#description-15)
+    - [Steps](#steps-14)
     - [Expected](#expected-13)
     - [Actual](#actual-14)
-    - [Description](#description-14)
-    - [Steps](#steps-14)
+    - [Description](#description-16)
+    - [Steps](#steps-15)
     - [Expected](#expected-14)
     - [Actual](#actual-15)
-    - [Description](#description-15)
-    - [Steps](#steps-15)
+    - [Description](#description-17)
+    - [Steps](#steps-16)
     - [Expected](#expected-15)
     - [Actual](#actual-16)
   - [Navigation Links](#navigation-links)
@@ -590,6 +598,28 @@ The project incorporates several technologies and libraries to enhance its funct
 - Favicon: A small icon that represents your website in the browser's tab or bookmark bar.
   
 # Testing
+## Summary
+
+| Test Number | Description                                           | Steps                                         | Expected Results                                  | Actual Results                                     | Pass/Fail |
+|-------------|-------------------------------------------------------|-----------------------------------------------|---------------------------------------------------|----------------------------------------------------|-----------|
+| 1           | User Sign Up                                          | Navigate, Register, Enter details, Sign up   | Email received with link for successful signup   | Email received with link for successful signup    | Pass      |
+| 2           | User Log In                                           | Navigate, Enter login details, Click login   | Successfully logged in and redirected to homepage | Successfully logged in and redirected to homepage  | Pass      |
+| 3           | User Log Out                                          | Login, Click logout button, Confirm logout   | Successfully logged out                           | Successfully logged out                            | Pass      |
+| 4           | Create Post                                           | Navigate, Enter post details, Click Create   | Form submitted, post waiting for approval        | Form submitted, post waiting for approval         | Pass      |
+| 5           | Edit Profile                                          | Navigate, Enter profile details, Click edit  | Form submitted, profile edited successfully      | Form submitted, profile edited successfully       | Pass      |
+| 6           | Archive and Unarchive Post                            | Navigate, Click on Latest Post, Click archive | Post successfully archived                        | Post successfully unarchived                        | Pass      |
+| 7           | Create Review                                         | Navigate, Enter review details, Click Create | Review successfully created, waiting for approval | Review successfully created, waiting for approval  | Pass      |
+| 8           | Delete Review                                         | Navigate, Click Delete on own review         | Review successfully deleted                       | Review successfully deleted                        | Pass      |
+| 9           | Like Post                                             | Navigate, Click Like button on a post        | Post liked successfully                           | Post liked successfully                            | Pass      |
+| 10          | Search Posts                                          | Click Search bar, Enter search term          | Posts containing search term displayed           | Posts containing search term displayed            | Pass      |
+| 11          | Filter by Category                                    | Navigate, Click on a Category                | Only posts from the selected Category displayed  | Only posts from the selected Category displayed   | Pass      |
+| 12          | Filter by Tags                                        | Navigate, Click on a Tag                     | Only posts with the same tag displayed           | Only posts with the same tag displayed            | Pass      |
+| 13          | Admin Change Status of a Blog Post                    | Sign in as staff, Select post, Change status  | Post status changes accordingly                   | Post status changes accordingly                    | Pass      |
+| 14          | Admin View Post Views                                 | Click on multiple posts, Sign in as staff     | Post views recorded correctly                     | Post views recorded correctly                      | Pass      |
+| 15          | Receive Email Notification for New Approved Post     | Post in Draft, Change status to Published    | Receive email notification with post details      | Receive email notification with post details       | Pass      |
+| 16          | Navigation Links                                      | Click on each navigation link                | Correct pages are navigated to                    | Correct pages are navigated to                     | Pass      |
+| 17          | Footer Links                                          | Click on each footer icon                    | Correct social media platforms opened in new tabs  | Correct social media platforms opened in new tabs   | Pass      |
+
 
 ## Authentication
 
@@ -681,7 +711,7 @@ Ensure a new post can be created
 1. Navigate to the page - Login if prompted.
 2. Enter the following details:
    - Category: Microscopy
-   - Title: Optical Microscopy
+   - Title: Optical Microscopy(+image)
    - Abtract: Advancements in optical microscopy: Enhanced imaging, fluorescence techniques, and multimodal approaches offer insights in diverse scientific fields, from cellular imaging to nanomaterial characterization, with potential for medical diagnostics and personalized medicine.
    -content
 
@@ -706,7 +736,7 @@ Ensure a new post can be created
 3. Click Create.
 4. Navigate to the profile
     - Post is waiting approval 
-   
+
 
 ### Expected
 
@@ -717,6 +747,41 @@ Form successfully submits, the post is waiting approval the post can found on th
 Form successfully submits, the post is waiting approval the post can found on the profile part(waiting approval).
 
 ---
+
+## Description
+
+This project is a website that allows users to create and publish posts on various scientific topics, with a particular focus on optical microscopy and related techniques. Users can sign up, log in, create posts, add images, and view posts from other users. The website also includes features such as post approval, post archiving, user profile editing, and post likes.
+
+## Test Cases
+
+### Add Post (Repeated with Title Validation)
+
+#### Description
+
+Ensure a new post can be created, and the title validation displays an alert when a duplicate title is used.
+
+#### Steps
+
+1. Navigate to the page - Login if prompted.
+2. Enter the following details:
+   - Category: Microscopy
+   - Title: Optical Microscopy
+   - Abstract: (Copy the abstract from the previous test)
+   - Content: (Copy the content from the previous test)
+   - Tags
+
+3. Click Create.
+
+#### Expected Results
+
+A post should be created successfully, and a message indicating the post creation is successful should be displayed.
+
+#### Actual Results
+
+An alert should be displayed, notifying the user that the title "Optical Microscopy" is already in use and suggesting using a different title. doesn't submit
+
+---
+
 ## Profile
 
 ### Description
@@ -999,10 +1064,6 @@ Testing was performed on the footer links by clicking the Font Awesome icons and
 - youtube -> https://www.youtube.com/
 
 
-## Unit Testing
-
-Unit tests were created to test some basic functionality such as templates used and redirects. These can be found in the `tests.py` files in the respective apps.
-
 ## Accessibility
 
 Wave Accessibility tool was used throughout development and for final testing of the deployed website to check for any aid accessibility testing. Testing was focused to ensure the following criteria were met:
@@ -1018,9 +1079,17 @@ Wave Accessibility tool was used throughout development and for final testing of
 
 ## Validator Testing
 
+HTML Validator
+
 All pages were run through the W3 HTML Validator. Initially, there were some errors due to stray script tags, misuse of headings within spans, and some unclosed elements. All of these issues were corrected, and all pages passed validation.
 
-HTML Validator
+Please note that the use of the Summernote package in "add_post.html" may generate HTML content that could potentially result in W3C validation errors. It is advised to review and ensure the generated content aligns with W3C standards for better web compatibility and accessibility.
+
+CSS Valditor
+
+No CSS Errors were observed.
+
+pep8 complaint
 
 All pages were run through the official Pep8 validator to ensure all code was PEP8 compliant. Some errors were shown due to blank spacing
 

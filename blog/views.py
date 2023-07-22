@@ -147,7 +147,7 @@ class TagFilterView(CategoryList, generic.ListView):
 
     def get_queryset(self):
         tag_slug = self.kwargs['tag_slug']
-        queryset = Post.objects.filter(tags__slug=tag_slug)
+        queryset = Post.objects.filter(tags__slug=tag_slug, status=1)
         return queryset
 
 # this class allows add their on post

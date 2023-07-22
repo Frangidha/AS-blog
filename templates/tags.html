@@ -25,7 +25,8 @@
                                 </div>
                                 {% endif %}
                                 <div class="image-flash">
-                                    <p class="author">Author: {{ post.author }}</p>
+                                   <p class="author"> <a href=" /profiles/user/{{ post.author.id }} "
+                                            class="profile-link">Author: {{ post.author.username }}</a></p>
                                 </div>
                             </div>
                             <a href="{% url 'post_detail' post.slug %}" class="post-link">
@@ -45,8 +46,10 @@
                             {% endif %}
                         </div>
                     </div>
+
                 </div>
                 {% if forloop.counter|divisibleby:3 %}
+
             </div>
             <div class="row">
                 {% endif %}
