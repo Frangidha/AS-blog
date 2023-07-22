@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container text-center mt-5">
-    <h1>Server Timeout</h1>
+    <h2>Server Timeout</h2>
     <p>Oops! The server took too long to respond.
     </p>
 
@@ -15,7 +15,7 @@
 
         In the meantime, you can try navigating back to the homepage or explore other sections of the website.</p>
 
-    <button><a class="btn btn-secondary btn-signup" href="{% url 'home' %}">Home</a></button>
+    <a class="btn btn-secondary btn-signup" href="{% url 'home' %}">Home</a>
 
 </div>
 {% endblock %}

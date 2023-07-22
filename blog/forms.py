@@ -3,7 +3,6 @@ from django import forms
 from django.core.exceptions import ValidationError
 from taggit.forms import TagField, TagWidget
 from cloudinary.forms import CloudinaryFileField
-from django_summernote.fields import SummernoteTextFormField, SummernoteTextField
 from django_summernote.widgets import SummernoteWidget
 
 

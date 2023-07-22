@@ -153,7 +153,8 @@ def track_previous_status(sender, instance, **kwargs):
 
 @receiver(post_save, sender=Post)
 def send_latest_posts_email(sender, instance, created, **kwargs):
-    if (created and instance.status == 1) or (instance.status == 1 and instance._previous_status == 0):
+    if (created and instance.status == 1) or (instance.status == 1 and
+                                              instance._previous_status == 0):
         latest_post = Post.objects.filter(
             status=1).order_by('-created_on').first()
         users = User.objects.all()
