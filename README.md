@@ -170,7 +170,6 @@ Don't miss out on the latest updates and discoveries in the world of analytical 
     - [Actual](#actual-16)
   - [Navigation Links](#navigation-links)
   - [Footer](#footer)
-  - [Unit Testing](#unit-testing)
   - [Accessibility](#accessibility)
   - [Validator Testing](#validator-testing)
 - [Deployment](#deployment)
@@ -556,25 +555,23 @@ By combining the default category images, user-provided featured images, and the
 The project incorporates several technologies and libraries to enhance its functionality. Here is an expanded list of key technologies and their respective versions used in the project:
 
 - asgiref==3.6.0
-- cloudinary==1.33.0 (used for image storage and management)
+- cloudinary==1.33.0
 - dj-database-url==0.5.0
-- dj3-cloudinary-storage==0.0.6
+- dj3-cloudinary-storage==0.0.6 
 - Django==3.2.19
-- django-allauth==0.54.0 (provides user authentication and login features)
+- django-allauth==0.54.0
 - django-appconf==1.0.5
 - django-braces==1.15.0
-- django-ckeditor==6.5.1 (enables a rich text editor for modifying templates)
-- django-cloudinary-storage==0.3.0 (integrates Cloudinary with Django for image storage)
-- django-crispy-forms==1.14.0
+- django-cloudinary-storage==0.3.0 (db storage)
+- django-crispy-forms==1.14.0 (forms)
 - django-etc==1.4.0
-- django-hitcount==1.3.5 (used for blog analytics, such as post views)
+- django-hitcount==1.3.5 (counting hits on post)
 - django-imagekit==4.1.0
 - django-js-asset==2.0.0
 - django-model-utils==4.3.1
 - django-resized==1.0.2
-- django-star-ratings==0.9.2
-- django-summernote==0.8.20.0
-- django-taggit==4.0.0 (provides tagging functionality for blog posts)
+- django-summernote==0.8.20.0 (editor for easy changes)
+- django-taggit==4.0.0 (tags)
 - djangorestframework==3.14.0
 - gunicorn==20.1.0
 - oauthlib==3.2.2
@@ -588,7 +585,7 @@ The project incorporates several technologies and libraries to enhance its funct
 - sqlparse==0.4.4
 - swapper==1.3.0
 - urllib3==1.26.15
-- whitenoise==6.4.0
+  
 
 ### Other technologies
 
@@ -1167,7 +1164,6 @@ This project acknowledges the following resources and individuals who contribute
 - **Matt Rudge from Code Institute:** Grateful acknowledgement goes to Matt Rudge from Code Institute for his valuable contributions. You can find his work and resources in the [Code Institute Django3blog](https://github.com/Code-Institute-Solutions/Django3blog/tree/master/12_final_deployment) GitHub repository.
   
 - **Portfolio-Project-4-SizzleAndSteak:** Acknowledgements to Gareth McGirr for the inspiration and basis provided for implementing the verification email and password reset functionalities in this project. [GitHub Repository](https://github.com/Gareth-McGirr/Portfolio-Project-4-SizzleAndSteak)
-- **CKEditor Images to Cloudinary:**
-   The project utilizes the CKEditor plugin to manage and upload images, and it integrates with Cloudinary for image storage and management. A tutorial or video guide that helped in implementing this feature can be found at the following link:[CKEditor Images to Cloudinary](https://www.youtube.com/watch?v=_QTESQ6vSWE&ab_channel=Devmaesters)
+
 - **Banner Styling:**
    The project implements banner styling, allowing text to be displayed over images. To achieve the desired effect, we used a solution from the following Stack Overflow post: Stack Overflow Solution: [Text Banner Over Image Not Aligned Properly](https://stackoverflow.com/questions/70867102/text-banner-over-image-not-aligned-properly)
