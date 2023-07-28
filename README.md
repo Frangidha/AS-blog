@@ -200,9 +200,10 @@ To track the progress and manage the project tasks, a Kanban board was created u
 #### Epic 1: User Management
 
 - User Story #1: User Registration and Login 
-- User Story #9: Create and Edit Blog Posts User 
+- User Story #9: Create Blog Posts User 
 - User Story #10: Choose Different Templates for Blog Posts 
 - User Story #20: Account Verification Email
+- User Story #23: user: profile
 
 #### Epic 2: Blog Management
 
@@ -228,6 +229,7 @@ To track the progress and manage the project tasks, a Kanban board was created u
 - User Story #6: Tag Blog Posts 
 - User Story #7: View Blog Analytics 
 - User Story #8: Send email with new post
+- User Story #23: New Banner
 ## The Scope Plane
 ### Features
 

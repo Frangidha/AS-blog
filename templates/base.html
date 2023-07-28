@@ -80,8 +80,6 @@
                     <li>
 
                         <form class="d-flex" action="/">
-
-
                             <input class="form-control mr-0" type="search" value="{{request.GET.q}}" name="q"
                                 placeholder="Search" aria-label="Search">
                         </form>
@@ -113,8 +111,10 @@
             <div class="col-12">
                 <div class="category-filters">
                     <div class="btn-group d-flex flex-wrap justify-content-between" role="group">
+                        <a class="btn btn-secondary" aria-current="page" href="{% url 'home' %}">All</a>
                         {% for category in category_list %}
-                        <a href="{% url 'category_detail' slug=category.slug %}" class="btn btn-secondary">
+                        <a href="{% url 'category_detail' slug=category.slug %}"
+                            class="btn btn-secondary {% if category.slug == selected_category %}active{% endif %}">
                             {{ category.title }}
                         </a>
                         {% endfor %}

@@ -19,6 +19,7 @@ class CategoryList:
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['category_list'] = Category.objects.order_by('title')
+        context['selected_category'] = self.kwargs.get('slug')
         return context
 # https://www.codesnail.com/building-a-search-functionality-django-blog-9/
 
@@ -195,6 +196,7 @@ class DeleteReview(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def get_success_url(self):
         post = self.get_object().post
         return reverse('post_detail', kwargs={'slug': post.slug})
+
 
 # this class allows the user to archive their own post
 
