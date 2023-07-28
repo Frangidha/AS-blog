@@ -286,10 +286,15 @@ img {
 
 .category-filters .btn.active.btn-secondary {
     background-color: #008500;
-    color: #008500;
 }
 
+.social-media {
+    color: #fff;
+}
 
+.social-media:hover {
+    color: blue;
+}
 
 /* media queries */
 @media (min-width: 750px) {

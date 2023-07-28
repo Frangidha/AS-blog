@@ -111,7 +111,6 @@
             <div class="col-12">
                 <div class="category-filters">
                     <div class="btn-group d-flex flex-wrap justify-content-between" role="group">
-                        <a class="btn btn-secondary" aria-current="page" href="{% url 'home' %}">All</a>
                         {% for category in category_list %}
                         <a href="{% url 'category_detail' slug=category.slug %}"
                             class="btn btn-secondary {% if category.slug == selected_category %}active{% endif %}">
@@ -135,8 +134,9 @@
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
         <p class="m-0 text-center text-white">Made by Scientific comunity</p>
-        <p class="m-0 text-center text-white">Follow us: <a href="https://www.facebook.com/" target="_blank"
-                rel="noopener" aria-label="link to facebook"><i class="fab fa-facebook-square ms-3"></i></a>
+        <p class="m-0 text-center text-white social-media">Follow us: <a href="https://www.facebook.com/"
+                target="_blank" rel="noopener" aria-label="link to facebook"><i
+                    class="fab fa-facebook-square ms-3"></i></a>
             <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="link to twitter"><i
                     class="fab fa-twitter-square ms-3"></i></a>
             <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="instagram"><i
