@@ -30,7 +30,7 @@ CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "8000-frangidha-as-blog-79j56tpr0l.us2.codeanyapp.com",
