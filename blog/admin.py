@@ -1,8 +1,15 @@
 from django.contrib import admin
-from .models import Post, Review, Category
+from .models import Post, Review, Category, Technique
 from hitcount.models import Hit
 from django_summernote.admin import SummernoteModelAdmin
 
+
+@admin.register(Technique)
+class TechniqueAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category', 'slug')
+    list_filter = ('category',)
+    search_fields = ('name', 'category__title')  # You can search by name or category title
+    prepopulated_fields = {'slug': ('name',)}  # Automatically populate the slug field based on the name
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -28,7 +35,7 @@ class PostAdmin(SummernoteModelAdmin):
             'fields': ('title', 'slug', 'author', 'excerpt', 'content')
         }),
         ('Categorization', {
-            'fields': ('category', 'tags')
+            'fields': ('category','technique','tags')
         }),
         ('Status', {
             'fields': ('status',)

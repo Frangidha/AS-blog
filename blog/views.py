@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post, Category, Review
+from .models import Post, Category, Review, Technique
 from .forms import ReviewForm, PostForm
 from taggit.models import Tag
 from hitcount.views import HitCountDetailView
@@ -11,15 +11,15 @@ from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib import messages
 from django.urls import reverse_lazy
 
+
 # view to add categories
-
-
 class CategoryList:
     # add the entire category list to the html
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['category_list'] = Category.objects.order_by('title')
         context['selected_category'] = self.kwargs.get('slug')
+
         return context
 # https://www.codesnail.com/building-a-search-functionality-django-blog-9/
 
@@ -30,6 +30,7 @@ class PostList(CategoryList, generic.ListView):
     template_name = "index.html"
     paginate_by = 6
     category_list = Category.objects.order_by('title')
+    techniques_list = Technique.objects.order_by('name')
     # search
     # https://www.youtube.com/watch?v=cP4HKyqNQsw&ab_channel=BLearningClub
 
@@ -42,6 +43,7 @@ class PostList(CategoryList, generic.ListView):
                 Q(tags__name__icontains=query_search)
             ).distinct()
         return queryset
+
 
 # post Detail html(hitcountview for tracking of views)
 
@@ -134,8 +136,18 @@ class CategoryDetail(CategoryList, generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        # Retrieve the selected category based on the URL slug
         slug = self.kwargs['slug']
-        context['category'] = get_object_or_404(Category, slug=slug)
+        category = get_object_or_404(Category, slug=slug)
+
+        # Retrieve and add techniques related to the selected category
+        techniques = Technique.objects.filter(category=category)
+
+        # Add the category, posts, and techniques to the context
+        context['category'] = category
+        context['techniques_list'] = techniques
+
         return context
 
 # Search funcionality based on tags
@@ -217,3 +229,43 @@ class ArchivePost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         else:
             form.instance.status = 2  # Change the status to 2
         return super().form_valid(form)
+
+
+class TechniqueList(CategoryList, generic.ListView):
+    model = Post  # Change the model to Post
+    template_name = 'technique_detail.html'
+    context_object_name = 'posts'  # Change the context object name
+
+    def get_queryset(self):
+        category_slug = self.kwargs['category_slug']
+        technique_slug = self.kwargs['technique_slug']
+
+        category = get_object_or_404(Category, slug=category_slug)
+        technique = get_object_or_404(
+            Technique, slug=technique_slug, category=category)
+
+        posts = Post.objects.filter(
+            category=category, technique=technique, status=1)
+        return posts
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        category_slug = self.kwargs['category_slug']
+        technique_slug = self.kwargs['technique_slug']
+
+        # Retrieve the selected category based on the URL slug
+        selected_category = get_object_or_404(Category, slug=category_slug)
+
+        # Retrieve the selected technique based on the URL slug
+        selected_technique = get_object_or_404(
+            Technique, slug=technique_slug, category=selected_category)
+
+        # Retrieve and add techniques related to the selected category and technique
+        techniques = Technique.objects.filter(category=selected_category)
+
+        context['selected_category'] = selected_category
+        context['selected_technique'] = selected_technique
+        context['techniques_list'] = techniques
+
+        return context

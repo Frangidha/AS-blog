@@ -11,11 +11,7 @@ class ReviewForm(forms.ModelForm):
 
     class Meta:
         model = Review
-        fields = ('body', 'methodology_and_experimental_design',
-                  'results_and_data_analysis',
-                  'discussion_and_interpretation',
-                  'contribution_and_originality',
-                  'research_objective_and_importance')
+        fields = ('body', 'rating')
 
 # add_post form
 

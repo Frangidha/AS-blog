@@ -46,10 +46,29 @@ class Category(models.Model):
         return reverse('category-detail', args=[self.slug])
 
 
+class Technique(models.Model):
+    category = models.ForeignKey(
+        Category, related_name='techniques', on_delete=models.CASCADE)  # Change related_name here to 'techniques'
+    name = models.CharField(max_length=255)
+    slug = models.SlugField(default="test")
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name_plural = 'Techniques'
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('technique-detail', args=[self.slug])
+
+
 class Post(models.Model):
 
     category = models.ForeignKey(
         Category, related_name='posts', on_delete=models.CASCADE)
+    technique = models.ForeignKey(
+        Technique, related_name='posts_using_technique', on_delete=models.CASCADE, default=None )
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
@@ -119,15 +138,7 @@ class Review(models.Model):
     email = models.EmailField()
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    research_objective_and_importance = models.PositiveIntegerField(
-        choices=RATING_CHOICES, default=1)
-    methodology_and_experimental_design = models.PositiveIntegerField(
-        choices=RATING_CHOICES, default=1)
-    results_and_data_analysis = models.PositiveIntegerField(
-        choices=RATING_CHOICES, default=1)
-    discussion_and_interpretation = models.PositiveIntegerField(
-        choices=RATING_CHOICES, default=1)
-    contribution_and_originality = models.PositiveIntegerField(
+    rating = models.PositiveIntegerField(
         choices=RATING_CHOICES, default=1)
 
     approved = models.BooleanField(default=False)

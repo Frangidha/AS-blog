@@ -15,4 +15,6 @@ urlpatterns = [
          views.DeleteReview.as_view(), name='delete_review'),
     path('post/<int:pk>/archive/',
          views.ArchivePost.as_view(), name='archive_post'),
+    path('category/<slug:category_slug>/<slug:technique_slug>/',
+         views.TechniqueList.as_view(), name='technique_detail'),
 ]
