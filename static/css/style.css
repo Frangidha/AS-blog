@@ -290,6 +290,79 @@ img {
 }
 
 
+/* Review Rating */
+/* Review Rating */
+.controls {
+    font-size: 0;
+}
+
+.controls * {
+    font-size: 1rem;
+}
+
+.controls {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+}
+
+.controls>input {
+    display: none;
+}
+
+.controls>input+label {
+    display: inline-block;
+    overflow: hidden;
+    text-indent: 9999px;
+    width: 1em;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.controls>input+label:before {
+    display: inline-block;
+    text-indent: -9999px;
+    content: '☆';
+    color: #888;
+}
+
+.controls>input:checked~label:before,
+.controls>input+label:hover~label:before,
+.controls>input+label:hover:before {
+    content: '★';
+    color: #e52;
+    text-shadow: 0 0 1px #333;
+}
+
+.controls>.star-cb-clear+label {
+    text-indent: -9999px;
+    width: 0.5em;
+    margin-left: -0.5em;
+}
+
+.controls>.star-cb-clear+label:before {
+    width: 0.5em;
+}
+
+.controls:hover>input+label:before {
+    content: '☆';
+    color: #888;
+    text-shadow: none;
+}
+
+.controls:hover>input+label:hover~label:before,
+.controls:hover>input+label:hover:before {
+    content: '★';
+    color: #e52;
+    text-shadow: 0 0 1px #333;
+}
+
+/* media queries */
+@media (min-width: 750px) {
+    .new-banner {
+        font-size: 16px;
+    }
+}
+
 /* media queries */
 @media (min-width: 750px) {
     .new-banner {

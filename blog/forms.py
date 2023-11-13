@@ -1,4 +1,4 @@
-from .models import Review, Post, Category
+from .models import Review, Post, Category, Technique
 from django import forms
 from django.core.exceptions import ValidationError
 from taggit.forms import TagField, TagWidget
@@ -8,6 +8,21 @@ from django_summernote.widgets import SummernoteWidget
 
 class ReviewForm(forms.ModelForm):
     """Form to create a Review"""
+
+    RATING_CHOICES = (
+        (1, 'fundamental'),
+        (2, 'Innovative'),
+        (3, 'Groundbreaking'),
+        (4, 'Insightful'),
+        (5, 'Revolutionary'),
+    )
+
+    rating = forms.ChoiceField(
+        label='Rating',
+        widget=forms.RadioSelect(attrs={'class': 'radio-inline'}),
+        choices=RATING_CHOICES,
+        initial=1
+    )
 
     class Meta:
         model = Review
