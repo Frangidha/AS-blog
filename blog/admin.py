@@ -1,8 +1,7 @@
 from django.contrib import admin
-from .models import Post, Review, Category, Technique
+from .models import Post, Review, Category, Technique, Banner
 from hitcount.models import Hit
 from django_summernote.admin import SummernoteModelAdmin
-
 
 @admin.register(Technique)
 class TechniqueAdmin(admin.ModelAdmin):
@@ -73,3 +72,7 @@ class ReviewAdmin(admin.ModelAdmin):
 
     def approve_reviewss(self, request, queryset):
         queryset.update(approved=True)
+
+@admin.register(Banner)
+class BannerAdmin(admin.ModelAdmin):
+    list_display = ('title', 'color')

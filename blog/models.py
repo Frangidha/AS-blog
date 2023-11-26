@@ -48,7 +48,7 @@ class Category(models.Model):
 
 class Technique(models.Model):
     category = models.ForeignKey(
-        Category, related_name='techniques', on_delete=models.CASCADE)  # Change related_name here to 'techniques'
+        Category, related_name='techniques', on_delete=models.CASCADE) 
     name = models.CharField(max_length=255)
     slug = models.SlugField(default="test")
 
@@ -125,11 +125,11 @@ class Post(models.Model):
 class Review(models.Model):
     # Choices for rating model
     RATING_CHOICES = (
-        (1, '1-Needs Improvement'),
-        (2, '2-Fair'),
-        (3, '3-Average'),
-        (4, '4-Good'),
-        (5, '5-Excellent'),
+        (1, 'fundamental'),
+        (2, 'Innovative'),
+        (3, 'Groundbreaking'),
+        (4, 'Insightful'),
+        (5, 'Revolutionary'),
     )
 
     post = models.ForeignKey(
@@ -144,9 +144,28 @@ class Review(models.Model):
     approved = models.BooleanField(default=False)
 
 
-def __str__(self):
-    return self.author,
+    def __str__(self):
+        return self.author
 
+class Banner(models.Model):
+    CHOICES = (
+        (1, 'On'),
+        (2, 'Off'),
+    )
+
+    title = models.CharField(max_length=200)
+    color = models.PositiveIntegerField(
+        choices=CHOICES, default=1)
+
+    class Meta:
+        ordering = ('title',)
+        verbose_name_plural = 'Banners'
+
+    def __str__(self):
+        return self.title
+
+    def color_display(self):
+        return self.get_color_display()
 
 # https://www.youtube.com/watch?v=iGPPhzhXBFg&t=176s&ab_channel=MakersGroup
 # https://docs.djangoproject.com/en/4.2/ref/signals/

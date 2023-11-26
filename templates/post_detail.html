@@ -29,8 +29,8 @@
                 <!-- Post title goes in these h1 tags -->
                 <h2 class="post-title">{{ post.title }}</h2>
                 <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle"><a href=" /profiles/user/{{ post.author.id }} " class="profile-link">{{
-                        post.author }}</a> | {{ post.created_on }}</p>
+                <p class="post-subtitle"><a href=" /profiles/user/{{ post.author.id }} " class="profile-link">
+                        {{ post.author }}</a> | {{ post.created_on }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
@@ -140,7 +140,7 @@
                 {% endfor %}
             </div>
         </div>
-  <div class="col-md-4 card mb-4  mt-3 ">
+        <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
                 {% if reviewed %}
                 <div class="alert alert-success" role="alert">

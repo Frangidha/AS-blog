@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <!-- Technique Filters -->
 <div class="container">
     <div class="row">
-        <div class="col-12">
+        <div class="col-md-8 offset-md-2">
             <div class="category-filters">
                 <div class="btn-group d-flex flex-wrap justify-content-between" role="group">
                     {% for technique in techniques_list %}
 
                     <a href="{% url 'technique_detail' category_slug=technique.category.slug technique_slug=technique.slug %}"
-                        class="btn btn-secondary">
+                        class="btn btn-secondary {% if technique == selected_technique %}active{% endif %}">
                         {{ technique.name }}
                     </a>
                     {% endfor %}

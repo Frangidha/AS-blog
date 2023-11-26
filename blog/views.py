@@ -1,12 +1,12 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post, Category, Review, Technique
+from .models import Post, Category, Review, Technique, Banner
 from .forms import ReviewForm, PostForm
 from taggit.models import Tag
 from hitcount.views import HitCountDetailView
 from django.db.models import Q
-from django.views.generic import DetailView, UpdateView, DeleteView
+from django.views.generic import DetailView, UpdateView, DeleteView, TemplateView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib import messages
 from django.urls import reverse_lazy
@@ -23,8 +23,17 @@ class CategoryList:
         return context
 # https://www.codesnail.com/building-a-search-functionality-django-blog-9/
 
+class banner:
+    # add the entire category list to the html
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['switches'] = Banner.objects.all()
+        context['selector'] = context['switches'][0].color_display()
+        print('Selector:', context['selector'])
 
-class PostList(CategoryList, generic.ListView):
+        return context
+
+class PostList(banner, CategoryList, generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
     template_name = "index.html"
@@ -124,7 +133,7 @@ class PostLike(View):
 # Search funcionality categories
 
 
-class CategoryDetail(CategoryList, generic.ListView):
+class CategoryDetail(banner, CategoryList, generic.ListView):
     model = Category
     template_name = 'category_detail.html'
     context_object_name = 'category'
@@ -153,7 +162,7 @@ class CategoryDetail(CategoryList, generic.ListView):
 # Search funcionality based on tags
 
 
-class TagFilterView(CategoryList, generic.ListView):
+class TagFilterView(banner, CategoryList, generic.ListView):
     model = Post
     template_name = 'tags.html'
     context_object_name = 'posts'
@@ -231,7 +240,7 @@ class ArchivePost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return super().form_valid(form)
 
 
-class TechniqueList(CategoryList, generic.ListView):
+class TechniqueList(banner, CategoryList, generic.ListView):
     model = Post  # Change the model to Post
     template_name = 'technique_detail.html'
     context_object_name = 'posts'  # Change the context object name
@@ -269,3 +278,7 @@ class TechniqueList(CategoryList, generic.ListView):
         context['techniques_list'] = techniques
 
         return context
+
+    
+class AboutView(TemplateView):
+    template_name = "about.html"

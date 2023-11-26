@@ -290,70 +290,78 @@ img {
 }
 
 
-/* Review Rating */
-/* Review Rating */
-.controls {
-    font-size: 0;
+.banner {
+    background-color: green;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.controls * {
-    font-size: 1rem;
+.banner.active {
+    opacity: 1;
 }
 
-.controls {
-    unicode-bidi: bidi-override;
-    direction: rtl;
+
+.Off {
+    background: #88c7dc;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    height: 10px;
+    width: 100%;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    transform: scale(1);
+    animation: pulse 2s infinite;
 }
 
-.controls>input {
-    display: none;
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
 }
 
-.controls>input+label {
-    display: inline-block;
-    overflow: hidden;
-    text-indent: 9999px;
-    width: 1em;
-    white-space: nowrap;
-    cursor: pointer;
+
+.On {
+    background: #ff2c0f;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    height: 10px;
+    width: 100%;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    transform: scale(1);
+    animation: pulse 2s infinite;
 }
 
-.controls>input+label:before {
-    display: inline-block;
-    text-indent: -9999px;
-    content: '☆';
-    color: #888;
-}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    }
 
-.controls>input:checked~label:before,
-.controls>input+label:hover~label:before,
-.controls>input+label:hover:before {
-    content: '★';
-    color: #e52;
-    text-shadow: 0 0 1px #333;
-}
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
 
-.controls>.star-cb-clear+label {
-    text-indent: -9999px;
-    width: 0.5em;
-    margin-left: -0.5em;
-}
-
-.controls>.star-cb-clear+label:before {
-    width: 0.5em;
-}
-
-.controls:hover>input+label:before {
-    content: '☆';
-    color: #888;
-    text-shadow: none;
-}
-
-.controls:hover>input+label:hover~label:before,
-.controls:hover>input+label:hover:before {
-    content: '★';
-    color: #e52;
-    text-shadow: 0 0 1px #333;
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
 }
 
 /* media queries */

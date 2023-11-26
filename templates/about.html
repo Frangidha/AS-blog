@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row ">
+        <div class="col-12 banner-bg">
+            <!-- Top Header Banner -->
+            <div id="banner" class="banner">
+                <h2 class="display-4">Title</h2>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="text-container container mt-5">
+    <!-- Two Pictures (Replace 'image_url1' and 'image_url2' with the actual URLs of your images) -->
+    <div class="row justify-content-center">
+        <div class="col-md-6 mb-4">
+            <img src="image_url1" alt="Image 1" class="img-fluid">
+        </div>
+        <div class="col-md-6 mb-4">
+            <img src="image_url2" alt="Image 2" class="img-fluid">
+        </div>
+    </div>
+
+    <!-- Placeholder for Text -->
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <p>
+                Welcome to the Analytical Science Blog, a platform dedicated to showcasing
+                the latest discoveries and advancements in the field of analytical chemistry.
+                Here, we delve into the fascinating world of analytical techniques and
+                their applications, providing insights into cutting-edge research and technological breakthroughs.
+            </p>
+            <p>
+                Analytical science plays a pivotal role in unraveling the mysteries of matter
+                and understanding the intricate details of various substances. It encompasses
+                a wide range of techniques that enable scientists to investigate the composition,
+                structure, properties, and interactions of different materials. Through this blog,
+                we aim to bring you closer to the exciting developments in the field and highlight
+                the incredible contributions of analytical chemistry to scientific progress.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // JavaScript to update the banner content
+    var banner = document.getElementById("banner");
+    var typesOfText = [
+        "Discover the latest breakthroughs",
+        "Explore cutting-edge research",
+        "Unravel the mysteries of matter",
+        "Your Question? Our Mission!",
+
+        // Add more types of text as needed
+    ];
+
+    function updateBanner() {
+        var randomIndex = Math.floor(Math.random() * typesOfText.length);
+        banner.innerHTML = "<h2 class='display-4'>" + typesOfText[randomIndex] + "</h2>";
+        banner.classList.remove("active");
+        void banner.offsetWidth; // Trigger a reflow
+        banner.classList.add("active");
+    }
+
+    // Initial update and set interval for continuous updates
+    updateBanner();
+    setInterval(updateBanner, 3500); // Update every 5 seconds (adjust as needed)
+</script>
+{% endblock %}

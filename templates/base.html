@@ -49,6 +49,10 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'about' %}">About</a>
+                    </li>
+
 
                     {% if user.is_authenticated %}
 
@@ -107,6 +111,11 @@
             </div>
         </div>
     </div>
+    {% if category.slug == "test" %}
+    <div class="{{ selector }}"></div>
+    {% elif selected_category.slug == "test" %}
+    <div class="{{ selector }}"></div>
+    {% endif %}
     <!-- Category Filters -->
     <div class="container">
         <div class="row">
