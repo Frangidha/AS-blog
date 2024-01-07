@@ -30,10 +30,10 @@ CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
-    "8000-frangidha-as-blog-vahayaoszz.us2.codeanyapp.com",
+    "8000-frangidha-as-blog-j8d7kd8dwh.us2.codeanyapp.com",
     "as-blog.herokuapp.com"]
 
 
@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'blog',
     'rest_framework',
     'profiles',
+    'mas',
     'hitcount',
 
 ]
