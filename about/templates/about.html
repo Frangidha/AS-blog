@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row ">
+        <div class="col-12 banner-bg">
+            <!-- Top Header Banner -->
+            <div id="banner" class="banner">
+                <h2 class="display-4">Title</h2>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="text-container container mt-5">
+    <!-- Placeholder for Text -->
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            {% if about_section %}
+            <h1>{{ about_section.title }}</h1>
+            <p>Author: {{ about_section.author.username }}</p>
+            <p>Content: {{ about_section.content }}</p>
+            <p>Last Updated: {{ about_section.updated_on }}</p>
+            {% else %}
+            <p>About Section is empty or not found.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // JavaScript to update the banner content
+    var banner = document.getElementById("banner");
+    var typesOfText = [
+        "Discover the latest breakthroughs",
+        "Explore cutting-edge research",
+        "Unravel the mysteries of matter",
+        "Your Question? Our Mission!",
+
+        // Add more types of text as needed
+    ];
+
+    function updateBanner() {
+        var randomIndex = Math.floor(Math.random() * typesOfText.length);
+        banner.innerHTML = "<h2 class='display-4'>" + typesOfText[randomIndex] + "</h2>";
+        banner.classList.remove("active");
+        void banner.offsetWidth; // Trigger a reflow
+        banner.classList.add("active");
+    }
+
+    // Initial update and set interval for continuous updates
+    updateBanner();
+    setInterval(updateBanner, 3500); // Update every 5 seconds (adjust as needed)
+</script>
+{% endblock %}
