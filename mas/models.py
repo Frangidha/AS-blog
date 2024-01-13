@@ -8,7 +8,7 @@ from hitcount.models import HitCountMixin, HitCount
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from blog.models import Category, Technique
-
+from django.utils import timezone
 # Status choices of the Post
 STATUS = (
     (0, 'Draft'),
@@ -20,7 +20,7 @@ STATUS = (
 class Mas_event(models.Model):
 
     category = models.ForeignKey(
-        Category, related_name='mas', on_delete=models.CASCADE)
+        Category, related_name='mas_category', on_delete=models.CASCADE)
     technique = models.ForeignKey(
         Technique, related_name='mas_technique', on_delete=models.CASCADE, default=None )
     title = models.CharField(max_length=200, unique=True)

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="masthead">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-md-6 masthead-text">
+                {% if mas.status == 0 %}
+                <h2 class="post-status">Provisional</h2>
+                {% endif %}
+                {% if user.is_authenticated %}
+                {% if mas.author.username == user.username %}
+                {% if mas.status == 2 %}
+                <form class="d-inline" action="{% url 'archive_post' mas.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary archive">UnArchive</button>
+
+                </form>
+                {% elif mas.status == 1 %}
+                <form class="d-inline" action="{% url 'archive_post' mas.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary archive">Archive</button>
+                </form>
+                {% endif %}
+                {% endif %}
+                {% endif %}
+                <!-- Post title goes in these h1 tags -->
+                <h2 class="post-title">{{ mas.title }}</h2>
+                <!-- Post author goes before the | the post's created date goes after -->
+                <p class="post-subtitle"><a href=" /profiles/user/{{ post.author.id }} " class="profile-link">
+                        {{ mas.author }}</a> | {{ mas.created_on }}</p>
+            </div>
+            <div class="d-none d-md-block col-md-6 masthead-image">
+                <!-- The featured image URL goes in the src attribute -->
+                {% if "placeholder" in mas.featured_image.url %}
+                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" alt="back up image"
+                    width="100%">
+                {% else %}
+                <img src="{{ mas.featured_image.url }}" alt="featured image" width="100%">
+                {% endif %}
+                {% if mas.is_new %}
+                <div class="new-flash">
+                    <p class="new-banner"><span class="rotate-text">New</span></p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col card mb-4  mt-3 left  top">
+            <div class="card-body">
+                <!-- The mas content goes inside the card-text. -->
+                <!-- Use the | safe filter inside the template tags -->
+                <p class="card-text ">
+                    {{ mas.content | safe }}
+                </p>
+                <div class="row">
+
+                    <div class="col-1">
+                        <strong>
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'mas_like' mas.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if liked %}
+                                <button type="submit" name="maspost_id" value="{{mas.slug}}" class="btn-like"><i
+                                        class="fas fa-heart"></i>
+                                    <span class="sr-only">Like</span></button>
+                                {% else %}
+                                <button type="submit" name="maspost_id" value="{{mas.slug}}" class="btn-like"><i
+                                        class="far fa-heart"></i>
+                                    <span class="sr-only">Like</span></button>
+                                {% endif %}
+                            </form>
+                            {% else %}
+                            <span class="text-secondary"><i class="far fa-heart"></i></span>
+                            {% endif %}
+                            <!-- The number of likes goes before the closing strong tag -->
+                            <span class="text-secondary">{{ mas.likes.count }} </span>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
+    </div>
+
+    {% endblock content %}

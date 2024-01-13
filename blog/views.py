@@ -278,7 +278,3 @@ class TechniqueList(banner, CategoryList, generic.ListView):
         context['techniques_list'] = techniques
 
         return context
-
-    
-class AboutView(TemplateView):
-    template_name = "about.html"

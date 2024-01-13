@@ -5,7 +5,10 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('about/', include('about.urls'), name='about'),
+    path('mas/', include('mas.urls'), name='mas'),
     path('', include('blog.urls'), name='blog'),
+    path('profiles/', include('profiles.urls')),
     path('summernote/', include('django_summernote.urls')),
     path('accounts/', include('allauth.urls')),
     path('hitcount/', include('hitcount.urls', namespace='hitcount')),

@@ -1,8 +1,8 @@
-from django.urls import path
 from . import views
-
+from django.urls import path, include
 
 urlpatterns = [
-    path('user/<int:pk>/', views.Profiles.as_view(), name='profile'),
-    path("edit/<slug:pk>/", views.EditProfile.as_view(), name="edit_profile")
+    path('', views.MasList.as_view(), name='mas'),
+    path('<slug:slug>/', views.MasDetail.as_view(), name='mas_detail'),
+    path('like/<slug:slug>/', views.MasLike.as_view(), name='mas_like'),
 ]

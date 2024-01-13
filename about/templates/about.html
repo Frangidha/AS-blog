@@ -1,34 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <div class="row ">
+<div class="container-fluid mt-5">
+    <!-- Top Header Banner -->
+    <div class="row">
         <div class="col-12 banner-bg">
-            <!-- Top Header Banner -->
             <div id="banner" class="banner">
                 <h2 class="display-4">Title</h2>
             </div>
         </div>
-
     </div>
-</div>
 
-<div class="text-container container mt-5">
-    <!-- Placeholder for Text -->
-    <div class="row justify-content-center">
+    <!-- Content Section with ID -->
+    <div id="about_text" class="row justify-content-center">
         <div class="col-md-8 text-center">
-            {% if about_section %}
-            <h1>{{ about_section.title }}</h1>
-            <p>Author: {{ about_section.author.username }}</p>
-            <p>Content: {{ about_section.content }}</p>
-            <p>Last Updated: {{ about_section.updated_on }}</p>
-            {% else %}
-            <p>About Section is empty or not found.</p>
-            {% endif %}
+            <h2>{{ about_section.title }}</h2>
+            <div>{{ about_section.content|safe }}</div>
+
+            Last Updated: {{ about_section.updated_on }} by {{ about_section.author.username }}
         </div>
     </div>
 </div>
-
 
 <script>
     // JavaScript to update the banner content
