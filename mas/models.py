@@ -16,7 +16,7 @@ STATUS = (
     (2, 'Archived'),
 )
 
-# Create your models here.
+# MAS annoucement model
 class Mas_event(models.Model):
 
     category = models.ForeignKey(
@@ -73,5 +73,14 @@ class Mas_event(models.Model):
     # is new banner
 
     def is_new(self):
-        time_difference = timezone.now() - self.created_on
-        return time_difference.days <= 7
+        time_difference = self.event_day - timezone.now()
+        if time_difference.days == 0:
+            return "today"
+        elif time_difference.days == 1:
+            return "tomorrow"
+        elif 1 < time_difference.days <= 7:
+            return "This week"
+        elif time_difference.days > 7:
+            return "coming up"
+        else:
+            return False

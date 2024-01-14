@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
 
-        <!-- Blog Entries Column -->
+        <!-- MAS Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for mas in mas_list %}
@@ -21,9 +21,21 @@
                                 <img class="card-img-top" src="{{ mas.featured_image.url }}"
                                     alt="blogpost image of {{mas.title}}">
                                 {% endif %}
-                                {% if mas.is_new %}
-                                <div class="new-flash">
-                                    <p class="new-banner"><span class="rotate-text">New</span></p>
+                                {% if mas.is_new == "today" %}
+                                <div class="new-flash-today">
+                                    <p class="new-banner"><span class="rotate-text">Today</span></p>
+                                </div>
+                                {% elif mas.is_new == "tomorrow" %}
+                                <div class="new-flash-tomorrow">
+                                    <p class="new-banner"><span class="rotate-text">Tomorrow</span></p>
+                                </div>
+                                {% elif mas.is_new == "This week" %}
+                                <div class="new-flash-week">
+                                    <p class="new-banner"><span class="rotate-text">This Week</span></p>
+                                </div>
+                                {% elif mas.is_new == "coming up" %}
+                                <div class="new-flash-upcoming">
+                                    <p class="new-banner"><span class="rotate-text">Coming Up</span></p>
                                 </div>
                                 {% endif %}
                                 <div class="image-flash">

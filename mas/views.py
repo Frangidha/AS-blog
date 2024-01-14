@@ -8,7 +8,7 @@ from django.views.generic import DetailView, UpdateView, DeleteView, TemplateVie
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.urls import reverse_lazy
 from hitcount.views import HitCountDetailView
-# Create your views here.
+# MAS annoucement List
 class MasList(generic.ListView):
     model = Mas_event
     queryset = Mas_event.objects.filter(status=1).order_by("-event_day")
@@ -31,6 +31,8 @@ class MasList(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['mas_list'] = context['mas_event_list']
         return context
+
+# MAS Detail html(hitcountview for tracking of views) - Not activated
 
 class MasDetail(HitCountDetailView):
     model = Mas_event

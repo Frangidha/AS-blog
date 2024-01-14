@@ -25,9 +25,9 @@
                 {% endif %}
                 {% endif %}
                 {% endif %}
-                <!-- Post title goes in these h1 tags -->
+                <!-- MAS title goes in these h1 tags -->
                 <h2 class="post-title">{{ mas.title }}</h2>
-                <!-- Post author goes before the | the post's created date goes after -->
+                <!-- MAS author goes before the | the post's created date goes after -->
                 <p class="post-subtitle"><a href=" /profiles/user/{{ post.author.id }} " class="profile-link">
                         {{ mas.author }}</a> | {{ mas.created_on }}</p>
             </div>
@@ -39,56 +39,67 @@
                 {% else %}
                 <img src="{{ mas.featured_image.url }}" alt="featured image" width="100%">
                 {% endif %}
-                {% if mas.is_new %}
-                <div class="new-flash">
-                    <p class="new-banner"><span class="rotate-text">New</span></p>
+                {% if mas.is_new == "today" %}
+                <div class="new-flash-today">
+                    <p class="new-banner"><span class="rotate-text">Today</span></p>
+                </div>
+                {% elif mas.is_new == "tomorrow" %}
+                <div class="new-flash-tomorrow">
+                    <p class="new-banner"><span class="rotate-text">Tomorrow</span></p>
+                </div>
+                {% elif mas.is_new == "This week" %}
+                <div class="new-flash-week">
+                    <p class="new-banner"><span class="rotate-text">This Week</span></p>
+                </div>
+                {% elif mas.is_new == "coming up" %}
+                <div class="new-flash-upcoming">
+                    <p class="new-banner"><span class="rotate-text">Coming Up</span></p>
                 </div>
                 {% endif %}
             </div>
         </div>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body">
-                <!-- The mas content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text ">
-                    {{ mas.content | safe }}
-                </p>
-                <div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col card mb-4  mt-3 left  top">
+                <div class="card-body">
+                    <!-- The mas content goes inside the card-text. -->
+                    <!-- Use the | safe filter inside the template tags -->
+                    <p class="card-text ">
+                        {{ mas.content | safe }}
+                    </p>
+                    <div class="row">
 
-                    <div class="col-1">
-                        <strong>
-                            {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'mas_like' mas.slug %}" method="POST">
-                                {% csrf_token %}
-                                {% if liked %}
-                                <button type="submit" name="maspost_id" value="{{mas.slug}}" class="btn-like"><i
-                                        class="fas fa-heart"></i>
-                                    <span class="sr-only">Like</span></button>
+                        <div class="col-1">
+                            <strong>
+                                {% if user.is_authenticated %}
+                                <form class="d-inline" action="{% url 'mas_like' mas.slug %}" method="POST">
+                                    {% csrf_token %}
+                                    {% if liked %}
+                                    <button type="submit" name="maspost_id" value="{{mas.slug}}" class="btn-like"><i
+                                            class="fas fa-heart"></i>
+                                        <span class="sr-only">Like</span></button>
+                                    {% else %}
+                                    <button type="submit" name="maspost_id" value="{{mas.slug}}" class="btn-like"><i
+                                            class="far fa-heart"></i>
+                                        <span class="sr-only">Like</span></button>
+                                    {% endif %}
+                                </form>
                                 {% else %}
-                                <button type="submit" name="maspost_id" value="{{mas.slug}}" class="btn-like"><i
-                                        class="far fa-heart"></i>
-                                    <span class="sr-only">Like</span></button>
+                                <span class="text-secondary"><i class="far fa-heart"></i></span>
                                 {% endif %}
-                            </form>
-                            {% else %}
-                            <span class="text-secondary"><i class="far fa-heart"></i></span>
-                            {% endif %}
-                            <!-- The number of likes goes before the closing strong tag -->
-                            <span class="text-secondary">{{ mas.likes.count }} </span>
-                        </strong>
+                                <!-- The number of likes goes before the closing strong tag -->
+                                <span class="text-secondary">{{ mas.likes.count }} </span>
+                            </strong>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr>
+        <div class="row">
+            <div class="col">
+                <hr>
+            </div>
         </div>
-    </div>
 
-    {% endblock content %}
+        {% endblock content %}

@@ -29,7 +29,6 @@ class banner:
         context = super().get_context_data(**kwargs)
         context['switches'] = Banner.objects.all()
         context['selector'] = context['switches'][0].color_display()
-        print('Selector:', context['selector'])
 
         return context
 
