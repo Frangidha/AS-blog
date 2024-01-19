@@ -49,7 +49,7 @@ class Technique(models.Model):
     category = models.ForeignKey(
         Category, related_name='techniques', on_delete=models.CASCADE) 
     name = models.CharField(max_length=255)
-    slug = models.SlugField(default="test")
+    slug = models.SlugField()
 
     class Meta:
         ordering = ('name',)
